@@ -13,6 +13,8 @@ const attribute = {
 	"rate":1.0,
 };
 
+// preset 설정하기
+
 // featureFilm 추가함.
 a = Object.create(attribute)
 a.name = "featureFilm";
