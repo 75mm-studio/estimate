@@ -5,6 +5,7 @@ const shot = {
 	"initAmount" : 300000.0,
 	"frameAmount" : 1000.0,
 	"frame" : 1,
+	"count" : 1,
 	"attributes" : [], // attribute list
 };
 
