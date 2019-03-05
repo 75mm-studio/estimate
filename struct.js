@@ -1,5 +1,7 @@
 var items = [];
+
 const item = {
+	// currentTotal = initAmount * count * attributeRates
 	"initAmount" : 300000.0,
 	"count" : 1,
 	"attributes" : [], // attribute list
