@@ -71,6 +71,7 @@ function addBucket() {
 			attr.name = service[i].name;
 			attr.value = service[i].value;
 			shot.attributes.push(attr)
+			break;
 		};
 	}
 
