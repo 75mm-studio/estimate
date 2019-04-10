@@ -1,4 +1,5 @@
 var bucket = [];
+var initAmount = 300000.0;
 
 const shot = {
 	// currentTotal = initAmount * shotnum * attributeRates
@@ -12,6 +13,14 @@ const attribute = {
 	"type":"", // camera, lens, scripts ...
 	"rate":1.0,
 };
+
+// addBucket
+document.getElementById('addBucket').addEventListener('click', addBucket);
+
+function addBucket() {
+	console.log(initAmount);
+	console.log("addBucket");
+}
 
 // preset 설정하기
 
