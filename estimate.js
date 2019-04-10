@@ -80,7 +80,7 @@ function addBucket() {
 	var serviceDetail = document.getElementsByName("serviceDetail");
 	for (var i = 0, length = serviceDetail.length; i < length; i++) {
 		if (serviceDetail[i].checked) {
-			currentServiceDetail = serviceDetail[i].value;
+			currentServiceDetail *= serviceDetail[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = serviceDetail[i].id;
 			attr.name = serviceDetail[i].name;
