@@ -134,6 +134,7 @@ function addBucket() {
 			shot.attributes.push(attr)
 		};
 	}
+	shot.num = document.getElementById("numberOfShot").value;
 	bucket.push(shot)
 	bucketRender()
 	bucketTotal()
