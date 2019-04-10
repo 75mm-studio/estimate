@@ -12,7 +12,33 @@ const attributeStruct = {
 	"value":1.0,
 };
 
-// addBucket
+function bucketRender() {
+	document.getElementById("bucket").innerHTML = "";
+	for (var i = 0; i < bucket.length; i++) {
+		var div = document.createElement("div");
+		div.innerHTML += " init value " + bucket[i].initAmount;
+		div.innerHTML += " number of shot " + bucket[i].num;
+		for (var j = 0; j < bucket[i].attributes.length; j++) {
+			div.innerHTML += " id " + bucket[i].attributes[j].id;
+			div.innerHTML += " name " + bucket[i].attributes[j].name;
+			div.innerHTML += " value " + bucket[i].attributes[j].value;
+		}
+		document.getElementById("bucket").appendChild(div);
+	}
+}
+
+function bucketTotal() {
+	var total = 0.0;
+	for (var i = 0; i < bucket.length; i++) {
+		var subtotal = bucket[i].initAmount * bucket[i].num;
+		for (var j = 0; j < bucket[i].attributes.length; j++) {
+			subtotal *= bucket[i].attributes[j].value;
+		}
+		total += subtotal;
+	}
+	document.getElementById("total").innerHTML = total;
+}
+
 document.getElementById('addBucket').addEventListener('click', addBucket);
 
 function addBucket() {
@@ -21,7 +47,7 @@ function addBucket() {
 	// project
 	var currentProject = 1.0;
 	var project = document.getElementsByName("project");
-	for (var i = 0, length = project.length; i < length; i++) {
+	for (var i = 0; i < project.length; i++) {
 		if (project[i].checked) {
 			currentProject = project[i].value;
 			attr = Object.create(attributeStruct);
@@ -35,7 +61,7 @@ function addBucket() {
 	// lens
 	var currentLens = 1.0;
 	var lens = document.getElementsByName("lens");
-	for (var i = 0, length = lens.length; i < length; i++) {
+	for (var i = 0; i < lens.length; i++) {
 		if (lens[i].checked) {
 			currentLens = lens[i].value;
 			attr = Object.create(attributeStruct);
@@ -49,7 +75,7 @@ function addBucket() {
 	// multicam
 	var currentMulticam = 1.0;
 	var multicam = document.getElementsByName("multicam");
-	for (var i = 0, length = multicam.length; i < length; i++) {
+	for (var i = 0; i < multicam.length; i++) {
 		if (multicam[i].checked) {
 			currentMulticam = multicam[i].value;
 			attr = Object.create(attributeStruct);
@@ -63,7 +89,7 @@ function addBucket() {
 	// service
 	var currentService = 1.0;
 	var service = document.getElementsByName("service");
-	for (var i = 0, length = service.length; i < length; i++) {
+	for (var i = 0; i < service.length; i++) {
 		if (service[i].checked) {
 			currentService *= service[i].value;
 			attr = Object.create(attributeStruct);
@@ -78,7 +104,7 @@ function addBucket() {
 	// serviceDetail
 	var currentServiceDetail = 1.0;
 	var serviceDetail = document.getElementsByName("serviceDetail");
-	for (var i = 0, length = serviceDetail.length; i < length; i++) {
+	for (var i = 0; i < serviceDetail.length; i++) {
 		if (serviceDetail[i].checked) {
 			currentServiceDetail *= serviceDetail[i].value;
 			attr = Object.create(attributeStruct);
@@ -92,7 +118,7 @@ function addBucket() {
 	// vfxScript
 	var currentVfxScript = 1.0;
 	var vfxScripts = document.getElementsByName("vfxScript");
-	for (var i = 0, length = vfxScripts.length; i < length; i++) {
+	for (var i = 0; i < vfxScripts.length; i++) {
 		if (vfxScripts[i].checked) {
 			currentVfxScript *= vfxScripts[i].value;
 			attr = Object.create(attributeStruct);
@@ -106,7 +132,7 @@ function addBucket() {
 	// reconstructOption
 	var currentReconstruct = 1.0;
 	var reconstructs = document.getElementsByName("reconstruct");
-	for (var i = 0, length = reconstructs.length; i < length; i++) {
+	for (var i = 0; i < reconstructs.length; i++) {
 		if (reconstructs[i].checked) {
 			currentReconstruct *= reconstructs[i].value;
 			attr = Object.create(attributeStruct);
@@ -129,7 +155,11 @@ function addBucket() {
 	initAmount *= currentVfxScript;
 	initAmount *= currentReconstruct;
 	initAmount *= parseFloat(nos);
-	console.log(initAmount);
 	bucket.push(shot)
-	console.log(bucket);
+	bucketRender()
+	bucketTotal()
+	//console.log(initAmount);
+	//console.log(bucket);
 }
+
+
