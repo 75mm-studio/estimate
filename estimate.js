@@ -1,15 +1,15 @@
-var shots = [];
+var bucket = [];
 
 const shot = {
-	// currentTotal = initAmount * count * attributeRates
+	// currentTotal = initAmount * shotnum * attributeRates
 	"initAmount" : 300000.0,
-	"count" : 1,
+	"shotnum" : 1,
 	"attributes" : [], // attribute list
 };
 
 const attribute = {
 	"name":"",
-	"type":"",
+	"type":"", // camera, lens, scripts ...
 	"rate":1.0,
 };
 
@@ -31,5 +31,5 @@ shot.attributes.push(b)
 
 
 console.log(shot.attributes);
-shots.push(shot);
-console.log(shots);
+bucket.push(shot);
+console.log(bucket);
