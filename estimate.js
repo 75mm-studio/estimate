@@ -45,11 +45,9 @@ function addBucket() {
 	shot = Object.create(shotStruct);
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
 	// project
-	var currentProject = 1.0;
 	var project = document.getElementsByName("project");
 	for (var i = 0; i < project.length; i++) {
 		if (project[i].checked) {
-			currentProject = project[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = project[i].id;
 			attr.name = project[i].name;
@@ -59,11 +57,9 @@ function addBucket() {
 		};
 	}
 	// lens
-	var currentLens = 1.0;
 	var lens = document.getElementsByName("lens");
 	for (var i = 0; i < lens.length; i++) {
 		if (lens[i].checked) {
-			currentLens = lens[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = lens[i].id;
 			attr.name = lens[i].name;
@@ -73,11 +69,9 @@ function addBucket() {
 		};
 	}
 	// multicam
-	var currentMulticam = 1.0;
 	var multicam = document.getElementsByName("multicam");
 	for (var i = 0; i < multicam.length; i++) {
 		if (multicam[i].checked) {
-			currentMulticam = multicam[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = multicam[i].id;
 			attr.name = multicam[i].name;
@@ -87,11 +81,9 @@ function addBucket() {
 		};
 	}
 	// service
-	var currentService = 1.0;
 	var service = document.getElementsByName("service");
 	for (var i = 0; i < service.length; i++) {
 		if (service[i].checked) {
-			currentService *= service[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = service[i].id;
 			attr.name = service[i].name;
@@ -102,11 +94,9 @@ function addBucket() {
 	}
 
 	// serviceDetail
-	var currentServiceDetail = 1.0;
 	var serviceDetail = document.getElementsByName("serviceDetail");
 	for (var i = 0; i < serviceDetail.length; i++) {
 		if (serviceDetail[i].checked) {
-			currentServiceDetail *= serviceDetail[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = serviceDetail[i].id;
 			attr.name = serviceDetail[i].name;
@@ -116,11 +106,9 @@ function addBucket() {
 		};
 	}
 	// vfxScript
-	var currentVfxScript = 1.0;
 	var vfxScripts = document.getElementsByName("vfxScript");
 	for (var i = 0; i < vfxScripts.length; i++) {
 		if (vfxScripts[i].checked) {
-			currentVfxScript *= vfxScripts[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = vfxScripts[i].id;
 			attr.name = vfxScripts[i].name;
@@ -130,11 +118,9 @@ function addBucket() {
 	}
 
 	// reconstructOption
-	var currentReconstruct = 1.0;
 	var reconstructs = document.getElementsByName("reconstruct");
 	for (var i = 0; i < reconstructs.length; i++) {
 		if (reconstructs[i].checked) {
-			currentReconstruct *= reconstructs[i].value;
 			attr = Object.create(attributeStruct);
 			attr.id = reconstructs[i].id;
 			attr.name = reconstructs[i].name;
@@ -143,18 +129,6 @@ function addBucket() {
 		};
 	}
 
-	// number of shot
-	var nos = document.getElementById("numberOfShot").value;
-	shot.num = parseFloat(nos);
-	initAmount = 300000.0;
-	initAmount *= currentProject;
-	initAmount *= currentLens;
-	initAmount *= currentMulticam;
-	initAmount *= currentService;
-	initAmount *= currentServiceDetail;
-	initAmount *= currentVfxScript;
-	initAmount *= currentReconstruct;
-	initAmount *= parseFloat(nos);
 	bucket.push(shot)
 	bucketRender()
 	bucketTotal()
