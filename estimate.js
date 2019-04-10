@@ -12,6 +12,10 @@ const attributeStruct = {
 	"value":1.0,
 };
 
+// Callback
+document.getElementById('addBucket').addEventListener('click', addBucket);
+
+// 장바구니를 렌더링한다.
 function bucketRender() {
 	document.getElementById("bucket").innerHTML = "";
 	for (var i = 0; i < bucket.length; i++) {
@@ -27,6 +31,7 @@ function bucketRender() {
 	}
 }
 
+// 장바구니의 모든 값의 견적의 합을 구한다.
 function bucketTotal() {
 	var total = 0.0;
 	for (var i = 0; i < bucket.length; i++) {
@@ -39,7 +44,6 @@ function bucketTotal() {
 	document.getElementById("total").innerHTML = total;
 }
 
-document.getElementById('addBucket').addEventListener('click', addBucket);
 
 function addBucket() {
 	shot = Object.create(shotStruct);
@@ -128,12 +132,9 @@ function addBucket() {
 			shot.attributes.push(attr)
 		};
 	}
-
 	bucket.push(shot)
 	bucketRender()
 	bucketTotal()
-	//console.log(initAmount);
-	//console.log(bucket);
 }
 
 
