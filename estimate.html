@@ -6,60 +6,68 @@
 <body>
 
 
-<div><div>Project Option</div><div>
-<input type="radio" name="projectOption" value=1.0 checked>1.0 / featureFilm / 영화<br>
-<input type="radio" name="projectOption" value=1.1>1.1 / televisionEpisodics / 드라마<br>
-<input type="radio" name="projectOption" value=1.2>1.2 / commercialAndMv / 광고, 뮤직비디오<br>
-<input type="radio" name="projectOption" value=3.0>3.0 / VR Content<br>
+<div><div>Project</div><div>
+<input type="radio" name="project" id="featureFilm" value=1.0 checked>1.0 / featureFilm / 영화<br>
+<input type="radio" name="project" id="televisionEpisodics" value=1.1>1.1 / televisionEpisodics / 드라마<br>
+<input type="radio" name="project" id="commercialAndMv" value=1.2>1.2 / commercialAndMv / 광고, 뮤직비디오<br>
+<input type="radio" name="project" id="vr" value=3.0>3.0 / VR Content<br>
 </div></div>
 
-<div><div>Lens Option</div><div>
-<input type="radio" name="lensOption" value=1.0 checked>1.0 / spherical Lens / 일반적인 렌즈를 사용했는가?<br>
-<input type="radio" name="lensOption" value=2.0>2.0 / anamorphic Lens / 아나모픽 렌즈를 사용했는가?<br>
+<div><div>Lens</div><div>
+<input type="radio" name="lens" id="sphericalLens" value=1.0 checked>1.0 / spherical Lens / 일반적인 렌즈를 사용했는가?<br>
+<input type="radio" name="lens" id="anamorphicLens" value=2.0>2.0 / anamorphic Lens / 아나모픽 렌즈를 사용했는가?<br>
 </div></div>
 
-<div><div>Stereo Option</div><div>
-<input type="radio" name="stereoOption" value=1.0 checked>1.0 / mono / 일반적인 모노 촬영인가?<br>
-<input type="radio" name="stereoOption" value=2.0>2.0 / stereo / 입체 촬영인가?<br>
-<input type="radio" name="stereoOption" value=3.0>3.0 / multiCam / 3개이상의 카메라를 활용한 촬영인가?<br>
+<div><div>MultiCam</div><div>
+<input type="radio" name="multicam" id="mono" value=1.0 checked>1.0 / mono / 일반적인 모노 촬영인가?<br>
+<input type="radio" name="multicam" id="stereo" value=2.0>2.0 / stereo / 입체 촬영인가?<br>
+<input type="radio" name="multicam" id="multicam" value=3.0>3.0 / multiCam / 3개이상의 카메라를 활용한 촬영인가?<br>
 </div></div>
 
-<div><div>Service Option</div><div>
-<input type="checkbox" name="serviceOption" value=1.0 checked>1.0 / cameraTracking / 작업 내용 중에 공간에 대한 매치가 되어야 하는가?<br>
-<input type="checkbox" name="serviceOption" value=2.0>2.0 / objectTracking / 작업 내용 중에 움직이는 사물에 대한 매치 작업이 되어야 하는가?<br>
-<input type="checkbox" name="serviceOption" value=3.0>3.0 / rotoAnimation(Matchmation) / 작업 내용 중에 인물 및 동물과 같은 생명체의 움직임에 대한 매치 작업이 되어야 하는가?<br>
+<div><div>Service</div><div>
+<input type="checkbox" name="service" id="cameraTracking" value=1.0 checked>1.0 / cameraTracking / 작업 내용 중에 공간에 대한 매치가 되어야 하는가?<br>
+<input type="checkbox" name="service" id="objectTracking" value=2.0>2.0 / objectTracking / 작업 내용 중에 움직이는 사물에 대한 매치 작업이 되어야 하는가?<br>
+<input type="checkbox" name="service" id="rotoAnimation" value=3.0>3.0 / rotoAnimation(Matchmation) / 작업 내용 중에 인물 및 동물과 같은 생명체의 움직임에 대한 매치 작업이 되어야 하는가?<br>
 </div></div>
 
-<div><div>Service Detail Option</div><div>
-<input type="radio" name="serviceDetailOption" value=1.0 checked>1.0 / StandardCamera / 일반적인 공간 카메라 매치인가?<br>
-<input type="radio" name="serviceDetailOption" value=1.1>1.1 / BlenderCamera / 1개 이상의 카메라가 하나의 환경을 공유하여 구성 되거나 특수한 카메라 블렌딩이 되어져야 하는가?<br>
-<input type="radio" name="serviceDetailOption" value=1.2>1.2 / RigidObject / 움직이는 사물에 대한 매치 작업이 고체의 형태인가?<br>
-<input type="radio" name="serviceDetailOption" value=1.3>1.3 / NonRigidObject / 움직이는 사물에 대한 매치 작업이 유체의 형태인가?<br>
+<div><div>Service Detail</div><div>
+<input type="radio" name="serviceDetail" id="standardCamera" value=1.0 checked>1.0 / StandardCamera / 일반적인 공간 카메라 매치인가?<br>
+<input type="radio" name="serviceDetail" id="blenderCamera" value=1.1>1.1 / BlenderCamera / 1개 이상의 카메라가 하나의 환경을 공유하여 구성 되거나 특수한 카메라 블렌딩이 되어져야 하는가?<br>
+<input type="radio" name="serviceDetail" id="rigidObject" value=1.2>1.2 / RigidObject / 움직이는 사물에 대한 매치 작업이 고체의 형태인가?<br>
+<input type="radio" name="serviceDetail" id="nonRigidObject" value=1.3>1.3 / NonRigidObject / 움직이는 사물에 대한 매치 작업이 유체의 형태인가?<br>
 </div></div>
 
-<div><div>VFX Script Option</div><div>
-<input type="checkbox" name="vfxScriptOption" value=0.8>0.8 / Has Survey Data / Lidar scan, obj가 필요한 샷이고 실측데이터가 존재하는가?(할인적용)<br>
-<input type="checkbox" name="vfxScriptOption" value=1.2>1.2 / No Focal Length Info / 렌즈 정보가 없는가?<br>
-<input type="checkbox" name="vfxScriptOption" value=1.2>1.2 / No Camera ResolutionInfo / 카메라에서 지원되는 녹화 해상도 정보가 존재하는가?<br>
-<input type="checkbox" name="vfxScriptOption" value=1.2>1.2 / No Lens Distortion GridShot / 왜곡 그리드 챠트가 없는가?<br>
-<input type="checkbox" name="vfxScriptOption" value=1.2>1.2 / No Survey Data / Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없는가?<br>
-<input type="checkbox" name="vfxScriptOption" value=1.5>1.5 / is 4K Over? / 4K 이상의 사이즈를 가진 플레이트인가?<br>
+<div><div>VFX Script</div><div>
+<input type="checkbox" name="vfxScript" id="hasSurveyData" value=0.8>0.8 / Has Survey Data / Lidar scan, obj가 필요한 샷이고 실측데이터가 존재하는가?(할인적용)<br>
+<input type="checkbox" name="vfxScript" id="noFocalLengthInfo" value=1.2>1.2 / No Focal Length Info / 렌즈 정보가 없는가?<br>
+<input type="checkbox" name="vfxScript" id="noCameraResolutionInfo" value=1.2>1.2 / No Camera ResolutionInfo / 카메라에서 지원되는 녹화 해상도 정보가 존재하는가?<br>
+<input type="checkbox" name="vfxScript" id="noLensDistortionGrid" value=1.2>1.2 / No Lens Distortion Grid / 왜곡 그리드 챠트가 없는가?<br>
+<input type="checkbox" name="vfxScript" id="noSurveyData" value=1.2>1.2 / No Survey Data / Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없는가?<br>
+<input type="checkbox" name="vfxScript" id="is4kOver" value=1.5>1.5 / is 4K Over? / 4K 이상의 사이즈를 가진 플레이트인가?<br>
 </div></div>
 
-<div><div>Reconstruct Option</div><div>
-<input type="checkbox" name="reconstructOption" value=1.2>1.2 / Set Reconstruct Model / 추출 되어진 3D 트래커들을 기반하여 모델링을 구성해야 하는가?<br>
-<input type="checkbox" name="reconstructOption" value=1.2>1.2 / Has Dynamic Focal Length Reconstruction / Zoom 또는 Focus 변화에 의해서 왜곡 변형이 발생하는가?<br>
-<input type="checkbox" name="reconstructOption" value=1.2>1.2 / Has Dynamic Lens Distortion Reconstruction / Zoom 또는 Focus 변화에 의해서 왜곡 변형이 발생하는가?<br>
-<input type="checkbox" name="reconstructOption" value=1.2>1.2 / Has Rolling Shutter Reconstruction / 롤링셔터가 발생하는가?<br>
+<div><div>Reconstruct</div><div>
+<input type="checkbox" name="reconstruct" id="setReconstructModel" value=1.2>1.2 / Set Reconstruct Model / 추출 되어진 3D 트래커들을 기반하여 모델링을 구성해야 하는가?<br>
+<input type="checkbox" name="reconstruct" id="hasDynamicFocalLengthReconstruction" value=1.2>1.2 / Has Dynamic Focal Length Reconstruction / Zoom 또는 Focus 변화에 의해서 왜곡 변형이 발생하는가?<br>
+<input type="checkbox" name="reconstruct" id="hasDynamicLensDistortionReconstruction" value=1.2>1.2 / Has Dynamic Lens Distortion Reconstruction / Zoom 또는 Focus 변화에 의해서 왜곡 변형이 발생하는가?<br>
+<input type="checkbox" name="reconstruct" id="hasRollingShutterReconstruction" value=1.2>1.2 / Has Rolling Shutter Reconstruction / 롤링셔터가 발생하는가?<br>
 </div></div>
 
-<div>Number of Shot: <input type="number" id="numberOfShot" min=1 max=10000 value=1></div>
-
+<div>
+Number of Shot: <input type="number" id="numberOfShot" min=1 max=10000 value=1>
 <button id="addBucket" type="button">Add Bucket</button>
+</div>
 
-<div>Total: </div>
-
+<div>
+<div>Bucket: </div>
 <div id="bucket"></div>
+</div>
+
+<div>
+<div>Total: </div>
+<div id="total"><div>
+</div>
+
 
 </body>
 <script src="estimate.js"></script>
