@@ -21,6 +21,7 @@ function bucketRender() {
 	document.getElementById("bucket").innerHTML = "";
 	for (var i = 0; i < bucket.length; i++) {
 		var div = document.createElement("div");
+		div.innerHTML += " id " + bucket[i].id;
 		div.innerHTML += " init value " + bucket[i].initAmount;
 		div.innerHTML += " number of shot " + bucket[i].num;
 		for (var j = 0; j < bucket[i].attributes.length; j++) {
