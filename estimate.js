@@ -18,8 +18,19 @@ const attribute = {
 document.getElementById('addBucket').addEventListener('click', addBucket);
 
 function addBucket() {
-	console.log(initAmount);
-	console.log("addBucket");
+	var currentProjectOption = 1.0;
+	// projectOption
+	var projectOption = document.getElementsByName("projectOption");
+	for (var i = 0, length = projectOption.length; i < length; i++) {
+		if (projectOption[i].checked) {
+			currentProjectOption = projectOption[i].value;
+			break;
+		};
+	}
+	// number of shot
+	var nos = document.getElementById("numberOfShot").value;
+	console.log(initAmount * currentProjectOption * parseFloat(nos));
+	console.log(nos);
 }
 
 // preset 설정하기
