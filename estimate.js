@@ -3,12 +3,12 @@ var bucket = [];
 const shotStruct = {
 	"initAmount" : 300000.0,
 	"num" : 1,
-	"attributes" : [], // attribute list
+	"attributes" : [],
 };
 
 const attributeStruct = {
 	"id":"",
-	"name":"", // camera, lens, scripts ...
+	"name":"", // type
 	"value":1.0,
 };
 
