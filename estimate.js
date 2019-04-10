@@ -95,7 +95,6 @@ function addBucket() {
 	initAmount = 300000.0
 }
 
-// preset 설정하기
 
 // featureFilm 추가함.
 a = Object.create(attribute)
