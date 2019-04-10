@@ -5,8 +5,12 @@
 </head>
 <body>
 
-<div>Start</div>
-<div>Total</div>
+<div>Start: 300000</div>
+
+<div>Total: </div>
+
+<div>Shotnum: <input type="number" name="shotnum" min="1" max="10000">
+</div>
 
 <div><div>ProjectOption</div><div>
 <input type="radio" name="projectOption" value=1.0 checked>featureFilm / 영화<br>
@@ -23,7 +27,7 @@
 <div><div>Stereo Option</div><div>
 <input type="radio" name="stereoOption" value=1.0 checked>mono / 일반적인 모노 촬영인가?<br>
 <input type="radio" name="stereoOption" value=2.0>stereo / 입체 촬영인가?<br>
-<input type="radio" name="stereoOption" value=3.0>multiCam / multicam 촬영인가?<br>
+<input type="radio" name="stereoOption" value=3.0>multiCam / 3개이상의 카메라를 활용한 촬영인가?<br>
 </div></div>
 
 <div><div>Service Option</div><div>
@@ -40,11 +44,11 @@
 </div></div>
 
 <div><div>VFX Script Option</div><div>
+<input type="checkbox" name="vfxScriptOption" value=0.8>Has Survey Data / Lidar scan, obj가 필요한 샷이고 실측데이터가 존재하는가?(할인적용)<br>
 <input type="checkbox" name="vfxScriptOption" value=1.2>No Focal Length Info / 렌즈 정보가 없는가?<br>
 <input type="checkbox" name="vfxScriptOption" value=1.2>No Camera ResolutionInfo / 카메라에서 지원되는 녹화 해상도 정보가 존재하는가?<br>
 <input type="checkbox" name="vfxScriptOption" value=1.2>No Lens Distortion GridShot / 왜곡 그리드 챠트가 없는가?<br>
 <input type="checkbox" name="vfxScriptOption" value=1.2>No Survey Data / Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없는가?<br>
-<input type="checkbox" name="vfxScriptOption" value=0.8>Has Survey Data / Lidar scan, obj가 필요한 샷이고 실측데이터가 존재하는가?(할인적용)<br>
 <input type="checkbox" name="vfxScriptOption" value=1.5>is 4K Over? / 4K 이상의 사이즈를 가진 플레이트인가?<br>
 </div></div>
 
@@ -54,7 +58,6 @@
 <input type="checkbox" name="reconstructOption" value=1.2>Has Dynamic Lens Distortion Reconstruction / Zoom 또는 Focus 변화에 의해서 왜곡 변형이 발생하는가?<br>
 <input type="checkbox" name="reconstructOption" value=1.2>Has Rolling Shutter Reconstruction / 롤링셔터가 발생하는가?<br>
 </div></div>
-
 
 </body>
 </html>
