@@ -48,89 +48,19 @@ function bucketTotal() {
 
 
 function addBucket() {
-	shot = Object.create(shotStruct);
+	var shot = Object.create(shotStruct);
+	var inputs = document.getElementsByTagName("input");
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
-	// project
-	var project = document.getElementsByName("project");
-	for (var i = 0; i < project.length; i++) {
-		if (project[i].checked) {
-			attr = Object.create(attributeStruct);
-			attr.id = project[i].id;
-			attr.name = project[i].name;
-			attr.value = project[i].value;
-			shot.attributes.push(attr)
-			break;
+	for (var i = 0; i < inputs.length; i++) {
+		type = inputs[i].getAttribute("type")
+		if (!(type == "radio" || type=="checkbox")){
+			continue;
 		};
-	}
-	// lens
-	var lens = document.getElementsByName("lens");
-	for (var i = 0; i < lens.length; i++) {
-		if (lens[i].checked) {
+		if (inputs[i].checked) {
 			attr = Object.create(attributeStruct);
-			attr.id = lens[i].id;
-			attr.name = lens[i].name;
-			attr.value = lens[i].value;
-			shot.attributes.push(attr)
-			break;
-		};
-	}
-	// multicam
-	var multicam = document.getElementsByName("multicam");
-	for (var i = 0; i < multicam.length; i++) {
-		if (multicam[i].checked) {
-			attr = Object.create(attributeStruct);
-			attr.id = multicam[i].id;
-			attr.name = multicam[i].name;
-			attr.value = multicam[i].value;
-			shot.attributes.push(attr)
-			break;
-		};
-	}
-	// service
-	var service = document.getElementsByName("service");
-	for (var i = 0; i < service.length; i++) {
-		if (service[i].checked) {
-			attr = Object.create(attributeStruct);
-			attr.id = service[i].id;
-			attr.name = service[i].name;
-			attr.value = service[i].value;
-			shot.attributes.push(attr)
-			break;
-		};
-	}
-
-	// serviceDetail
-	var serviceDetail = document.getElementsByName("serviceDetail");
-	for (var i = 0; i < serviceDetail.length; i++) {
-		if (serviceDetail[i].checked) {
-			attr = Object.create(attributeStruct);
-			attr.id = serviceDetail[i].id;
-			attr.name = serviceDetail[i].name;
-			attr.value = serviceDetail[i].value;
-			shot.attributes.push(attr)
-			break;
-		};
-	}
-	// vfxScript
-	var vfxScripts = document.getElementsByName("vfxScript");
-	for (var i = 0; i < vfxScripts.length; i++) {
-		if (vfxScripts[i].checked) {
-			attr = Object.create(attributeStruct);
-			attr.id = vfxScripts[i].id;
-			attr.name = vfxScripts[i].name;
-			attr.value = vfxScripts[i].value;
-			shot.attributes.push(attr)
-		};
-	}
-
-	// reconstructOption
-	var reconstructs = document.getElementsByName("reconstruct");
-	for (var i = 0; i < reconstructs.length; i++) {
-		if (reconstructs[i].checked) {
-			attr = Object.create(attributeStruct);
-			attr.id = reconstructs[i].id;
-			attr.name = reconstructs[i].name;
-			attr.value = reconstructs[i].value;
+			attr.id = inputs[i].id;
+			attr.name = inputs[i].name;
+			attr.value = inputs[i].value;
 			shot.attributes.push(attr)
 		};
 	}
