@@ -13,8 +13,20 @@ const attributeStruct = {
 	"value":1.0,
 };
 
+//init Write infomation
+writeDate()
+
 // Callback
 document.getElementById('addBucket').addEventListener('click', addBucket);
+
+// 날짜를 넣는다.
+function writeDate() {
+	var date = new Date();
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+	document.getElementById("date").innerHTML = `Pre-estimate Date: ${y}. ${m}. ${d}`;
+}
 
 // 장바구니를 렌더링한다.
 function bucketRender() {
