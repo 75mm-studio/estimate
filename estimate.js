@@ -46,7 +46,7 @@ function bucketTotal() {
 	document.getElementById("total").innerHTML = total;
 }
 
-
+// 매치무브 샷 조건을 장바구니에 넣는다.
 function addBucket() {
 	var shot = Object.create(shotStruct);
 	var inputs = document.getElementsByTagName("input");
