@@ -28,13 +28,24 @@ function writeDate() {
 	document.getElementById("date").innerHTML = `Pre-estimate Date: ${y}. ${m}. ${d}`;
 }
 
+function removeItem(e) {
+	id = e.target.getAttribute("id");
+	for (i = 0; i < bucket.length; i++) {
+		if ( bucket[i].id == id ) {
+			console.log(id);
+			bucket.splice(i,1);
+		}
+	}
+	bucketRender()
+}
+
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	var total = 0.0;
 	document.getElementById("bucket").innerHTML = "";
 	for (var i = 0; i < bucket.length; i++) {
 		var div = document.createElement("div");
-		div.innerHTML += " id: " + bucket[i].id;
+		div.setAttribute("id", bucket[i].id);
 		div.innerHTML += " number of shot: " + bucket[i].num;
 		div.innerHTML += ` / Attributes(${bucket[i].attributes.length}) `;
 		subTotal = bucket[i].initAmount * bucket[i].num;
@@ -42,6 +53,7 @@ function bucketRender() {
 			subTotal *= bucket[i].attributes[j].value
 		}
 		div.innerHTML += "subtotal " + subTotal;
+		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		total += subTotal;
 	}
