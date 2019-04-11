@@ -30,27 +30,22 @@ function writeDate() {
 
 // 장바구니를 렌더링한다.
 function bucketRender() {
+	var total = 0.0;
 	document.getElementById("bucket").innerHTML = "";
 	for (var i = 0; i < bucket.length; i++) {
 		var div = document.createElement("div");
 		div.innerHTML += " id: " + bucket[i].id;
 		div.innerHTML += " number of shot: " + bucket[i].num;
-		div.innerHTML += ` / Attributes(${bucket[i].attributes.length})`;
+		div.innerHTML += ` / Attributes(${bucket[i].attributes.length}) `;
+		subTotal = bucket[i].initAmount * bucket[i].num;
+		for (var j = 0; j < bucket[i].attributes.length; j++) {
+			subTotal *= bucket[i].attributes[j].value
+		}
+		div.innerHTML += "subtotal " + subTotal;
 		document.getElementById("bucket").appendChild(div);
+		total += subTotal;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
-}
-
-// 장바구니의 모든 값의 견적의 합을 구한다.
-function bucketTotal() {
-	var total = 0.0;
-	for (var i = 0; i < bucket.length; i++) {
-		var subtotal = bucket[i].initAmount * bucket[i].num;
-		for (var j = 0; j < bucket[i].attributes.length; j++) {
-			subtotal *= bucket[i].attributes[j].value;
-		}
-		total += subtotal;
-	}
 	document.getElementById("total").innerHTML = "Total: " + total;
 }
 
@@ -77,7 +72,6 @@ function addBucket() {
 	shot.num = document.getElementById("numberOfShot").value;
 	bucket.push(shot)
 	bucketRender()
-	bucketTotal()
 }
 
 
