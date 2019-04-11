@@ -58,7 +58,7 @@ function bucketRender() {
 		total += subTotal;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
-	document.getElementById("total").innerHTML = "Total: " + total;
+	document.getElementById("total").innerHTML = "Total: " + Math.round(total);
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
