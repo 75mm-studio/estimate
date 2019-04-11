@@ -33,14 +33,9 @@ function bucketRender() {
 	document.getElementById("bucket").innerHTML = "";
 	for (var i = 0; i < bucket.length; i++) {
 		var div = document.createElement("div");
-		div.innerHTML += " id " + bucket[i].id;
-		div.innerHTML += " init value " + bucket[i].initAmount;
-		div.innerHTML += " number of shot " + bucket[i].num;
-		for (var j = 0; j < bucket[i].attributes.length; j++) {
-			div.innerHTML += " id " + bucket[i].attributes[j].id;
-			div.innerHTML += " name " + bucket[i].attributes[j].name;
-			div.innerHTML += " value " + bucket[i].attributes[j].value;
-		}
+		div.innerHTML += " id: " + bucket[i].id;
+		div.innerHTML += " number of shot: " + bucket[i].num;
+		div.innerHTML += ` / Attributes(${bucket[i].attributes.length})`;
 		document.getElementById("bucket").appendChild(div);
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
@@ -63,6 +58,8 @@ function bucketTotal() {
 function addBucket() {
 	var shot = Object.create(shotStruct);
 	var inputs = document.getElementsByTagName("input");
+	var currentDate = new Date();
+	shot.id = currentDate.getTime();
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
 	for (var i = 0; i < inputs.length; i++) {
 		type = inputs[i].getAttribute("type")
