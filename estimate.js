@@ -31,6 +31,7 @@ function bucketRender() {
 		}
 		document.getElementById("bucket").appendChild(div);
 	}
+	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
 }
 
 // 장바구니의 모든 값의 견적의 합을 구한다.
@@ -43,7 +44,7 @@ function bucketTotal() {
 		}
 		total += subtotal;
 	}
-	document.getElementById("total").innerHTML = total;
+	document.getElementById("total").innerHTML = "Total: " + total;
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
