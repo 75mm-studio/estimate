@@ -19,6 +19,10 @@ writeDate()
 // Callback
 document.getElementById('addBucket').addEventListener('click', addBucket);
 
+function numberWithCommas(n) {
+	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // 날짜를 넣는다.
 function writeDate() {
 	var date = new Date();
