@@ -91,4 +91,6 @@ function addBucket() {
 	bucketRender()
 }
 
-
+function printMode() {
+	window.print();
+}
