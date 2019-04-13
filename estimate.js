@@ -33,7 +33,7 @@ function writeDate() {
 }
 
 function removeItem(e) {
-	id = e.target.getAttribute("id");
+	id = e.target.parentElement.getAttribute("id");
 	for (i = 0; i < bucket.length; i++) {
 		if ( bucket[i].id == id ) {
 			console.log(id);
@@ -50,13 +50,14 @@ function bucketRender() {
 	for (var i = 0; i < bucket.length; i++) {
 		var div = document.createElement("div");
 		div.setAttribute("id", bucket[i].id);
-		div.innerHTML += "Number of shot: " + bucket[i].num;
+		div.innerHTML += bucket[i].num;
 		div.innerHTML += ` x Attributes(${bucket[i].attributes.length}) `;
 		subTotal = bucket[i].initAmount * bucket[i].num;
 		for (var j = 0; j < bucket[i].attributes.length; j++) {
 			subTotal *= bucket[i].attributes[j].value
 		}
 		div.innerHTML += " = " + numberWithCommas(Math.round(subTotal));
+		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		total += subTotal;

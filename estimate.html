@@ -15,77 +15,136 @@
 <!-- Font -->
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 </head>
-<body>
-        <i class="far fa-calendar-alt"></i>
-<div id="date">Pre-estimate Date:</div>
+<body class="m-5">
+<h4 id="date">Pre-estimate Date:</h4>
 
 <div class="row">
     <div class="col-sm-8">
-<div><div class="pt-3">Project</div><div>
-<input type="radio" name="project" id="featureFilm" value=1.0 checked>영화<br>
-<input type="radio" name="project" id="televisionEpisodics" value=1.1>TV시리즈, 드라마<br>
-<input type="radio" name="project" id="commercialAndMv" value=1.2>광고,뮤직비디오<br>
-<input type="radio" name="project" id="vr" value=3.0>VR콘텐츠<br>
-</div></div>
 
-<div><div class="pt-3">Lens</div><div>
-<input type="radio" name="lens" id="sphericalLens" value=1.0 checked>일반적인 렌즈를 사용했는가?<br>
-<input type="radio" name="lens" id="anamorphicLens" value=2.0>아나모픽 렌즈를 사용했는가?<br>
-</div></div>
+        <h4 class="pt-3">Project type</h4>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="projectType" id="featureFilm" value=1.0 checked>
+            <label class="form-check-label" for="featureFilm">
+                영화
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="projectType" id="televisionEpisodics" value=1.1>
+            <label class="form-check-label" for="televisionEpisodics">
+                TV시리즈, 드라마
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="projectType" id="commercialAndMv" value=1.2>
+            <label class="form-check-label" for="commercialAndMv">
+                광고,뮤직비디오
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="projectType" id="vr" value=3.0>
+            <label class="form-check-label" for="vr">
+                VR 콘텐츠
+            </label>
+        </div>
 
-<div><div class="pt-3">MultiCam</div><div>
-<input type="radio" name="multicam" id="mono" value=1.0 checked>카메라 한대로 촬영<br>
-<input type="radio" name="multicam" id="stereo" value=2.0>입체(Left, Right) 촬영<br>
-<input type="radio" name="multicam" id="multicam" value=3.0>3대 이상의 카메라를 활용한 촬영<br>
-</div></div>
 
-<div><div class="pt-3">Service</div><div>
-<input type="radio" name="service" id="cameraTracking" value=1.0 checked>공간에 대한 매치만 필요한 상황<br>
-<input type="radio" name="service" id="objectTracking" value=2.0>공간매치 + 사물(Solid)에 대한 매치 작업이 되어야 하는가?<br>
-<input type="radio" name="service" id="rotoAnimation" value=3.0>공간매치 + 인물 및 동물 형태 움직임에 대한 매치 작업이 되어야 하는가?<br>
-</div></div>
+        <h4 class="pt-3">Lens</h4>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="lens" id="sphericalLens" value=1.0 checked>
+            <label class="form-check-label" for="sphericalLens">
+                일반적인 렌즈를 사용
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="lens" id="anamorphicLens" value=2.0>
+            <label class="form-check-label" for="anamorphicLens">
+                아나모픽 렌즈를 사용
+            </label>
+        </div>
 
-<div><div class="pt-3">Service Detail</div><div>
-<input type="radio" name="serviceDetail" id="standardCamera" value=1.0 checked>일반적인 공간 카메라 매치인가?<br>
-<input type="radio" name="serviceDetail" id="blenderCamera" value=1.1>여러개의 카메라가 하나의 카메라로 합쳐져야 하는가?<br>
-<input type="radio" name="serviceDetail" id="rigidObject" value=1.2>매치 작업이 되어야 하는 사물이 고체 형태인가?<br>
-<input type="radio" name="serviceDetail" id="nonRigidObject" value=1.3>매치 작업이 되어야 하는 사물이 움직이는 물체 또는 유체 형태인가?<br>
-</div></div>
+        <h4 class="pt-3">MultiCam</h4>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="multicam" id="mono" value=1.0 checked>
+            <label class="form-check-label" for="mono">
+                카메라 1대
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="multicam" id="stereo" value=2.0>
+            <label class="form-check-label" for="stereo">
+                입체촬영
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="multicam" id="multicam" value=3.0>
+            <label class="form-check-label" for="multicam">
+                카메라 3대 이상
+            </label>
+        </div>
 
-<div><div class="pt-3">VFX Script</div><div>
-<input type="checkbox" name="vfxScript" id="hasSurveyData" value=0.8>Lidar scan, 오브젝트(Obj)가 필요한 샷이고 실측데이터가 존재하는가?(할인해 드립니다.)<br>
-<input type="checkbox" name="vfxScript" id="noFocalLengthInfo" value=1.2>렌즈 정보가 없습니까?<br>
-<input type="checkbox" name="vfxScript" id="noCameraResolutionInfo" value=1.2>카메라 녹화 해상도 정보가 존재하지 않습니까?<br>
-<input type="checkbox" name="vfxScript" id="noLensDistortionGrid" value=1.2>렌즈 왜곡 그리드 챠트를 찍지 않았습니까?<br>
-<input type="checkbox" name="vfxScript" id="noSurveyData" value=1.2>Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없습니까?<br>
-<input type="checkbox" name="vfxScript" id="is4kOver" value=1.5>4K 이상의 사이즈를 가진 소스(플레이트)입니까?<br>
-<input type="checkbox" name="vfxScript" id="isLongShot" value=1.2>400프레임 이상의 길이를 가지고 있습니까?<br>
-</div></div>
+        <h4 class="pt-3">Service</h4>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service" id="cameraTracking" value=1.0 checked>
+            <label class="form-check-label" for="cameraTracking">
+                공간에 대한 매치만 필요한 상황입니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service" id="objectTracking" value=2.0>
+            <label class="form-check-label" for="objectTracking">
+                공간매치 + 사물(Solid)에 대한 매치 작업이 이루어져야 합니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="service" id="rotoAnimation" value=3.0>
+            <label class="form-check-label" for="rotoAnimation">
+                공간매치 + 인물 및 동물 형태 움직임에 대한 매치 작업이 이루어져야 합니다.
+            </label>
+        </div>
 
-<div><div class="pt-3">Reconstruct</div><div>
-<input type="checkbox" name="reconstruct" id="setReconstructModel" value=1.2>추출 되어진 3D 트래커들을 기반하여 모델링을 구성해야 하는가?<br>
-<input type="checkbox" name="reconstruct" id="hasDynamicFocalLengthReconstruction" value=1.2>렌즈에서 Zoom 또는 Focus 변화에 의해 왜곡 변형이 발생하는가?<br>
-<input type="checkbox" name="reconstruct" id="hasDynamicLensDistortionReconstruction" value=1.2>렌즈 디스토션에 의해 심한 왜곡 변형이 발생하는가?<br>
-<input type="checkbox" name="reconstruct" id="hasRollingShutterReconstruction" value=1.2>롤링셔터(Rolling Shutter)가 발생하는가?<br>
-</div></div>
+        <h4 class="pt-3">Service Detail</h4>
+        <input type="radio" name="serviceDetail" id="standardCamera" value=1.0 checked>일반적인 공간 카메라 매치인가?<br>
+        <input type="radio" name="serviceDetail" id="blenderCamera" value=1.1>여러개의 카메라가 하나의 카메라로 합쳐져야 하는가?<br>
+        <input type="radio" name="serviceDetail" id="rigidObject" value=1.2>매치무브 물체가 고체 형태인가?<br>
+        <input type="radio" name="serviceDetail" id="nonRigidObject" value=1.3>매치무브 물체가 움직이는 물체 또는 유체 형태인가?<br>
 
-<div class="pt-3">
-Number of Shot: <input type="number" id="numberOfShot" min=1 max=10000 value=1>
-<button id="addBucket" type="button">Add Bucket</button>
-</div>
+        <h4 class="pt-3">VFX Script</h4>
+        <input type="checkbox" name="vfxScript" id="hasSurveyData" value=0.8>매치무브 작업시 Lidar scan 및 오브젝트가 필요한 샷이고 실측데이터가 이미 존재합니다.(할인해 드립니다.)<br>
+        <input type="checkbox" name="vfxScript" id="noFocalLengthInfo" value=1.2>렌즈 정보가 없습니다.<br>
+        <input type="checkbox" name="vfxScript" id="noCameraResolutionInfo" value=1.2>카메라 녹화 해상도 정보가 존재하지 않습니다.<br>
+        <input type="checkbox" name="vfxScript" id="noLensDistortionGrid" value=1.2>렌즈 왜곡 그리드 챠트를 찍지 않았습니다.<br>
+        <input type="checkbox" name="vfxScript" id="noSurveyData" value=1.2>Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없습니다.<br>
+        <input type="checkbox" name="vfxScript" id="is4kOver" value=1.5>4K 이상의 사이즈를 가진 소스입니다.<br>
+        <input type="checkbox" name="vfxScript" id="isLongShot" value=1.2>400프레임 이상의 길이를 가지고 있습니다.<br>
+
+        <h4 class="pt-3">Reconstruct</h4>
+        <input type="checkbox" name="reconstruct" id="setReconstructModel" value=1.2>추출된 3D 트래커들을 기반으로 모델링 구성이 필요합니다.<br>
+        <input type="checkbox" name="reconstruct" id="hasDynamicFocalLengthReconstruction" value=1.2>렌즈에서 Zoom 또는 Focus 변화에 의해 왜곡 변형이 발생합니다.<br>
+        <input type="checkbox" name="reconstruct" id="hasDynamicLensDistortionReconstruction" value=1.2>렌즈 디스토션에 의해 심한 왜곡 변형이 발생합니다.<br>
+        <input type="checkbox" name="reconstruct" id="hasRollingShutterReconstruction" value=1.2>롤링셔터(Rolling Shutter)가 발생합니다.<br>
+
+
+    <div class="input-group mb-3 pt-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Number of Shot</span>
+        </div>
+        <input type="number" class="form-control" id="numberOfShot" min=1 max=10000 value=1>
+        <button id="addBucket" type="button" class="btn btn-dark">ADD BUCKET</button>
+    </div>
+
 
 </div>
 
 <!--Bucket-->
     <div class="col-sm-4">
         <div>
-        <i class="fas fa-cart-arrow-down fa-3x"></i>
-        <div id="numOfItem">Bucket:</div>
+        <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
+        <h4 id="numOfItem">Bucket: 0</h4>
         <div id="bucket"></div>
         </div>
 
         <div class="pt-3">
-        <div id="total">Total:</div>
+        <h3 id="total">Total: 0</h3>
         </div>
     </div>
 </div>
