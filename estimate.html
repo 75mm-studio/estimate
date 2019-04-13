@@ -19,8 +19,8 @@
 <h4 id="date">Pre-estimate Date:</h4>
 
 <div class="row">
+    <!--QnA(Left)-->
     <div class="col-sm-8">
-
         <h4 class="pt-3">Project type</h4>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="projectType" id="featureFilm" value=1.0 checked>
@@ -103,39 +103,114 @@
         </div>
 
         <h4 class="pt-3">Service Detail</h4>
-        <input type="radio" name="serviceDetail" id="standardCamera" value=1.0 checked>일반적인 공간 카메라 매치인가?<br>
-        <input type="radio" name="serviceDetail" id="blenderCamera" value=1.1>여러개의 카메라가 하나의 카메라로 합쳐져야 하는가?<br>
-        <input type="radio" name="serviceDetail" id="rigidObject" value=1.2>매치무브 물체가 고체 형태인가?<br>
-        <input type="radio" name="serviceDetail" id="nonRigidObject" value=1.3>매치무브 물체가 움직이는 물체 또는 유체 형태인가?<br>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="serviceDetail" id="standardCamera" value=1.0 checked>
+            <label class="form-check-label" for="standardCamera">
+                일반적인 공간 카메라 매치인가?
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="serviceDetail" id="blenderCamera" value=1.1>
+            <label class="form-check-label" for="blenderCamera">
+                여러개의 카메라가 하나의 카메라로 합쳐져야 하는가?
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="serviceDetail" id="rigidObject" value=1.2>
+            <label class="form-check-label" for="rigidObject">
+                매치무브 물체가 고체 형태인가?
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="serviceDetail" id="nonRigidObject" value=1.3>
+            <label class="form-check-label" for="nonRigidObject">
+                매치무브 물체가 움직이는 물체 또는 유체 형태인가?
+            </label>
+        </div>
 
         <h4 class="pt-3">VFX Script</h4>
-        <input type="checkbox" name="vfxScript" id="hasSurveyData" value=0.8>매치무브 작업시 Lidar scan 및 오브젝트가 필요한 샷이고 실측데이터가 이미 존재합니다.(할인해 드립니다.)<br>
-        <input type="checkbox" name="vfxScript" id="noFocalLengthInfo" value=1.2>렌즈 정보가 없습니다.<br>
-        <input type="checkbox" name="vfxScript" id="noCameraResolutionInfo" value=1.2>카메라 녹화 해상도 정보가 존재하지 않습니다.<br>
-        <input type="checkbox" name="vfxScript" id="noLensDistortionGrid" value=1.2>렌즈 왜곡 그리드 챠트를 찍지 않았습니다.<br>
-        <input type="checkbox" name="vfxScript" id="noSurveyData" value=1.2>Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없습니다.<br>
-        <input type="checkbox" name="vfxScript" id="is4kOver" value=1.5>4K 이상의 사이즈를 가진 소스입니다.<br>
-        <input type="checkbox" name="vfxScript" id="isLongShot" value=1.2>400프레임 이상의 길이를 가지고 있습니다.<br>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="hasSurveyData" value=0.8>
+            <label class="form-check-label" for="hasSurveyData">
+                매치무브 작업시 Lidar scan 및 오브젝트가 필요한 샷이고 실측데이터가 이미 존재합니다.(할인해 드립니다.)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="noFocalLengthInfo" value=1.2>
+            <label class="form-check-label" for="noFocalLengthInfo">
+                렌즈 정보가 없습니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="noCameraResolutionInfo" value=1.2>
+            <label class="form-check-label" for="noCameraResolutionInfo">
+                카메라 녹화 해상도 정보가 존재하지 않습니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="noLensDistortionGrid" value=1.2>
+            <label class="form-check-label" for="noLensDistortionGrid">
+                렌즈 왜곡 그리드 챠트를 찍지 않았습니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="noSurveyData" value=1.2>
+            <label class="form-check-label" for="noSurveyData">
+                Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없습니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="isLongShot" value=1.2>
+            <label class="form-check-label" for="isLongShot">
+                400프레임 이상의 길이를 가지고 있습니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="vfxScript" id="is4kOver" value=1.5>
+            <label class="form-check-label" for="is4kOver">
+                4K 이상의 사이즈를 가진 소스입니다.
+            </label>
+        </div>
 
         <h4 class="pt-3">Reconstruct</h4>
-        <input type="checkbox" name="reconstruct" id="setReconstructModel" value=1.2>추출된 3D 트래커들을 기반으로 모델링 구성이 필요합니다.<br>
-        <input type="checkbox" name="reconstruct" id="hasDynamicFocalLengthReconstruction" value=1.2>렌즈에서 Zoom 또는 Focus 변화에 의해 왜곡 변형이 발생합니다.<br>
-        <input type="checkbox" name="reconstruct" id="hasDynamicLensDistortionReconstruction" value=1.2>렌즈 디스토션에 의해 심한 왜곡 변형이 발생합니다.<br>
-        <input type="checkbox" name="reconstruct" id="hasRollingShutterReconstruction" value=1.2>롤링셔터(Rolling Shutter)가 발생합니다.<br>
-
-
-    <div class="input-group mb-3 pt-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Number of Shot</span>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="reconstruct" id="setReconstructModel" value=1.2>
+            <label class="form-check-label" for="setReconstructModel">
+                추출된 3D 트래커들을 기반으로 모델링 구성이 필요합니다.
+            </label>
         </div>
-        <input type="number" class="form-control" id="numberOfShot" min=1 max=10000 value=1>
-        <button id="addBucket" type="button" class="btn btn-dark">ADD BUCKET</button>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="reconstruct" id="hasDynamicFocalLengthReconstruction" value=1.2>
+            <label class="form-check-label" for="hasDynamicFocalLengthReconstruction">
+                렌즈에서 Zoom 또는 Focus 변화에 의해 왜곡 변형이 발생합니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="reconstruct" id="hasDynamicLensDistortionReconstruction" value=1.2>
+            <label class="form-check-label" for="hasDynamicLensDistortionReconstruction">
+                렌즈 디스토션에 의해 심한 왜곡 변형이 발생합니다.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="reconstruct" id="hasRollingShutterReconstruction" value=1.2>
+            <label class="form-check-label" for="hasRollingShutterReconstruction">
+                롤링셔터(Rolling Shutter)가 발생합니다.
+            </label>
+        </div>
+
+
+        <div class="input-group mb-3 pt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Number of Shot</span>
+            </div>
+            <input type="number" class="form-control" id="numberOfShot" min=1 max=10000 value=1>
+            <button id="addBucket" type="button" class="btn btn-dark">ADD BUCKET</button>
+        </div>
+
+
     </div>
 
-
-</div>
-
-<!--Bucket-->
+    <!--Bucket(Right)-->
     <div class="col-sm-4">
         <div>
         <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
