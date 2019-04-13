@@ -19,6 +19,10 @@ writeDate()
 // Callback
 document.getElementById('addBucket').addEventListener('click', addBucket);
 
+function numberWithCommas(n) {
+	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // 날짜를 넣는다.
 function writeDate() {
 	var date = new Date();
@@ -52,13 +56,13 @@ function bucketRender() {
 		for (var j = 0; j < bucket[i].attributes.length; j++) {
 			subTotal *= bucket[i].attributes[j].value
 		}
-		div.innerHTML += "subtotal " + subTotal;
+		div.innerHTML += "subtotal: " + numberWithCommas(Math.round(subTotal));
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		total += subTotal;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
-	document.getElementById("total").innerHTML = "Total: " + Math.round(total);
+	document.getElementById("total").innerHTML = "Total: " + numberWithCommas(Math.round(total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
