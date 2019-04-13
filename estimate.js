@@ -50,13 +50,13 @@ function bucketRender() {
 	for (var i = 0; i < bucket.length; i++) {
 		var div = document.createElement("div");
 		div.setAttribute("id", bucket[i].id);
-		div.innerHTML += " number of shot: " + bucket[i].num;
-		div.innerHTML += ` / Attributes(${bucket[i].attributes.length}) `;
+		div.innerHTML += "Number of shot: " + bucket[i].num;
+		div.innerHTML += ` x Attributes(${bucket[i].attributes.length}) `;
 		subTotal = bucket[i].initAmount * bucket[i].num;
 		for (var j = 0; j < bucket[i].attributes.length; j++) {
 			subTotal *= bucket[i].attributes[j].value
 		}
-		div.innerHTML += "subtotal: " + numberWithCommas(Math.round(subTotal));
+		div.innerHTML += " = " + numberWithCommas(Math.round(subTotal));
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		total += subTotal;
