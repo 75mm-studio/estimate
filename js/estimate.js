@@ -1,4 +1,4 @@
-var bucket = [];
+let bucket = [];
 
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
@@ -25,10 +25,10 @@ function numberWithCommas(n) {
 
 // 날짜를 넣는다.
 function writeDate() {
-	var date = new Date();
-	var y = date.getFullYear();
-	var m = date.getMonth() + 1;
-	var d = date.getDate();
+	let date = new Date();
+	let y = date.getFullYear();
+	let m = date.getMonth() + 1;
+	let d = date.getDate();
 	document.getElementById("date").innerHTML = `Pre-estimate Date: ${y}. ${m}. ${d}`;
 }
 
@@ -45,15 +45,15 @@ function removeItem(e) {
 
 // 장바구니를 렌더링한다.
 function bucketRender() {
-	var total = 0.0;
+	let total = 0.0;
 	document.getElementById("bucket").innerHTML = "";
-	for (var i = 0; i < bucket.length; i++) {
-		var div = document.createElement("div");
+	for (let i = 0; i < bucket.length; i++) {
+		let div = document.createElement("div");
 		div.setAttribute("id", bucket[i].id);
 		div.innerHTML += bucket[i].num;
 		div.innerHTML += ` x Attributes(${bucket[i].attributes.length}) `;
 		subTotal = bucket[i].initAmount * bucket[i].num;
-		for (var j = 0; j < bucket[i].attributes.length; j++) {
+		for (let j = 0; j < bucket[i].attributes.length; j++) {
 			subTotal *= bucket[i].attributes[j].value
 		}
 		div.innerHTML += " = $" + numberWithCommas(Math.round(subTotal));
@@ -68,12 +68,12 @@ function bucketRender() {
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
 function addBucket() {
-	var shot = Object.create(shotStruct);
-	var inputs = document.getElementsByTagName("input");
-	var currentDate = new Date();
+	let shot = Object.create(shotStruct);
+	let inputs = document.getElementsByTagName("input");
+	let currentDate = new Date();
 	shot.id = currentDate.getTime();
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
-	for (var i = 0; i < inputs.length; i++) {
+	for (let i = 0; i < inputs.length; i++) {
 		type = inputs[i].getAttribute("type")
 		if (!(type == "radio" || type=="checkbox")){
 			continue;
