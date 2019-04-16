@@ -2,7 +2,7 @@ let bucket = [];
 
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"initAmount" : 300000.0,
+	"initAmount" : 300.0, // daller model
 	"num" : 1,
 	"attributes" : [],
 };
