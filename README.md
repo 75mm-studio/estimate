@@ -1,6 +1,6 @@
 # Estimate
 
-[https://75mm.studio/estimate](https://75mm.studio/estimate)
+[https://75mm.studio/estimate](https://75mm.studio/estimate.html)
 
 75mm studio 가견적 시스템입니다.
 회사에 문의하기 전에 클라이언트측에서 간단하게 견적을 계산할 수 있는 웹 소프트웨어 입니다.
