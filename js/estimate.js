@@ -2,7 +2,7 @@ let bucket = [];
 
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"initAmount" : 300.0, // daller model
+	"initAmount" : 300000.0, // KRW model
 	"num" : 1,
 	"attributes" : [],
 };
@@ -56,14 +56,14 @@ function bucketRender() {
 		for (let j = 0; j < bucket[i].attributes.length; j++) {
 			subTotal *= bucket[i].attributes[j].value
 		}
-		div.innerHTML += " = $" + numberWithCommas(Math.round(subTotal));
+		div.innerHTML += " = ￦" + numberWithCommas(Math.round(subTotal));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		total += subTotal;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
-	document.getElementById("total").innerHTML = "Total: $" + numberWithCommas(Math.round(total));
+	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
