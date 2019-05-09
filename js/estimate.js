@@ -67,8 +67,8 @@ function bucketRender() {
 		shotnum += parseInt(bucket[i].rotoanimationBasic);
 		shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
 		div.innerHTML += `${shotnum} Shot,`;
-		div.innerHTML += ` ${bucket[i].attributes.length} Attributes,`;
-		div.innerHTML += ` ${bucket[i].frame} Frame`;
+		div.innerHTML += ` ${bucket[i].attributes.length} Attrs,`;
+		div.innerHTML += ` ${bucket[i].frame} f`;
 		// 가격을 합친다.
 		subTotal = bucket[i].cameraTrackingAmount * bucket[i].cameraTracking;
 		subTotal += bucket[i].objectTrackingRidgidAmount * bucket[i].objectTrackingRidgid;

@@ -17,22 +17,46 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <link rel="stylesheet" type="text/css" href="css/estimate.css">
 </head>
-<body class="m-5">
+<body class="p-5">
 <h4 id="date">Pre-estimate Date:</h4>
-<h5 class="mt-3">
-75mm studio 견적 시스템입니다.
-</h5>
 
-<div class="row">
-    <!--QnA(Left)-->
+<div class="row pb-3">
+    <!--Left-->
     <div class="col-sm-6">
+        <h5 class="mt-3">
+            75mm studio 견적 시스템 기본정보
+        </h5>
+        
+        <div class="form-group row">
+            <div class="col-1"></div>
+            <div class="col-9">
+                <input class="form-control" type="text" value="" id="author" placeholder="작성자, 회사명">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-1"></div>
+            <div class="col-9">
+                <input class="form-control" type="email" value="" id="email" placeholder="Email : id@gmail.com">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-1"></div>
+            <div class="col-9">
+                <input class="form-control" type="text" value="" id="project" placeholder="프로젝트명(가제)">
+            </div>
+        </div>
+            
+    
+    
         <h4 class="pt-3">Lens type</h4>
+        <!--
         <div class="form-check form-check-inline ml-3">
             <input class="form-check-input" type="checkbox" name="lensType" id="mono" value=1.0 checked>
             <label class="form-check-label" for="mono">
                	Mono
             </label>
         </div>
+        -->
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=2.0>
             <label class="form-check-label" for="anamorphicLens">
@@ -75,65 +99,74 @@
 
         <h4 class="pt-4">Shot number / Frame number</h4>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Camera Tracking</label>
-            <div class="col-3">
+            <div class="col-1"></div>
+            <label for="example-number-input" class="col-5 col-form-label">Camera Tracking</label>
+            <div class="col-4">
               <input class="form-control" type="number" value="1" id="cameraTracking">
             </div>
         </div>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Object Tracking (Ridgid)</label>
-            <div class="col-3">
+            <div class="col-1"></div>
+            <label for="example-number-input" class="col-5 col-form-label">Object Tracking (Ridgid)</label>
+            <div class="col-4">
               <input class="form-control" type="number" value="0" id="objectTrackingRidgid"><!--x250000-->
             </div>
         </div>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Object Tracking (NoneRidgid)</label>
-            <div class="col-3">
+            <div class="col-1"></div>
+            <label for="example-number-input" class="col-5 col-form-label">Object Tracking (NoneRidgid)</label>
+            <div class="col-4">
               <input class="form-control" type="number" value="0" id="objectTrackingNoneRidgid"><!--x350000-->
             </div>
         </div>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Rotoanimation (Basic)</label>
-            <div class="col-3">
+            <div class="col-1"></div>
+            <label for="example-number-input" class="col-5 col-form-label">Rotoanimation (Basic)</label>
+            <div class="col-4">
               <input class="form-control" type="number" value="0" id="rotoanimationBasic"><!--x500000-->
             </div>
         </div>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Rotoanimation (Soft Deform)</label>
-            <div class="col-3">
+            <div class="col-1"></div>
+            <label for="example-number-input" class="col-5 col-form-label">Rotoanimation (Soft Deform)</label>
+            <div class="col-4">
               <input class="form-control" type="number" value="0" id="rotoanimationSoftDeform"><!--x700000-->
             </div>
         </div>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Frame</label>
-            <div class="col-3">
+            <div class="col-1"></div>
+            <label for="example-number-input" class="col-5 col-form-label">Frame</label>
+            <div class="col-4">
               <input class="form-control" type="number" value="1" id="frame"><!--x1000-->
             </div>
         </div>
-        <div class="pb-3">
-            <button id="addBucket" type="button" class="btn btn-dark">ADD BUCKET</button>
+        <div class="row pb-3">
+            <div class="col-6"></div>
+            <div class="col-4">
+                <button id="addBucket" type="button" class="btn btn-dark">ADD BUCKET</button>
+            </div>
         </div>
     </div>
 
     <!--Bucket(Right)-->
     <div class="col-sm-4">
         <div>
-        <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
-        <h4 id="numOfItem">Bucket: 0</h4>
-        <div id="bucket"></div>
+            <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
+            <h4 id="numOfItem">Bucket: 0</h4>
+            <div id="bucket"></div>
         </div>
 
-        <div class="pt-3">
-        <h3 id="total">Total: ￦0</h3>
+        <div class="pt-3 pb-3">
+            <h3 id="total">Total: ￦0</h3>
+            <button type="button" class="btn btn-dark" onclick="printMode()">Print this document</button>    
         </div>
-        <button type="button" class="btn btn-dark" onclick="printMode()">Print this document</button>
+        
+        <div>
+            세부문의: <a href="mailto:info@75mm.studio?subject=Estimate%2075mmStudio">info@75mm.studio</a>
+        </div>
     </div>
-
-
 </div>
-<div>
-특수촬영, 샷분석이 어렵다면 <a href="mailto:info@75mm.studio?subject=Estimate%2075mmStudio">info@75mm.studio</a>메일을 통해 문의해 주세요.
-</div>
+
 
 
 </body>
