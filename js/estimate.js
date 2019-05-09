@@ -2,8 +2,18 @@ let bucket = [];
 
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"initAmount" : 300000.0, // KRW model
-	"num" : 1,
+	"cameraTrackingAmount" : 300000.0, // KRW model
+	"cameraTracking" : 1,
+	"objectTrackingRidgidAmount" : 250000.0, // KRW model
+	"objectTrackingRidgid" : 0,
+	"objectTrackingNoneRidgidAmount" : 350000.0, // KRW model
+	"objectTrackingNoneRidgid" : 0,
+	"rotoanimationBasicAmount" : 500000.0, // KRW model
+	"rotoanimationBasic" : 0,
+	"rotoanimationSoftDeformAmount" : 500000.0, // KRW model
+	"rotoanimationSoftDeform" : 0,
+	"frameAmount" : 1000.0, // KRW model
+	"frame" : 1,
 	"attributes" : [],
 };
 
@@ -50,9 +60,16 @@ function bucketRender() {
 	for (let i = 0; i < bucket.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket[i].id);
-		div.innerHTML += bucket[i].num;
+		div.innerHTML += bucket[i].cameraTracking;
 		div.innerHTML += ` x Attributes(${bucket[i].attributes.length}) `;
-		subTotal = bucket[i].initAmount * bucket[i].num;
+		// 가격을 합친다.
+		subTotal = bucket[i].cameraTrackingAmount * bucket[i].cameraTracking;
+		subTotal += bucket[i].objectTrackingRidgidAmount * bucket[i].objectTrackingRidgid;
+		subTotal += bucket[i].objectTrackingNoneRidgidAmount * bucket[i].objectTrackingNoneRidgid;
+		subTotal += bucket[i].rotoanimationBasicAmount * bucket[i].rotoanimationBasic;
+		subTotal += bucket[i].rotoanimationSoftDeformAmount * bucket[i].rotoanimationSoftDeform;
+		subTotal += bucket[i].frameAmount * bucket[i].frame;
+		// 적용된 속성을 곱한다.
 		for (let j = 0; j < bucket[i].attributes.length; j++) {
 			subTotal *= bucket[i].attributes[j].value
 		}
@@ -86,7 +103,12 @@ function addBucket() {
 			shot.attributes.push(attr)
 		};
 	}
-	shot.num = document.getElementById("numberOfShot").value;
+	shot.cameraTracking = document.getElementById("cameraTracking").value;
+	shot.objectTrackingRidgid = document.getElementById("objectTrackingRidgid").value;
+	shot.objectTrackingNoneRidgid = document.getElementById("objectTrackingNoneRidgid").value;
+	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
+	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
+	shot.frame = document.getElementById("frame").value;
 	bucket.push(shot)
 	bucketRender()
 }

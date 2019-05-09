@@ -26,220 +26,93 @@
 <div class="row">
     <!--QnA(Left)-->
     <div class="col-sm-8">
-        <h4 class="pt-3">Project type</h4>
+        <h4 class="pt-3">Lens type</h4>
         <div class="form-check form-check-inline ml-3">
-            <input class="form-check-input" type="radio" name="projectType" id="featureFilm" value=1.0 checked>
-            <label class="form-check-label" for="featureFilm">
-                영화
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="projectType" id="televisionEpisodics" value=1.1>
-            <label class="form-check-label" for="televisionEpisodics">
-                TV시리즈, 드라마
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="projectType" id="commercialAndMv" value=1.2>
-            <label class="form-check-label" for="commercialAndMv">
-                광고,뮤직비디오
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="projectType" id="vr" value=3.0>
-            <label class="form-check-label" for="vr">
-                VR 콘텐츠
-            </label>
-        </div>
-
-
-        <h4 class="pt-4">Lens</h4>
-        <div class="form-check form-check-inline ml-3">
-            <input class="form-check-input" type="radio" name="lens" id="sphericalLens" value=1.0 checked>
-            <label class="form-check-label" for="sphericalLens">
-                일반적인 렌즈를 사용
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="lens" id="anamorphicLens" value=2.0>
-            <label class="form-check-label" for="anamorphicLens">
-                아나모픽 렌즈를 사용
-            </label>
-        </div>
-
-        <h4 class="pt-4">MultiCam</h4>
-        <div class="form-check form-check-inline ml-3">
-            <input class="form-check-input" type="radio" name="multicam" id="mono" value=1.0 checked>
+            <input class="form-check-input" type="checkbox" name="lensType" id="mono" value=1.0 checked>
             <label class="form-check-label" for="mono">
-                카메라 1대
+               	Mono
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="multicam" id="stereo" value=2.0>
+            <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=2.0>
+            <label class="form-check-label" for="anamorphicLens">
+                Anamorphic
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="lensType" id="stereo" value=2.0>
             <label class="form-check-label" for="stereo">
-                입체촬영
+                Stereo
             </label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="multicam" id="multicam" value=3.0>
-            <label class="form-check-label" for="multicam">
-                카메라 3대 이상
+            <input class="form-check-input" type="checkbox" name="projectType" id="vr" value=3.0>
+            <label class="form-check-label" for="vr">
+                VR
             </label>
         </div>
-		<!-- 아래값과 중복된다.
-        <h4 class="pt-5">Service(중복, 검토필요)</h4>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="service" id="cameraTracking" value=1.0 checked>
-            <label class="form-check-label" for="cameraTracking">
-                공간에 대한 매치만 필요한 상황입니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="service" id="objectTracking" value=2.0>
-            <label class="form-check-label" for="objectTracking">
-                공간매치 + 사물(Solid)에 대한 매치 작업이 이루어져야 합니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="service" id="rotoAnimation" value=3.0>
-            <label class="form-check-label" for="rotoAnimation">
-                공간매치 + 인물 및 동물 형태 움직임에 대한 매치 작업이 이루어져야 합니다.
-            </label>
-        </div>
-		-->
+
 
         <h4 class="pt-4">Service Detail</h4>
-		<!-- 실제로 없어도 되는 값이다.
-        <div class="form-check ml-3 mb-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_01" id="standardCamera" value=1.0 checked>
-            <label class="form-check-label" for="standardCamera">
-                일반적인 공간 카메라 매치입니다.
-            </label>
-        </div>
-		-->
         <div class="form-check ml-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_02" id="onlySpace" value=1.0 checked>
-            <label class="form-check-label" for="onlySpace">
-                매치무브 물체가 존재하지 않습니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_02" id="rigidObject" value=1.2>
-            <label class="form-check-label" for="rigidObject">
-                매치무브 물체가 고체 형태입니다.
-            </label>
-        </div>
-        <div class="form-check ml-3 mb-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_02" id="nonRigidObject" value=1.3>
-            <label class="form-check-label" for="nonRigidObject">
-                매치무브 물체가 별도로 움직임을 가지고 있는 고체 또는 유체 형태입니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_03" id="noNoneRigidObject" value=1.0 checked>
-            <label class="form-check-label" for="noNoneRigidObject">
-               	인물 및 동물과 같은 생명체의 움직임에 대한 매치 작업이 아닙니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_03" id="collisionObject" value=1.4>
-            <label class="form-check-label" for="collisionObject">
-               	인물 및 동물과 같은 생명체의 움직임에 대한 매치 작업이 FX콜리전을 목적으로 하는 러프한 작업입니다.
-            </label>
-        </div>
-        <div class="form-check ml-3 mb-3">
-            <input class="form-check-input" type="radio" name="serviceDetail_03" id="detailSkinObject" value=1.5>
-            <label class="form-check-label" for="detailSkinObject">
-                인물 및 동물과 같은 생명체의 움직임에 대한 매치 작업이 디테일 스킨(피부) 단위의 매치작업 입니다.
-            </label>
-        </div>
-        <div class="form-check ml-3 mb-3">
-            <input class="form-check-input" type="checkbox" name="serviceDetail_04" id="blenderCamera" value=1.1>
-            <label class="form-check-label" for="blenderCamera">
-                여러개의 카메라가 하나의 카메라로 합쳐져야 합니다.
-            </label>
-        </div>
-
-        <h4 class="pt-4">VFX Script</h4>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="hasSurveyData" value=0.8>
-            <label class="form-check-label" for="hasSurveyData">
-                매치무브 작업시 Lidar scan 및 오브젝트가 필요한 샷이고 실측데이터가 이미 존재합니다.(할인해 드립니다.)
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="noFocalLengthInfo" value=1.2>
-            <label class="form-check-label" for="noFocalLengthInfo">
-                렌즈 정보가 없습니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="noCameraResolutionInfo" value=1.2>
-            <label class="form-check-label" for="noCameraResolutionInfo">
-                카메라 녹화 해상도 정보가 존재하지 않습니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="noLensDistortionGrid" value=1.2>
-            <label class="form-check-label" for="noLensDistortionGrid">
-                렌즈 왜곡 그리드 챠트를 찍지 않았습니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="noSurveyData" value=1.2>
-            <label class="form-check-label" for="noSurveyData">
-                Lidar scan, obj가 필요한 샷임에도 불구하고 실측데이터가 없습니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="isLongShot" value=1.2>
-            <label class="form-check-label" for="isLongShot">
-                400프레임 이상의 길이를 가지고 있습니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="vfxScript" id="is4kOver" value=1.5>
+            <input class="form-check-input" type="checkbox" name="serviceDetail" id="is4kOver" value=2.0>
             <label class="form-check-label" for="is4kOver">
-                4K 이상의 사이즈를 가진 소스입니다.
+                4K
+            </label>
+        </div>
+        <div class="form-check ml-3">
+            <input class="form-check-input" type="checkbox" name="serviceDetail" id="noneSurvey" value=1.5>
+            <label class="form-check-label" for="noneSurvey">
+                None Survey(Laser Scan / Lidar)
+            </label>
+        </div>
+        <div class="form-check ml-3">
+            <input class="form-check-input" type="checkbox" name="serviceDetail" id="noneOnsetInfo" value=1.5>
+            <label class="form-check-label" for="noneOnsetInfo">
+                None Onset Info
             </label>
         </div>
 
-        <h4 class="pt-4">Reconstruct</h4>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="reconstruct" id="setReconstructModel" value=1.2>
-            <label class="form-check-label" for="setReconstructModel">
-                추출된 3D 트래커들을 기반으로 모델링 구성이 필요합니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="reconstruct" id="hasDynamicFocalLengthReconstruction" value=1.2>
-            <label class="form-check-label" for="hasDynamicFocalLengthReconstruction">
-                렌즈에서 Zoom 또는 Focus 변화에 의해 왜곡 변형이 발생합니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="reconstruct" id="hasDynamicLensDistortionReconstruction" value=1.2>
-            <label class="form-check-label" for="hasDynamicLensDistortionReconstruction">
-                <a href="https://en.wikipedia.org/wiki/Distortion_(optics)" class="text-dark" target="_blank"><u>렌즈 디스토션</u></a>에 의해 심한 왜곡 변형이 발생합니다.
-            </label>
-        </div>
-        <div class="form-check ml-3">
-            <input class="form-check-input" type="checkbox" name="reconstruct" id="hasRollingShutterReconstruction" value=1.2>
-            <label class="form-check-label" for="hasRollingShutterReconstruction">
-                <a href="https://en.wikipedia.org/wiki/Rolling_shutter" class="text-dark" target="_blank"><u>롤링셔터(Rolling Shutter)</u></a>가 발생합니다.
-            </label>
-        </div>
-
-
-        <div class="input-group mb-3 mt-5">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Number of Shot</span>
+        <h4 class="pt-4">Shot Number</h4>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-4 col-form-label">Camera Tracking</label>
+            <div class="col-3">
+              <input class="form-control" type="number" value="1" id="cameraTracking">
             </div>
-            <input type="number" class="form-control" id="numberOfShot" min=1 max=10000 value=1>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-4 col-form-label">Object Tracking (Ridgid)</label>
+            <div class="col-3">
+              <input class="form-control" type="number" value="0" id="objectTrackingRidgid"><!--x250000-->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-4 col-form-label">Object Tracking (NoneRidgid)</label>
+            <div class="col-3">
+              <input class="form-control" type="number" value="0" id="objectTrackingNoneRidgid"><!--x350000-->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-4 col-form-label">Rotoanimation (Basic)</label>
+            <div class="col-3">
+              <input class="form-control" type="number" value="0" id="rotoanimationBasic"><!--x500000-->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-4 col-form-label">Rotoanimation (Soft Deform)</label>
+            <div class="col-3">
+              <input class="form-control" type="number" value="0" id="rotoanimationSoftDeform"><!--x700000-->
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-number-input" class="col-4 col-form-label">Frame</label>
+            <div class="col-3">
+              <input class="form-control" type="number" value="1" id="frame"><!--x1000-->
+            </div>
+        </div>
+        <div class="pb-3">
             <button id="addBucket" type="button" class="btn btn-dark">ADD BUCKET</button>
         </div>
-
-
     </div>
 
     <!--Bucket(Right)-->
@@ -259,7 +132,7 @@
 
 </div>
 <div>
-특수한 촬영, 샷분석이 어렵다면 <a href="mailto:info@75mm.studio?subject=Estimate%2075mmStudio">info@75mm.studio</a>메일을 통해 문의해 주세요.
+특수촬영, 샷분석이 어렵다면 <a href="mailto:info@75mm.studio?subject=Estimate%2075mmStudio">info@75mm.studio</a>메일을 통해 문의해 주세요.
 </div>
 
 
