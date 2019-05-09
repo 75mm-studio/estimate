@@ -60,8 +60,14 @@ function bucketRender() {
 	for (let i = 0; i < bucket.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket[i].id);
+		
 		div.innerHTML += bucket[i].cameraTracking;
+		div.innerHTML += bucket[i].objectTrackingRidgid;
+		div.innerHTML += bucket[i].objectTrackingNoneRidgid;
+		div.innerHTML += bucket[i].rotoanimationBasic;
+		div.innerHTML += bucket[i].rotoanimationSoftDeform;
 		div.innerHTML += ` x Attributes(${bucket[i].attributes.length}) `;
+		div.innerHTML += ` + ${bucket[i].frame}frame `;
 		// 가격을 합친다.
 		subTotal = bucket[i].cameraTrackingAmount * bucket[i].cameraTracking;
 		subTotal += bucket[i].objectTrackingRidgidAmount * bucket[i].objectTrackingRidgid;
@@ -70,9 +76,12 @@ function bucketRender() {
 		subTotal += bucket[i].rotoanimationSoftDeformAmount * bucket[i].rotoanimationSoftDeform;
 		subTotal += bucket[i].frameAmount * bucket[i].frame;
 		// 적용된 속성을 곱한다.
+		let att = [];
 		for (let j = 0; j < bucket[i].attributes.length; j++) {
-			subTotal *= bucket[i].attributes[j].value
+			subTotal *= bucket[i].attributes[j].value;
+			att.push(bucket[i].attributes[j].id);
 		}
+		div.setAttribute("title", att.join(","));
 		div.innerHTML += " = ￦" + numberWithCommas(Math.round(subTotal));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
