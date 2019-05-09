@@ -60,14 +60,15 @@ function bucketRender() {
 	for (let i = 0; i < bucket.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket[i].id);
-		
-		div.innerHTML += bucket[i].cameraTracking;
-		div.innerHTML += bucket[i].objectTrackingRidgid;
-		div.innerHTML += bucket[i].objectTrackingNoneRidgid;
-		div.innerHTML += bucket[i].rotoanimationBasic;
-		div.innerHTML += bucket[i].rotoanimationSoftDeform;
-		div.innerHTML += ` x Attributes(${bucket[i].attributes.length}) `;
-		div.innerHTML += ` + ${bucket[i].frame}frame `;
+		let shotnum = 0;
+		shotnum += parseInt(bucket[i].cameraTracking);
+		shotnum += parseInt(bucket[i].objectTrackingRidgid);
+		shotnum += parseInt(bucket[i].objectTrackingNoneRidgid);
+		shotnum += parseInt(bucket[i].rotoanimationBasic);
+		shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
+		div.innerHTML += `${shotnum} Shot,`;
+		div.innerHTML += ` ${bucket[i].attributes.length} Attributes,`;
+		div.innerHTML += ` ${bucket[i].frame} Frame`;
 		// 가격을 합친다.
 		subTotal = bucket[i].cameraTrackingAmount * bucket[i].cameraTracking;
 		subTotal += bucket[i].objectTrackingRidgidAmount * bucket[i].objectTrackingRidgid;
