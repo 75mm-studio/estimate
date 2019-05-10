@@ -91,6 +91,16 @@ function bucketRender() {
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
 	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(total));
+
+	// 데이터전송
+	let data = {
+	name: "Donald Duck",
+	city: "Duckburg"
+	}
+
+	$.post("https://75mm.studio/estimate", function(data, status){
+		alert("Data: " + data + "\nStatus: " + status);
+	});
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
