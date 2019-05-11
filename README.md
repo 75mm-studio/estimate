@@ -18,6 +18,8 @@
 - CloudFront
 - Route53
 
+![diagram](figures/diagram.png)
+
 #### 배 포
 홈페이지에 배포하기 위해서는 publish 스크립트를 터미널에서 실행합니다.
 
