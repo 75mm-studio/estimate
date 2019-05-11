@@ -56,7 +56,8 @@ function removeItem(e) {
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	let totalAmount = 0.0;
-	let totalShot = 0;
+	let totalShotAmount = 0;
+	let totalFrame = 0;
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.length; i++) {
 		let div = document.createElement("div");
@@ -90,7 +91,8 @@ function bucketRender() {
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		totalAmount += subTotal;
-		totalShot += shotnum;
+		totalShotAmount += shotnum;
+		totalFrame += parseInt(bucket[i].frame);
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
 	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalAmount));
@@ -100,7 +102,8 @@ function bucketRender() {
 		author: document.getElementById("author").value,
 		email: document.getElementById("email").value,
 		project: document.getElementById("project").value,
-		totalShot: totalShot,
+		totalShot: totalShotAmount,
+		frame: totalFrame,
 		totalAmount: "Total: ￦" + numberWithCommas(Math.round(totalAmount))
 	}
 	
@@ -123,7 +126,7 @@ function bucketRender() {
 // 매치무브 샷 조건을 장바구니에 넣는다.
 function addBucket() {
 	if (document.getElementById("author").value == "") {
-		alert("회사명을 입력해주세요.");
+		alert("회사명 또는 작성자 이름을 입력해주세요.");
 		return
 	}
 	if (document.getElementById("email").value == "") {
@@ -134,8 +137,6 @@ function addBucket() {
 		alert("프로젝트에 대해 간단한 설명을 작성해주세요.");
 		return
 	}
-	shot.objectTrackingRidgid = document.getElementById("objectTrackingRidgid").value;
-	shot.objectTrackingNoneRidgid = document.getElementById("objectTrackingNoneRidgid").value;
 	
 	let shot = Object.create(shotStruct);
 	let inputs = document.getElementsByTagName("input");
@@ -161,7 +162,7 @@ function addBucket() {
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.frame = document.getElementById("frame").value;
-	bucket.push(shot)
+	bucket.push(shot);
 	bucketRender()
 }
 
