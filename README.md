@@ -11,16 +11,10 @@
 간단하게 장바구니에 넣을 수 있으며 가견적 연산이 진행됩니다.
 저장이 필요하다면 브라우저에서 pdf로 저장해주세요.
 
-#### 사용되는 솔루션
-- Amazon SNS
-- CloudWatch
-- S3
-- CloudFront
-- Route53
+### AWS Diagram
+![diagram](figures/75mmStudioEstimate.png)
 
-![diagram](figures/diagram.png)
-
-#### 배 포
+### 배 포
 홈페이지에 배포하기 위해서는 publish 스크립트를 터미널에서 실행합니다.
 
 ```
