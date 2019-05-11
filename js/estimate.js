@@ -94,11 +94,12 @@ function bucketRender() {
 
 	// 데이터전송
 	let data = {
-	name: "Donald Duck",
-	city: "Duckburg"
+		name: "lazypic",
+		shot: "test"
 	}
-
-	$.post("https://75mm.studio/estimate", function(data, status){
+	data = JSON.stringify(data);
+	let url = "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate"
+	$.post(url, function(data, status){
 		alert("Data: " + data + "\nStatus: " + status);
 	});
 }
