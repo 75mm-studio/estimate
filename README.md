@@ -14,6 +14,9 @@
 #### 사용되는 솔루션
 - Amazon SNS
 - CloudWatch
+- S3
+- CloudFront
+- Route53
 
 #### 배 포
 홈페이지에 배포하기 위해서는 publish 스크립트를 터미널에서 실행합니다.
