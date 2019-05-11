@@ -93,14 +93,24 @@ function bucketRender() {
 	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(total));
 
 	// 데이터전송
-	let data = {
+	let obj = {
 		name: "lazypic",
 		shot: "test"
 	}
-	data = JSON.stringify(data);
-	let url = "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate"
-	$.post(url, function(data, status){
-		alert("Data: " + data + "\nStatus: " + status);
+	
+	$.ajax({
+		url: "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate",
+		type: 'POST',
+		data: JSON.stringify(obj),
+		dataType: 'json',
+		crossDomain: true,
+		contentType: 'application/json',
+		success: function(data) {
+			console.log(JSON.stringify(data));
+		},
+		error: function(e) {
+			console.log("failed" + JSON.stringify(e));
+		}
 	});
 }
 
