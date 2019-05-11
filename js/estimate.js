@@ -19,7 +19,6 @@ const shotStruct = {
 
 const attributeStruct = {
 	"id":"",
-	"name":"", // type
 	"value":1.0,
 };
 
@@ -46,7 +45,7 @@ function removeItem(e) {
 	id = e.target.parentElement.getAttribute("id");
 	for (i = 0; i < bucket.length; i++) {
 		if ( bucket[i].id == id ) {
-			console.log(id);
+			// console.log(id);
 			bucket.splice(i,1);
 		}
 	}
@@ -118,7 +117,7 @@ function bucketRender() {
 			console.log(JSON.stringify(data));
 		},
 		error: function(e) {
-			console.log("failed" + JSON.stringify(e));
+			console.log("failed:" + JSON.stringify(e));
 		}
 	});
 }
@@ -126,15 +125,15 @@ function bucketRender() {
 // 매치무브 샷 조건을 장바구니에 넣는다.
 function addBucket() {
 	if (document.getElementById("author").value == "") {
-		alert("회사명 또는 작성자 이름을 입력해주세요.");
+		alert("회사명 또는 작성자 이름을 입력해주세요.\nPlease enter your company name or author name.");
 		return
 	}
 	if (document.getElementById("email").value == "") {
-		alert("E-mail을 입력해주세요.");
+		alert("E-mail을 입력해주세요.\nPlease enter your e-mail address.");
 		return
 	}
 	if (document.getElementById("project").value == "") {
-		alert("프로젝트에 대해 간단한 설명을 작성해주세요.");
+		alert("프로젝트의 간략한 특징을 설명해주세요.\nPlease provide a brief description of the project.");
 		return
 	}
 	
@@ -151,7 +150,6 @@ function addBucket() {
 		if (inputs[i].checked) {
 			attr = Object.create(attributeStruct);
 			attr.id = inputs[i].id;
-			attr.name = inputs[i].name;
 			attr.value = inputs[i].value;
 			shot.attributes.push(attr)
 		};
