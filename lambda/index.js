@@ -11,10 +11,15 @@ exports.handler = function(event, context) {
         statusCode: 200,
         body: JSON.stringify(responseBody)
     };
+    let date = new Date();
+	let y = date.getFullYear();
+	let m = date.getMonth() + 1;
+	let d = date.getDate();
+	
     var sns = new AWS.SNS();
     var params = {
-        Message: eventText, 
-        Subject: "Estimate Notification",
+        Message: eventText,
+        Subject: `Estimate Notification: ${y}.${m}.${d}`,
         TopicArn: `arn:aws:sns:ap-northeast-2:${ACCOUNTID}:estimate`
     };
     sns.publish(params, context.done);
