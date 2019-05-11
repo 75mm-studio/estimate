@@ -39,7 +39,7 @@ function writeDate() {
 	let y = date.getFullYear();
 	let m = date.getMonth() + 1;
 	let d = date.getDate();
-	document.getElementById("date").innerHTML = `Pre-estimate Date: ${y}. ${m}. ${d}`;
+	document.getElementById("date").innerHTML = `75mm Studio Pre-Estimate Date: ${y}. ${m}. ${d}`;
 }
 
 function removeItem(e) {
@@ -55,7 +55,8 @@ function removeItem(e) {
 
 // 장바구니를 렌더링한다.
 function bucketRender() {
-	let total = 0.0;
+	let totalAmount = 0.0;
+	let totalShot = 0;
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.length; i++) {
 		let div = document.createElement("div");
@@ -66,6 +67,7 @@ function bucketRender() {
 		shotnum += parseInt(bucket[i].objectTrackingNoneRidgid);
 		shotnum += parseInt(bucket[i].rotoanimationBasic);
 		shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
+		
 		div.innerHTML += `${shotnum} Shot,`;
 		div.innerHTML += ` ${bucket[i].attributes.length} Attrs,`;
 		div.innerHTML += ` ${bucket[i].frame} f`;
@@ -87,21 +89,25 @@ function bucketRender() {
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
-		total += subTotal;
+		totalAmount += subTotal;
+		totalShot += shotnum;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
-	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(total));
+	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalAmount));
 
 	// 데이터전송
-	let obj = {
-		name: "lazypic",
-		shot: "test"
+	let snsData = {
+		author: document.getElementById("author").value,
+		email: document.getElementById("email").value,
+		project: document.getElementById("project").value,
+		totalShot: totalShot,
+		totalAmount: "Total: ￦" + numberWithCommas(Math.round(totalAmount))
 	}
 	
 	$.ajax({
 		url: "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate",
 		type: 'POST',
-		data: JSON.stringify(obj),
+		data: JSON.stringify(snsData),
 		dataType: 'json',
 		crossDomain: true,
 		contentType: 'application/json',
