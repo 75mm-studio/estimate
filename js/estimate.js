@@ -122,6 +122,21 @@ function bucketRender() {
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
 function addBucket() {
+	if (document.getElementById("author").value == "") {
+		alert("회사명을 입력해주세요.");
+		return
+	}
+	if (document.getElementById("email").value == "") {
+		alert("E-mail을 입력해주세요.");
+		return
+	}
+	if (document.getElementById("project").value == "") {
+		alert("프로젝트에 대해 간단한 설명을 작성해주세요.");
+		return
+	}
+	shot.objectTrackingRidgid = document.getElementById("objectTrackingRidgid").value;
+	shot.objectTrackingNoneRidgid = document.getElementById("objectTrackingNoneRidgid").value;
+	
 	let shot = Object.create(shotStruct);
 	let inputs = document.getElementsByTagName("input");
 	let currentDate = new Date();
