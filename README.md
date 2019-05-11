@@ -10,7 +10,7 @@
 ![diagram](figures/75mmStudioEstimate.png)
 
 ### 배 포
-홈페이지에 배포하기 위해서는 publish 스크립트를 터미널에서 실행합니다.
+https://75mm.studio 도메인에 배포하기 위해서는 publish 스크립트를 터미널에서 실행합니다.
 
 ```
 $ ./publish.sh
