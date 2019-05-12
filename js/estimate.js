@@ -10,7 +10,7 @@ const shotStruct = {
 	"objectTrackingNoneRidgid" : 0,
 	"rotoanimationBasicAmount" : 500000.0, // KRW model
 	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformAmount" : 500000.0, // KRW model
+	"rotoanimationSoftDeformAmount" : 700000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
 	"frameAmount" : 1000.0, // KRW model
 	"frame" : 1,
