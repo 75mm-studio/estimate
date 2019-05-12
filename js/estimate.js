@@ -97,29 +97,31 @@ function bucketRender() {
 	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalAmount));
 
 	// 데이터전송
-	let snsData = {
-		author: document.getElementById("author").value,
-		email: document.getElementById("email").value,
-		project: document.getElementById("project").value,
-		totalShot: totalShotAmount,
-		frame: totalFrame,
-		totalAmount: "Total: ￦" + numberWithCommas(Math.round(totalAmount))
-	}
-	
-	$.ajax({
-		url: "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate",
-		type: 'POST',
-		data: JSON.stringify(snsData),
-		dataType: 'json',
-		crossDomain: true,
-		contentType: 'application/json',
-		success: function(data) {
-			console.log(JSON.stringify(data));
-		},
-		error: function(e) {
-			console.log("failed:" + JSON.stringify(e));
+	if (document.getElementById("privacy").checked) {
+		let snsData = {
+			author: document.getElementById("author").value,
+			email: document.getElementById("email").value,
+			project: document.getElementById("project").value,
+			totalShot: totalShotAmount,
+			frame: totalFrame,
+			totalAmount: "Total: ￦" + numberWithCommas(Math.round(totalAmount))
 		}
-	});
+		
+		$.ajax({
+			url: "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate",
+			type: 'POST',
+			data: JSON.stringify(snsData),
+			dataType: 'json',
+			crossDomain: true,
+			contentType: 'application/json',
+			success: function(data) {
+				console.log(JSON.stringify(data));
+			},
+			error: function(e) {
+				console.log("failed:" + JSON.stringify(e));
+			}
+		});
+	}
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -148,6 +150,9 @@ function addBucket() {
 			continue;
 		};
 		if (inputs[i].checked) {
+			if (inputs[i].id === "privacy") {
+				continue
+			}
 			attr = Object.create(attributeStruct);
 			attr.id = inputs[i].id;
 			attr.value = inputs[i].value;
