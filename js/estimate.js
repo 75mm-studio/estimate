@@ -2,7 +2,7 @@ let bucket = [];
 
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"cameraTrackingAmount" : 300000.0, // KRW model
+	"cameraTrackingAmount" : 200000.0, // KRW model
 	"cameraTracking" : 1,
 	"objectTrackingRidgidAmount" : 250000.0, // KRW model
 	"objectTrackingRidgid" : 0,
