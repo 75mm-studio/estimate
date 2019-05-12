@@ -38,7 +38,7 @@ function writeDate() {
 	let y = date.getFullYear();
 	let m = date.getMonth() + 1;
 	let d = date.getDate();
-	document.getElementById("date").innerHTML = `75mm Studio Pre-Estimate Date: ${y}. ${m}. ${d}`;
+	document.getElementById("date").innerHTML = `Date: ${y}. ${m}. ${d}`;
 }
 
 function removeItem(e) {
