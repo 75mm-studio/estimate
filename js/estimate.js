@@ -138,6 +138,11 @@ function addBucket() {
 		alert("프로젝트의 간략한 특징을 설명해주세요.\nPlease provide a brief description of the project.");
 		return
 	}
+
+	if (!document.getElementById("privacy").checked) {
+		alert("개인정보 수집 동의항목을 체크해주세요.\nPlease agree to collect personal information.");
+		return
+	}
 	
 	let shot = Object.create(shotStruct);
 	let inputs = document.getElementsByTagName("input");
