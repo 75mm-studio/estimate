@@ -2,7 +2,7 @@ let bucket = [];
 
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"cameraTrackingAmount" : 300000.0, // KRW model
+	"cameraTrackingAmount" : 200000.0, // KRW model
 	"cameraTracking" : 1,
 	"objectTrackingRidgidAmount" : 250000.0, // KRW model
 	"objectTrackingRidgid" : 0,
@@ -10,7 +10,7 @@ const shotStruct = {
 	"objectTrackingNoneRidgid" : 0,
 	"rotoanimationBasicAmount" : 500000.0, // KRW model
 	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformAmount" : 500000.0, // KRW model
+	"rotoanimationSoftDeformAmount" : 700000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
 	"frameAmount" : 1000.0, // KRW model
 	"frame" : 1,
@@ -38,7 +38,7 @@ function writeDate() {
 	let y = date.getFullYear();
 	let m = date.getMonth() + 1;
 	let d = date.getDate();
-	document.getElementById("date").innerHTML = `75mm Studio Pre-Estimate Date: ${y}. ${m}. ${d}`;
+	document.getElementById("date").innerHTML = `Date: ${y}. ${m}. ${d}`;
 }
 
 function removeItem(e) {
