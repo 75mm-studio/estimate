@@ -177,6 +177,10 @@ function printMode() {
 }
 
 function sendToEmail() {
+	if ( bucket.length === 0 ) {
+		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.\nYour shopping cart is empty.\nData can not be transferred.");
+		return
+	}
 	let snsData = {
 		bucket: bucket
 	}
@@ -195,5 +199,5 @@ function sendToEmail() {
 			console.log("failed:" + JSON.stringify(e));
 		}
 	});
-	alert("데이터가 전송되었습니다.\n업무시간 기준 24시간 안에 연락드리겠습니다.");
+	alert("데이터가 전송되었습니다.\n업무시간 기준 24시간 안에 연락드리겠습니다.\nData has been transferred.\nWe will contact you within 24 business hours.");
 }
