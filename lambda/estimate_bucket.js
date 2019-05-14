@@ -19,8 +19,8 @@ exports.handler = function(event, context) {
     var sns = new AWS.SNS();
     var params = {
         Message: eventText,
-        Subject: `Estimate Notification: ${y}.${m}.${d}`,
-        TopicArn: `arn:aws:sns:ap-northeast-2:${ACCOUNTID}:estimate`
+        Subject: `Estimate Notification - Bucket: ${y}.${m}.${d}`,
+        TopicArn: `arn:aws:sns:ap-northeast-2:${ACCOUNTID}:estimate_bucket`
     };
     sns.publish(params, context.done);
     return response;
