@@ -3,7 +3,7 @@ let bucket = [];
 const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"cameraTrackingAmount" : 200000.0, // KRW model
-	"cameraTracking" : 1,
+	"cameraTracking" : 1, // 총 샷수
 	"objectTrackingRidgidAmount" : 250000.0, // KRW model
 	"objectTrackingRidgid" : 0,
 	"objectTrackingNoneRidgidAmount" : 350000.0, // KRW model
@@ -55,7 +55,6 @@ function removeItem(e) {
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	let totalAmount = 0.0;
-	let totalShotAmount = 0;
 	let totalFrame = 0;
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.length; i++) {
@@ -63,10 +62,10 @@ function bucketRender() {
 		div.setAttribute("id", bucket[i].id);
 		let shotnum = 0;
 		shotnum += parseInt(bucket[i].cameraTracking);
-		shotnum += parseInt(bucket[i].objectTrackingRidgid);
-		shotnum += parseInt(bucket[i].objectTrackingNoneRidgid);
-		shotnum += parseInt(bucket[i].rotoanimationBasic);
-		shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
+		//shotnum += parseInt(bucket[i].objectTrackingRidgid);
+		//shotnum += parseInt(bucket[i].objectTrackingNoneRidgid);
+		//shotnum += parseInt(bucket[i].rotoanimationBasic);
+		//shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
 		
 		div.innerHTML += `${shotnum} Shot,`;
 		div.innerHTML += ` ${bucket[i].attributes.length} Attrs,`;
@@ -90,7 +89,6 @@ function bucketRender() {
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		totalAmount += subTotal;
-		totalShotAmount += shotnum;
 		totalFrame += parseInt(bucket[i].frame);
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
@@ -102,7 +100,7 @@ function bucketRender() {
 			author: document.getElementById("author").value,
 			email: document.getElementById("email").value,
 			project: document.getElementById("project").value,
-			totalShot: totalShotAmount,
+			totalShot: document.getElementById("cameraTracking").value,
 			frame: totalFrame,
 			totalAmount: "Total: ￦" + numberWithCommas(Math.round(totalAmount))
 		}

@@ -58,14 +58,14 @@
     
     
         <h4 class="pt-3">Lens type</h4>
-        <!--
-        <div class="form-check form-check-inline ml-3">
+        
+        <div class="form-check ml-3">
             <input class="form-check-input" type="checkbox" name="lensType" id="mono" value=1.0 checked>
             <label class="form-check-label" for="mono">
                	Mono
             </label>
         </div>
-        -->
+        
         <div class="form-check ml-3">
             <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=2.0>
             <label class="form-check-label" for="anamorphicLens">
@@ -106,10 +106,10 @@
             </label>
         </div>
 
-        <h4 class="pt-4">Shot number / Frame number</h4>
+        <h4 class="pt-4">Shot</h4>
         <div class="form-group row">
             <div class="col-1"></div>
-            <label for="example-number-input" class="col-5 col-form-label">Camera Tracking</label>
+            <label for="example-number-input" class="col-5 col-form-label">Total Camera Tracking Shot Number</label>
             <div class="col-4">
               <input class="form-control" type="number" value="1" min="1" max="3600" id="cameraTracking" inputmode="numeric">
             </div>
@@ -142,9 +142,11 @@
               <input class="form-control" type="number" value="0" min="1" max="3600" id="rotoanimationSoftDeform" inputmode="numeric">
             </div>
         </div>
+
+        <h4 class="pt-4">Frame</h4>
         <div class="form-group row">
             <div class="col-1"></div>
-            <label for="example-number-input" class="col-5 col-form-label">Frame</label>
+            <label for="example-number-input" class="col-5 col-form-label">Total Frame number</label>
             <div class="col-4">
               <input class="form-control" type="number" value="1" min="1" max="1000000" id="frame" inputmode="numeric">
             </div>
