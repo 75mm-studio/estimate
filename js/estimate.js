@@ -177,14 +177,8 @@ function printMode() {
 }
 
 function sendToEmail() {
-	let totalAmount = 1000000;
 	let snsData = {
-		author: document.getElementById("author").value,
-		email: document.getElementById("email").value,
-		project: document.getElementById("project").value,
-		totalShot: document.getElementById("cameraTracking").value,
-		frame: document.getElementById("frame").value,
-		totalAmount: "Total: ￦ " + numberWithCommas(Math.round(totalAmount))
+		bucket: bucket
 	}
 	
 	$.ajax({
