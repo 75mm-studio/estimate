@@ -106,7 +106,7 @@ function bucketRender() {
 		}
 		
 		$.ajax({
-			url: "https://073uuo0psc.execute-api.ap-northeast-2.amazonaws.com/estimate",
+			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
 			data: JSON.stringify(snsData),
 			dataType: 'json',
@@ -174,4 +174,32 @@ function addBucket() {
 
 function printMode() {
 	window.print();
+}
+
+function sendToEmail() {
+	let totalAmount = 1000000;
+	let snsData = {
+		author: document.getElementById("author").value,
+		email: document.getElementById("email").value,
+		project: document.getElementById("project").value,
+		totalShot: document.getElementById("cameraTracking").value,
+		frame: document.getElementById("frame").value,
+		totalAmount: "Total: ￦ " + numberWithCommas(Math.round(totalAmount))
+	}
+	
+	$.ajax({
+		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
+		type: 'POST',
+		data: JSON.stringify(snsData),
+		dataType: 'json',
+		crossDomain: true,
+		contentType: 'application/json',
+		success: function(data) {
+			console.log(JSON.stringify(data));
+		},
+		error: function(e) {
+			console.log("failed:" + JSON.stringify(e));
+		}
+	});
+	alert("데이터가 전송되었습니다.\n업무시간 기준 24시간 안에 연락드리겠습니다.");
 }
