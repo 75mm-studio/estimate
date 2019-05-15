@@ -25,7 +25,7 @@ const item = {
 	"frameCost" : 1000.0, // KRW model, 프레임당 가격
 	"frame" : 0,
 	"attributes" : [],
-	"totalCost": 0,
+	"total": 0,
 };
 
 // 아이템에 종속되는 어트리뷰트 자료구조
@@ -79,11 +79,11 @@ function bucketRender() {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += " = ￦" + numberWithCommas(Math.round(bucket.items[i].totalCost));
+		div.innerHTML += " = ￦" + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
-		bucket.total += bucket.items[i].totalCost;
+		bucket.total += bucket.items[i].total;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
 	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(bucket.total));
@@ -137,17 +137,17 @@ function addBucket() {
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.frame = document.getElementById("frame").value;
 	// 비용산출
-	shot.totalCost += shot.basicCost * shot.totalShotNum;
-	shot.totalCost += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
-	shot.totalCost += shot.objectTrackingNoneRigidCost * shot.objectTrackingNoneRigid;
-	shot.totalCost += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
-	shot.totalCost += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
+	shot.total += shot.basicCost * shot.totalShotNum;
+	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
+	shot.total += shot.objectTrackingNoneRigidCost * shot.objectTrackingNoneRigid;
+	shot.total += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
+	shot.total += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
 	// 적용된 속성을 곱한다.
 	for (let n = 0; n < shot.attributes.length; n++) {
-		shot.totalCost *= shot.attributes[n].value;
+		shot.total *= shot.attributes[n].value;
 	}
 	// 마지막으로 프레임 가격을 더한다.
-	shot.totalCost += shot.frameCost * shot.frame;
+	shot.total += shot.frameCost * shot.frame;
 
 	bucket.items.push(shot);
 
