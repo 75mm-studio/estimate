@@ -1,4 +1,6 @@
+// 장바구니 자료구조
 let bucket = {
+	"date":"",
 	"author":"",
 	"email":"",
 	"project":"",
@@ -6,6 +8,7 @@ let bucket = {
 	"items":[],
 };
 
+// 장바구니에 들어가는 아이템 자료구조
 const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"basicCost" : 200000.0, // KRW model, 기본가격
@@ -24,13 +27,14 @@ const item = {
 	"totalCost": 0,
 };
 
+// 아이템에 종속되는 어트리뷰트 자료구조
 const attributeStruct = {
 	"id":"",
 	"value":1.0,
 };
 
 //init Write infomation
-writeDate()
+document.getElementById("date").innerHTML = today()
 
 // Callback
 document.getElementById('addBucket').addEventListener('click', addBucket);
@@ -39,13 +43,13 @@ function numberWithCommas(n) {
 	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// 날짜를 넣는다.
-function writeDate() {
+// 오늘 날짜를 문자열로 출력한다.
+function today() {
 	let date = new Date();
 	let y = date.getFullYear();
 	let m = date.getMonth() + 1;
 	let d = date.getDate();
-	document.getElementById("date").innerHTML = `Date: ${y}. ${m}. ${d}`;
+	return `Date: ${y}. ${m}. ${d}`;
 }
 
 function removeItem(e) {
@@ -176,6 +180,7 @@ function sendToEmail() {
 		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.\nYour shopping cart is empty.\nData can not be transferred.");
 		return
 	}
+	bucket.date = today();
 	bucket.author = document.getElementById("author").value;
 	bucket.email = document.getElementById("email").value;
 	bucket.project = document.getElementById("project").value;
