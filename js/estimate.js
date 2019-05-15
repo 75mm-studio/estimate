@@ -1,22 +1,27 @@
 let bucket = {
+	"author":"",
+	"email":"",
+	"project":"",
+	"comment":"",
 	"items":[],
 };
 
 const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"cameraTrackingAmount" : 200000.0, // KRW model
-	"cameraTracking" : 1, // 총 샷수
-	"objectTrackingRigidAmount" : 250000.0, // KRW model
+	"basicCost" : 200000.0, // KRW model, 기본가격
+	"totalShotNum" : 0, // 총 샷수
+	"objectTrackingRigidCost" : 250000.0, // KRW model
 	"objectTrackingRigid" : 0,
-	"objectTrackingNoneRigidAmount" : 350000.0, // KRW model
+	"objectTrackingNoneRigidCost" : 350000.0, // KRW model
 	"objectTrackingNoneRigid" : 0,
-	"rotoanimationBasicAmount" : 500000.0, // KRW model
+	"rotoanimationBasicCost" : 500000.0, // KRW model
 	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformAmount" : 700000.0, // KRW model
+	"rotoanimationSoftDeformCost" : 700000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
-	"frameAmount" : 1000.0, // KRW model
-	"frame" : 1,
+	"frameCost" : 1000.0, // KRW model, 프레임당 가격
+	"frame" : 0,
 	"attributes" : [],
+	"totalCost": 0,
 };
 
 const attributeStruct = {
@@ -56,67 +61,27 @@ function removeItem(e) {
 
 // 장바구니를 렌더링한다.
 function bucketRender() {
-	let totalAmount = 0.0;
-	let totalFrame = 0;
+	let totalCost = 0.0;
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
-		let shotnum = 0;
-		shotnum += parseInt(bucket.items[i].cameraTracking);
-		div.innerHTML += `${shotnum} Shot,`;
+		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
 		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
 		div.innerHTML += ` ${bucket.items[i].frame} f`;
-		// 가격을 합친다.
-		subTotal = bucket.items[i].cameraTrackingAmount * bucket.items[i].cameraTracking;
-		subTotal += bucket.items[i].objectTrackingRigidAmount * bucket.items[i].objectTrackingRigid;
-		subTotal += bucket.items[i].objectTrackingNoneRigidAmount * bucket.items[i].objectTrackingNoneRigid;
-		subTotal += bucket.items[i].rotoanimationBasicAmount * bucket.items[i].rotoanimationBasic;
-		subTotal += bucket.items[i].rotoanimationSoftDeformAmount * bucket.items[i].rotoanimationSoftDeform;
-		subTotal += bucket.items[i].frameAmount * bucket.items[i].frame;
-		// 적용된 속성을 곱한다.
-		let att = [];
+		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
-			subTotal *= bucket.items[i].attributes[j].value;
-			att.push(bucket.items[i].attributes[j].id);
+			titles.push(bucket.items[i].attributes[j].id);
 		}
-		div.setAttribute("title", att.join(","));
-		div.innerHTML += " = ￦" + numberWithCommas(Math.round(subTotal));
+		div.setAttribute("title", titles.join(","));
+		div.innerHTML += " = ￦" + numberWithCommas(Math.round(bucket.items[i].totalCost));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
-		totalAmount += subTotal;
-		totalFrame += parseInt(bucket.items[i].frame);
+		totalCost += bucket.items[i].totalCost;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalAmount));
-
-	// 데이터전송
-	if (document.getElementById("privacy").checked) {
-		let snsData = {
-			author: document.getElementById("author").value,
-			email: document.getElementById("email").value,
-			project: document.getElementById("project").value,
-			totalShot: document.getElementById("cameraTracking").value,
-			frame: totalFrame,
-			totalAmount: "Total: ￦" + numberWithCommas(Math.round(totalAmount))
-		}
-		
-		$.ajax({
-			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
-			type: 'POST',
-			data: JSON.stringify(snsData),
-			dataType: 'json',
-			crossDomain: true,
-			contentType: 'application/json',
-			success: function(data) {
-				console.log(JSON.stringify(data));
-			},
-			error: function(e) {
-				console.log("failed:" + JSON.stringify(e));
-			}
-		});
-	}
+	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalCost));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -140,32 +105,65 @@ function addBucket() {
 	}
 	
 	let shot = Object.create(item);
-	let inputs = document.getElementsByTagName("input");
+	let attrs = document.getElementsByTagName("input");
 	let currentDate = new Date();
 	shot.id = currentDate.getTime();
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
-	for (let i = 0; i < inputs.length; i++) {
-		type = inputs[i].getAttribute("type")
+
+	for (let i = 0; i < attrs.length; i++) {
+		type = attrs[i].getAttribute("type")
 		if (!(type == "radio" || type=="checkbox")){
 			continue;
 		};
-		if (inputs[i].checked) {
-			if (inputs[i].id === "privacy") {
+		if (attrs[i].checked) {
+			if (attrs[i].id === "privacy") {
 				continue
 			}
 			attr = Object.create(attributeStruct);
-			attr.id = inputs[i].id;
-			attr.value = inputs[i].value;
+			attr.id = attrs[i].id;
+			attr.value = attrs[i].value;
 			shot.attributes.push(attr)
 		};
 	}
-	shot.cameraTracking = document.getElementById("cameraTracking").value;
+	shot.totalShotNum = document.getElementById("totalShotNum").value;
 	shot.objectTrackingRigid = document.getElementById("objectTrackingRigid").value;
 	shot.objectTrackingNoneRigid = document.getElementById("objectTrackingNoneRigid").value;
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.frame = document.getElementById("frame").value;
+	// 비용산출
+	shot.totalCost += shot.basicCost * shot.totalShotNum;
+	shot.totalCost += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
+	shot.totalCost += shot.objectTrackingNoneRigidCost * shot.objectTrackingNoneRigid;
+	shot.totalCost += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
+	shot.totalCost += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
+	// 적용된 속성을 곱한다.
+	for (let n = 0; n < shot.attributes.length; n++) {
+		shot.totalCost *= shot.attributes[n].value;
+	}
+	// 마지막으로 프레임 가격을 더한다.
+	shot.totalCost += shot.frameCost * shot.frame;
+
 	bucket.items.push(shot);
+
+	// 데이터전송
+	if (document.getElementById("privacy").checked) {
+		$.ajax({
+			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
+			type: 'POST',
+			data: JSON.stringify(shot),
+			dataType: 'json',
+			crossDomain: true,
+			contentType: 'application/json',
+			success: function(data) {
+				console.log(JSON.stringify(data));
+			},
+			error: function(e) {
+				console.log("failed:" + JSON.stringify(e));
+			}
+		});
+	}
+
 	bucketRender()
 }
 
@@ -178,7 +176,10 @@ function sendToEmail() {
 		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.\nYour shopping cart is empty.\nData can not be transferred.");
 		return
 	}
-	
+	bucket.author = document.getElementById("author").value;
+	bucket.email = document.getElementById("email").value;
+	bucket.project = document.getElementById("project").value;
+	bucket.comment = document.getElementById("comment").value;
 	$.ajax({
 		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
 		type: 'POST',
