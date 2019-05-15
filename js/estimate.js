@@ -1,6 +1,8 @@
-let bucket = [];
+let bucket = {
+	"items":[],
+};
 
-const shotStruct = {
+const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"cameraTrackingAmount" : 200000.0, // KRW model
 	"cameraTracking" : 1, // 총 샷수
@@ -43,10 +45,10 @@ function writeDate() {
 
 function removeItem(e) {
 	id = e.target.parentElement.getAttribute("id");
-	for (i = 0; i < bucket.length; i++) {
-		if ( bucket[i].id == id ) {
+	for (i = 0; i < bucket.items.length; i++) {
+		if ( bucket.items[i].id == id ) {
 			// console.log(id);
-			bucket.splice(i,1);
+			bucket.items.splice(i,1);
 		}
 	}
 	bucketRender()
@@ -57,31 +59,26 @@ function bucketRender() {
 	let totalAmount = 0.0;
 	let totalFrame = 0;
 	document.getElementById("bucket").innerHTML = "";
-	for (let i = 0; i < bucket.length; i++) {
+	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
-		div.setAttribute("id", bucket[i].id);
+		div.setAttribute("id", bucket.items[i].id);
 		let shotnum = 0;
-		shotnum += parseInt(bucket[i].cameraTracking);
-		//shotnum += parseInt(bucket[i].objectTrackingRigid);
-		//shotnum += parseInt(bucket[i].objectTrackingNoneRigid);
-		//shotnum += parseInt(bucket[i].rotoanimationBasic);
-		//shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
-		
+		shotnum += parseInt(bucket.items[i].cameraTracking);
 		div.innerHTML += `${shotnum} Shot,`;
-		div.innerHTML += ` ${bucket[i].attributes.length} Attrs,`;
-		div.innerHTML += ` ${bucket[i].frame} f`;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
+		div.innerHTML += ` ${bucket.items[i].frame} f`;
 		// 가격을 합친다.
-		subTotal = bucket[i].cameraTrackingAmount * bucket[i].cameraTracking;
-		subTotal += bucket[i].objectTrackingRigidAmount * bucket[i].objectTrackingRigid;
-		subTotal += bucket[i].objectTrackingNoneRigidAmount * bucket[i].objectTrackingNoneRigid;
-		subTotal += bucket[i].rotoanimationBasicAmount * bucket[i].rotoanimationBasic;
-		subTotal += bucket[i].rotoanimationSoftDeformAmount * bucket[i].rotoanimationSoftDeform;
-		subTotal += bucket[i].frameAmount * bucket[i].frame;
+		subTotal = bucket.items[i].cameraTrackingAmount * bucket.items[i].cameraTracking;
+		subTotal += bucket.items[i].objectTrackingRigidAmount * bucket.items[i].objectTrackingRigid;
+		subTotal += bucket.items[i].objectTrackingNoneRigidAmount * bucket.items[i].objectTrackingNoneRigid;
+		subTotal += bucket.items[i].rotoanimationBasicAmount * bucket.items[i].rotoanimationBasic;
+		subTotal += bucket.items[i].rotoanimationSoftDeformAmount * bucket.items[i].rotoanimationSoftDeform;
+		subTotal += bucket.items[i].frameAmount * bucket.items[i].frame;
 		// 적용된 속성을 곱한다.
 		let att = [];
-		for (let j = 0; j < bucket[i].attributes.length; j++) {
-			subTotal *= bucket[i].attributes[j].value;
-			att.push(bucket[i].attributes[j].id);
+		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
+			subTotal *= bucket.items[i].attributes[j].value;
+			att.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", att.join(","));
 		div.innerHTML += " = ￦" + numberWithCommas(Math.round(subTotal));
@@ -89,9 +86,9 @@ function bucketRender() {
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		totalAmount += subTotal;
-		totalFrame += parseInt(bucket[i].frame);
+		totalFrame += parseInt(bucket.items[i].frame);
 	}
-	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.length;
+	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
 	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalAmount));
 
 	// 데이터전송
@@ -142,7 +139,7 @@ function addBucket() {
 		return
 	}
 	
-	let shot = Object.create(shotStruct);
+	let shot = Object.create(item);
 	let inputs = document.getElementsByTagName("input");
 	let currentDate = new Date();
 	shot.id = currentDate.getTime();
@@ -168,7 +165,7 @@ function addBucket() {
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.frame = document.getElementById("frame").value;
-	bucket.push(shot);
+	bucket.items.push(shot);
 	bucketRender()
 }
 
@@ -177,18 +174,15 @@ function printMode() {
 }
 
 function sendToEmail() {
-	if ( bucket.length === 0 ) {
+	if ( bucket.items.length === 0 ) {
 		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.\nYour shopping cart is empty.\nData can not be transferred.");
 		return
-	}
-	let snsData = {
-		bucket: bucket
 	}
 	
 	$.ajax({
 		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
 		type: 'POST',
-		data: JSON.stringify(snsData),
+		data: JSON.stringify(bucket),
 		dataType: 'json',
 		crossDomain: true,
 		contentType: 'application/json',
