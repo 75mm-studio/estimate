@@ -6,6 +6,7 @@ let bucket = {
 	"project":"",
 	"comment":"",
 	"items":[],
+	"total":0,
 };
 
 // 장바구니에 들어가는 아이템 자료구조
@@ -65,7 +66,7 @@ function removeItem(e) {
 
 // 장바구니를 렌더링한다.
 function bucketRender() {
-	let totalCost = 0.0;
+	bucket.total = 0;
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
@@ -82,10 +83,10 @@ function bucketRender() {
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
-		totalCost += bucket.items[i].totalCost;
+		bucket.total += bucket.items[i].totalCost;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(totalCost));
+	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
