@@ -4,10 +4,10 @@ const shotStruct = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"cameraTrackingAmount" : 200000.0, // KRW model
 	"cameraTracking" : 1, // 총 샷수
-	"objectTrackingRidgidAmount" : 250000.0, // KRW model
-	"objectTrackingRidgid" : 0,
-	"objectTrackingNoneRidgidAmount" : 350000.0, // KRW model
-	"objectTrackingNoneRidgid" : 0,
+	"objectTrackingRigidAmount" : 250000.0, // KRW model
+	"objectTrackingRigid" : 0,
+	"objectTrackingNoneRigidAmount" : 350000.0, // KRW model
+	"objectTrackingNoneRigid" : 0,
 	"rotoanimationBasicAmount" : 500000.0, // KRW model
 	"rotoanimationBasic" : 0,
 	"rotoanimationSoftDeformAmount" : 700000.0, // KRW model
@@ -62,8 +62,8 @@ function bucketRender() {
 		div.setAttribute("id", bucket[i].id);
 		let shotnum = 0;
 		shotnum += parseInt(bucket[i].cameraTracking);
-		//shotnum += parseInt(bucket[i].objectTrackingRidgid);
-		//shotnum += parseInt(bucket[i].objectTrackingNoneRidgid);
+		//shotnum += parseInt(bucket[i].objectTrackingRigid);
+		//shotnum += parseInt(bucket[i].objectTrackingNoneRigid);
 		//shotnum += parseInt(bucket[i].rotoanimationBasic);
 		//shotnum += parseInt(bucket[i].rotoanimationSoftDeform);
 		
@@ -72,8 +72,8 @@ function bucketRender() {
 		div.innerHTML += ` ${bucket[i].frame} f`;
 		// 가격을 합친다.
 		subTotal = bucket[i].cameraTrackingAmount * bucket[i].cameraTracking;
-		subTotal += bucket[i].objectTrackingRidgidAmount * bucket[i].objectTrackingRidgid;
-		subTotal += bucket[i].objectTrackingNoneRidgidAmount * bucket[i].objectTrackingNoneRidgid;
+		subTotal += bucket[i].objectTrackingRigidAmount * bucket[i].objectTrackingRigid;
+		subTotal += bucket[i].objectTrackingNoneRigidAmount * bucket[i].objectTrackingNoneRigid;
 		subTotal += bucket[i].rotoanimationBasicAmount * bucket[i].rotoanimationBasic;
 		subTotal += bucket[i].rotoanimationSoftDeformAmount * bucket[i].rotoanimationSoftDeform;
 		subTotal += bucket[i].frameAmount * bucket[i].frame;
@@ -163,8 +163,8 @@ function addBucket() {
 		};
 	}
 	shot.cameraTracking = document.getElementById("cameraTracking").value;
-	shot.objectTrackingRidgid = document.getElementById("objectTrackingRidgid").value;
-	shot.objectTrackingNoneRidgid = document.getElementById("objectTrackingNoneRidgid").value;
+	shot.objectTrackingRigid = document.getElementById("objectTrackingRigid").value;
+	shot.objectTrackingNoneRigid = document.getElementById("objectTrackingNoneRigid").value;
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.frame = document.getElementById("frame").value;
