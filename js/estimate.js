@@ -176,6 +176,28 @@ function printMode() {
 	window.print();
 }
 
+function resetForm() {
+	document.getElementById("project").value = "";
+	document.getElementById("comment").value = "";
+	document.getElementById("mono").checked = true;
+	document.getElementById("anamorphicLens").checked = false;
+	document.getElementById("stereo").checked = false;
+	document.getElementById("vr").checked = false;
+	document.getElementById("is4kOver").checked = false;
+	document.getElementById("noneSurvey").checked = false;
+	document.getElementById("noneOnsetInfo").checked = false;
+	document.getElementById("totalShotNum").value = 0;
+	document.getElementById("objectTrackingRigid").value = 0;
+	document.getElementById("objectTrackingNoneRigid").value = 0;
+	document.getElementById("rotoanimationBasic").value = 0;
+	document.getElementById("rotoanimationSoftDeform").value = 0;
+	document.getElementById("frame").value = 0;
+	bucket.project = ""; 
+	bucket.comment = "";
+	bucket.items = [];
+	bucketRender()
+}
+
 function sendToEmail() {
 	if ( bucket.items.length === 0 ) {
 		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.\nYour shopping cart is empty.\nData can not be transferred.");
