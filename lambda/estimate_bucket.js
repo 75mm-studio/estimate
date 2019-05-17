@@ -1,8 +1,12 @@
-var ACCOUNTID = process.env.ACCOUNTID
+var ACCOUNTID = process.env.ACCOUNTID;
+var SNSTOPIC = process.env.SNSTOPIC;
 var AWS = require("aws-sdk");
 
+function numberWithCommas(n) {
+	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 exports.handler = function(event, context) {
-    var eventText = JSON.stringify(event, null, 2);
     let responseBody = {
         message: `${event}`,
         input: event
@@ -11,17 +15,35 @@ exports.handler = function(event, context) {
         statusCode: 200,
         body: JSON.stringify(responseBody)
     };
-    let date = new Date();
-	let y = date.getFullYear();
-	let m = date.getMonth() + 1;
-	let d = date.getDate();
-	
-    var sns = new AWS.SNS();
+    
+    let msg = "";
+    msg += "작성일 : " + event.date +"\n";
+    msg += "작성자 : " + event.author +"\n";
+    msg += "프로젝트정보 : " + event.project + "\n";
+    msg += "이메일 : " + event.email + "\n";
+    msg += "코맨트 : " + event.comment + "\n";
+    
+    let line = "";
+    line += "견적 : ￦" + numberWithCommas(event.total) + ", ";
+    line += "총프레임 : " + event.frame + "\n";
+    let attr = [];
+    for (let a = 0; a < event.attributes.length; a++) {
+        attr.push(event.attributes[a].id);
+    }
+    line += "속성 : " + attr.join(",") + "\n";
+    line += "objectTrackingRigid : " + event.objectTrackingRigid + "샷, ";
+    line += "objectTrackingNoneRigid : " + event.objectTrackingNoneRigid + "샷, ";
+    line += "rotoanimationBasic : " + event.rotoanimationBasic + "샷, ";
+    line += "rotoanimationSoftDeform : " + event.rotoanimationSoftDeform + "샷, ";
+    msg += line;
+    msg += "\n";
+    
     var params = {
-        Message: eventText,
-        Subject: `Estimate Notification - Bucket: ${y}.${m}.${d}`,
-        TopicArn: `arn:aws:sns:ap-northeast-2:${ACCOUNTID}:estimate_bucket`
+        Message: msg,
+        Subject: `Estimate Notification - Bucket : ` + event.date,
+        TopicArn: `arn:aws:sns:ap-northeast-2:${ACCOUNTID}:${SNSTOPIC}`
     };
+    var sns = new AWS.SNS();
     sns.publish(params, context.done);
     return response;
 };
