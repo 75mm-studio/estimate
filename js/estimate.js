@@ -73,14 +73,15 @@ function bucketRender() {
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
 		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
-		div.innerHTML += ` ${bucket.items[i].frame} f`;
+		div.innerHTML += ` ${bucket.items[i].frame} frame`;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += " = ￦" + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += "<br>￦" + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
+		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
@@ -112,19 +113,19 @@ function addBucket() {
 		alert("이메일 형식이 아닙니다.\nYour E-mail is not an email format.");
 		return
 	}
-	if (document.getElementById("objectTrackingRigid").value > document.getElementById("totalShotNum").value) {
+	if (parseInt(document.getElementById("objectTrackingRigid").value) > parseInt(document.getElementById("totalShotNum").value)) {
 		alert("objectTracking(Rigid) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe objectTracking (Rigid) value can not be greater than the Total Tracking Shot value.");
 		return
 	}
-	if (document.getElementById("objectTrackingNoneRigid").value > document.getElementById("totalShotNum").value) {
+	if (parseInt(document.getElementById("objectTrackingNoneRigid").value) > parseInt(document.getElementById("totalShotNum").value)) {
 		alert("objectTracking(None Rigid) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe objectTracking (None Rigid) value can not be greater than the Total Tracking Shot value.");
 		return
 	}
-	if (document.getElementById("rotoanimationBasic").value > document.getElementById("totalShotNum").value) {
+	if (parseInt(document.getElementById("rotoanimationBasic").value) > parseInt(document.getElementById("totalShotNum").value)) {
 		alert("Rotoanimation (Basic) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Rotoanimation (Basic) value can not be greater than the Total Tracking Shot value.");
 		return
 	}
-	if (document.getElementById("rotoanimationSoftDeform").value > document.getElementById("totalShotNum").value) {
+	if (parseInt(document.getElementById("rotoanimationSoftDeform").value) > parseInt(document.getElementById("totalShotNum").value)) {
 		alert("Rotoanimation (Soft Deform) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Rotoanimation (Soft Deform) value can not be greater than the Total Tracking Shot value.");
 		return
 	}
