@@ -19,36 +19,36 @@
 <link rel="stylesheet" type="text/css" href="css/estimate.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
-<body class="p-5">
+<body class="p-3">
 <h4>75mm Studio Pre-Estimate</h4>
 <h5 id="date">Date:</h5>
 
-<div class="row pb-3">
+<div class="row">
     <!--Left-->
-    <div class="col-sm-7">
+    <div class="col-sm-8">
         <h5 class="mt-3">
             Client Information <font class="text-danger">*</font>
         </h5>
         
         <div class="form-group row">
-            <div class="col-10">
+            <div class="col-12 pb-1">
                 <input class="form-control" type="text" value="" id="author" placeholder="Company name">
             </div>
-            <div class="col-10">
+            <div class="col-12 pb-1">
                 <input class="form-control" type="email" value="" id="email" placeholder="Enter your email">
             </div>
-            <div class="col-10">
+            <div class="col-12">
                 <input class="form-control" type="text" value="" id="project" placeholder="Project Information">
             </div>
         </div>
         <div class="form-group row pl-4">
-            <div class="col-10">
+            <div class="col-12">
                 <input class="form-check-input" type="checkbox" id="privacy">
                 <label class="form-check-label" for="privacy">
                     개인정보 수집 동의 (Acquisition of personal information)
                 </label>
             </div>
-            <div class="col-10">
+            <div class="col-12">
                 <a class="text-dark" href="https://75mm.studio/terms.html" target="_blank" rel="noopener noreferrer">서비스 이용약관 (Terms of service)</a><br>
                 <a class="text-dark" href="https://75mm.studio/privacy.html" target="_blank" rel="noopener noreferrer">개인정보 처리방침 (Privacy policy)</a>
             </div>
@@ -103,58 +103,58 @@
             </label>
         </div>
         <h4 class="pt-4">Comment</h4>
-        <div class="form-group ml-3 row">
-            <div class="col-10">
+        <div class="form-group row">
+            <div class="col-12">
                 <textarea class="form-control" rows="3" id="comment"></textarea>
             </div>
         </div>
 
         <h4 class="pt-3">Shot number</h4>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">
+            <label for="example-number-input" class="col-7 col-form-label">
                 Total Tracking Shot <a href="https://youtu.be/lf591yYgVl8" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i></a></label>
-            <div class="col-4 pb-1">
+            <div class="col-5 pb-1">
               <input class="form-control" type="text" id="totalShotNum" inputmode="numeric" placeholder="only the number">
             </div>
-            <label for="example-number-input" class="col-6 col-form-label">
+            <label for="example-number-input" class="col-7 col-form-label">
                 Object Tracking (Rigid) <a href="https://youtu.be/6zv1bSGJq_w" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i></a></label>
-            <div class="col-4 pb-1">
+            <div class="col-5 pb-1">
               <input class="form-control" type="text" id="objectTrackingRigid" inputmode="numeric" placeholder="only the number">
             </div>
-            <label for="example-number-input" class="col-6 col-form-label">
+            <label for="example-number-input" class="col-7 col-form-label">
                 Object Tracking (NoneRigid) <a href="https://youtu.be/mnkoepz0FDw" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i></a></label>
-            <div class="col-4 pb-1">
+            <div class="col-5 pb-1">
               <input class="form-control" type="text" id="objectTrackingNoneRigid" inputmode="numeric" placeholder="only the number">
             </div>
-            <label for="example-number-input" class="col-6 col-form-label">
+            <label for="example-number-input" class="col-7 col-form-label">
                 Rotoanimation (Basic) <a href="https://youtu.be/BdzRvd2Q43g" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i></a></label>
-            <div class="col-4 pb-1">
+            <div class="col-5 pb-1">
               <input class="form-control" type="text" id="rotoanimationBasic" inputmode="numeric" placeholder="only the number">
             </div>
-            <label for="example-number-input" class="col-6 col-form-label">
+            <label for="example-number-input" class="col-7 col-form-label">
                 Rotoanimation (Soft Deform) <a href="https://youtu.be/aAePrDbeBhY" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i></a></label>
-            <div class="col-4 pb-1">
+            <div class="col-5 pb-1">
               <input class="form-control" type="text" id="rotoanimationSoftDeform" inputmode="numeric" placeholder="only the number">
             </div>
         </div>
 
         <h4 class="pt-2">Frame</h4>
         <div class="form-group row">
-            <label for="example-number-input" class="col-6 col-form-label">Total Frame number</label>
-            <div class="col-4">
+            <label for="example-number-input" class="col-7 col-form-label">Total Frame number</label>
+            <div class="col-5">
               <input class="form-control" type="text" id="frame" inputmode="numeric" placeholder="only the number">
             </div>
         </div>
         <div class="row pb-3">
-            <div class="col-6"></div>
-            <div class="col-4">
+            <div class="col-7"></div>
+            <div class="col-5">
                 <button id="addBucket" type="button" class="btn btn-dark btn-block"><i class="fas fa-cart-arrow-down"></i>&nbsp;&nbsp;&nbsp;ADD BUCKET</button>
             </div>
         </div>
     </div>
 
     <!--Bucket(Right)-->
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div>
             <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
             <h4 id="numOfItem">Bucket: 0</h4>
