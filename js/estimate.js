@@ -153,6 +153,11 @@ function addBucket() {
 
 	// 데이터전송
 	if (document.getElementById("privacy").checked) {
+		shot.date = today();
+		shot.author = document.getElementById("author").value;
+		shot.email = document.getElementById("email").value;
+		shot.project = document.getElementById("project").value;
+		shot.comment = document.getElementById("comment").value;
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
