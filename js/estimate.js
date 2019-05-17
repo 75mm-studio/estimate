@@ -211,12 +211,12 @@ function resetForm() {
 	document.getElementById("is4kOver").checked = false;
 	document.getElementById("noneSurvey").checked = false;
 	document.getElementById("noneOnsetInfo").checked = false;
-	document.getElementById("totalShotNum").value = 0;
+	document.getElementById("totalShotNum").value = 1;
 	document.getElementById("objectTrackingRigid").value = 0;
 	document.getElementById("objectTrackingNoneRigid").value = 0;
 	document.getElementById("rotoanimationBasic").value = 0;
 	document.getElementById("rotoanimationSoftDeform").value = 0;
-	document.getElementById("frame").value = 0;
+	document.getElementById("frame").value = 1;
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
