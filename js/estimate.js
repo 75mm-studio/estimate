@@ -108,6 +108,26 @@ function addBucket() {
 		alert("개인정보 수집 동의항목을 체크해주세요.\nPlease agree to collect personal information.");
 		return
 	}
+	if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(document.getElementById("email").value)) {
+		alert("이메일 형식이 아닙니다.\nYour E-mail is not an email format.");
+		return
+	}
+	if (document.getElementById("objectTrackingRigid").value > document.getElementById("totalShotNum").value) {
+		alert("objectTracking(Rigid) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe objectTracking (Rigid) value can not be greater than the Total Tracking Shot value.");
+		return
+	}
+	if (document.getElementById("objectTrackingNoneRigid").value > document.getElementById("totalShotNum").value) {
+		alert("objectTracking(None Rigid) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe objectTracking (None Rigid) value can not be greater than the Total Tracking Shot value.");
+		return
+	}
+	if (document.getElementById("rotoanimationBasic").value > document.getElementById("totalShotNum").value) {
+		alert("Rotoanimation (Basic) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Rotoanimation (Basic) value can not be greater than the Total Tracking Shot value.");
+		return
+	}
+	if (document.getElementById("rotoanimationSoftDeform").value > document.getElementById("totalShotNum").value) {
+		alert("Rotoanimation (Soft Deform) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Rotoanimation (Soft Deform) value can not be greater than the Total Tracking Shot value.");
+		return
+	}
 	
 	let shot = Object.create(item);
 	let attrs = document.getElementsByTagName("input");
@@ -229,3 +249,39 @@ function sendToEmail() {
 	});
 	alert("데이터가 전송되었습니다.\n업무시간 기준 24시간 안에 연락드리겠습니다.\nData has been transferred.\nWe will contact you within 24 business hours.");
 }
+
+// Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter) {
+	["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+	  textbox.addEventListener(event, function() {
+		if (inputFilter(this.value)) {
+		  this.oldValue = this.value;
+		  this.oldSelectionStart = this.selectionStart;
+		  this.oldSelectionEnd = this.selectionEnd;
+		} else if (this.hasOwnProperty("oldValue")) {
+		  this.value = this.oldValue;
+		  this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+		}
+	  });
+	});
+  }
+
+// Install input filters.
+setInputFilter(document.getElementById("totalShotNum"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
+});
+setInputFilter(document.getElementById("objectTrackingRigid"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
+});
+setInputFilter(document.getElementById("objectTrackingNoneRigid"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
+});
+setInputFilter(document.getElementById("rotoanimationBasic"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
+});
+setInputFilter(document.getElementById("rotoanimationSoftDeform"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
+});
+setInputFilter(document.getElementById("frame"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 1800000);
+});
