@@ -35,7 +35,7 @@ const attributeStruct = {
 };
 
 //init Write infomation
-document.getElementById("date").innerHTML = today()
+document.getElementById("date").innerHTML = today();
 
 // Callback
 document.getElementById('addBucket').addEventListener('click', addBucket);
@@ -195,7 +195,7 @@ function resetForm() {
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
-	bucketRender()
+	bucketRender();
 }
 
 function sendToEmail() {
