@@ -12,15 +12,15 @@ let bucket = {
 // 장바구니에 들어가는 아이템 자료구조
 const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"basicCost" : 200000.0, // KRW model, 기본가격
+	"basicCost" : 150000.0, // KRW model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
-	"objectTrackingRigidCost" : 250000.0, // KRW model
+	"objectTrackingRigidCost" : 200000.0, // KRW model
 	"objectTrackingRigid" : 0,
-	"objectTrackingNoneRigidCost" : 350000.0, // KRW model
+	"objectTrackingNoneRigidCost" : 300000.0, // KRW model
 	"objectTrackingNoneRigid" : 0,
-	"rotoanimationBasicCost" : 500000.0, // KRW model
+	"rotoanimationBasicCost" : 400000.0, // KRW model
 	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformCost" : 700000.0, // KRW model
+	"rotoanimationSoftDeformCost" : 500000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
 	"frameCost" : 1000.0, // KRW model, 프레임당 가격
 	"frame" : 0,
