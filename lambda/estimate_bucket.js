@@ -25,6 +25,7 @@ exports.handler = function(event, context) {
     
     let line = "";
     line += "견적 : ￦" + numberWithCommas(event.total) + ", ";
+    line += "샷수 : " + event.totalShotNum + ", ";
     line += "총프레임 : " + event.frame + "\n";
     let attr = [];
     for (let a = 0; a < event.attributes.length; a++) {
