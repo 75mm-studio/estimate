@@ -22,7 +22,7 @@ const item = {
 	"rotoanimationBasic" : 0,
 	"rotoanimationSoftDeformCost" : 700000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
-	"layoutCost" : 200000.0, // KRW model
+	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
 	"frameCost" : 1000.0, // KRW model, 프레임당 가격
 	"frame" : 0,
