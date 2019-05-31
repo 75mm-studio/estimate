@@ -22,6 +22,8 @@ const item = {
 	"rotoanimationBasic" : 0,
 	"rotoanimationSoftDeformCost" : 700000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
+	"layoutCost" : 200000.0, // KRW model
+	"layout" : 0,
 	"frameCost" : 1000.0, // KRW model, 프레임당 가격
 	"frame" : 0,
 	"attributes" : [],
@@ -129,6 +131,10 @@ function addBucket() {
 		alert("Rotoanimation (Soft Deform) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Rotoanimation (Soft Deform) value can not be greater than the Total Tracking Shot value.");
 		return
 	}
+	if (parseInt(document.getElementById("layout").value) > parseInt(document.getElementById("totalShotNum").value)) {
+		alert("Layout (Camera Extension) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Layout (Camera Extension) value can not be greater than the Total Tracking Shot value.");
+		return
+	}
 	
 	let shot = Object.create(item);
 	let attrs = document.getElementsByTagName("input");
@@ -156,6 +162,7 @@ function addBucket() {
 	shot.objectTrackingNoneRigid = document.getElementById("objectTrackingNoneRigid").value;
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
+	shot.layout = document.getElementById("layout").value;
 	shot.frame = document.getElementById("frame").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
@@ -163,6 +170,7 @@ function addBucket() {
 	shot.total += shot.objectTrackingNoneRigidCost * shot.objectTrackingNoneRigid;
 	shot.total += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
 	shot.total += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
+	shot.total += shot.layoutCost * shot.layout;
 	// 적용된 속성을 곱한다.
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
@@ -217,6 +225,7 @@ function resetForm() {
 	document.getElementById("objectTrackingNoneRigid").value = 0;
 	document.getElementById("rotoanimationBasic").value = 0;
 	document.getElementById("rotoanimationSoftDeform").value = 0;
+	document.getElementById("layout").value = 0;
 	document.getElementById("frame").value = 1;
 	bucket.project = ""; 
 	bucket.comment = "";
@@ -281,6 +290,9 @@ setInputFilter(document.getElementById("rotoanimationBasic"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
 setInputFilter(document.getElementById("rotoanimationSoftDeform"), function(value) {
+	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
+});
+setInputFilter(document.getElementById("layout"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
 setInputFilter(document.getElementById("frame"), function(value) {

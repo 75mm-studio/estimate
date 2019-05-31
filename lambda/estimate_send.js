@@ -40,6 +40,7 @@ exports.handler = function(event, context) {
         line += "objectTrackingNoneRigid : " + event.items[i].objectTrackingNoneRigid + "샷, ";
         line += "rotoanimationBasic : " + event.items[i].rotoanimationBasic + "샷, ";
         line += "rotoanimationSoftDeform : " + event.items[i].rotoanimationSoftDeform + "샷, ";
+        line += "layout : " + event.items[i].layout + "샷, ";
         msg += line;
         msg += "\n";
     }
