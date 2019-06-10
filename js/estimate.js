@@ -211,7 +211,6 @@ function printMode() {
 }
 
 function resetForm() {
-	document.getElementById("project").value = "";
 	document.getElementById("comment").value = "";
 	document.getElementById("mono").checked = true;
 	document.getElementById("anamorphicLens").checked = false;
