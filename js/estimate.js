@@ -115,6 +115,7 @@ function addBucket() {
 		alert("이메일 형식이 아닙니다.\nYour E-mail is not an email format.");
 		return
 	}
+	/*
 	if (parseInt(document.getElementById("objectTrackingRigid").value) > parseInt(document.getElementById("totalShotNum").value)) {
 		alert("objectTracking(Rigid) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe objectTracking (Rigid) value can not be greater than the Total Tracking Shot value.");
 		return
@@ -134,7 +135,7 @@ function addBucket() {
 	if (parseInt(document.getElementById("layout").value) > parseInt(document.getElementById("totalShotNum").value)) {
 		alert("Layout (Camera Extension) 값은 Total Tracking Shot 값보다 클 수 없습니다.\nThe Layout (Camera Extension) value can not be greater than the Total Tracking Shot value.");
 		return
-	}
+	}*/
 	
 	let shot = Object.create(item);
 	let attrs = document.getElementsByTagName("input");
