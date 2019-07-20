@@ -40,7 +40,12 @@ const attributeStruct = {
 
 //init Write infomation
 document.getElementById("date").innerHTML = today();
+document.getElementById("startdate").value = todayRFC3339();
+document.getElementById("enddate").value = todayRFC3339();
 
+
+	
+	
 // Callback
 document.getElementById('addBucket').addEventListener('click', addBucket);
 
@@ -55,6 +60,22 @@ function today() {
 	let m = date.getMonth() + 1;
 	let d = date.getDate();
 	return `Date: ${y}. ${m}. ${d}`;
+}
+
+// pad 함수는 숫자를 받아서 필요한 자리수만큼 "0"을 붙힌다.
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+// 오늘 날짜를 문자열로 출력한다.
+function todayRFC3339() {
+	let date = new Date();
+	let y = date.getFullYear();
+	let m = pad(date.getMonth() + 1,2);
+	let d = pad(date.getDate(),2);
+	return `${y}-${m}-${d}`;
 }
 
 function removeItem(e) {
