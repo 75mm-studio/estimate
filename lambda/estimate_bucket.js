@@ -22,6 +22,8 @@ exports.handler = function(event, context) {
     msg += "프로젝트정보 : " + event.project + "\n";
     msg += "이메일 : " + event.email + "\n";
     msg += "코맨트 : " + event.comment + "\n";
+    msg += "예상시작일 : " + event.startdate + "\n";
+    msg += "예상마감일 : " + event.enddate + "\n";
     
     let line = "";
     line += "견적 : ￦" + numberWithCommas(event.total) + ", ";

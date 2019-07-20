@@ -5,6 +5,8 @@ let bucket = {
 	"email":"",
 	"project":"",
 	"comment":"",
+	"startdate":"",
+	"enddate":"",
 	"items":[],
 	"total":0,
 };
@@ -187,6 +189,8 @@ function addBucket() {
 		shot.author = document.getElementById("author").value;
 		shot.email = document.getElementById("email").value;
 		shot.project = document.getElementById("project").value;
+		shot.startdate = document.getElementById("startdate").value;
+		shot.enddate = document.getElementById("enddate").value;
 		shot.comment = document.getElementById("comment").value;
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
@@ -242,6 +246,8 @@ function sendToEmail() {
 	bucket.author = document.getElementById("author").value;
 	bucket.email = document.getElementById("email").value;
 	bucket.project = document.getElementById("project").value;
+	bucket.startdate = document.getElementById("startdate").value;
+	bucket.enddate = document.getElementById("enddate").value;
 	bucket.comment = document.getElementById("comment").value;
 	$.ajax({
 		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
