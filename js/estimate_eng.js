@@ -94,6 +94,7 @@ function removeItem(e) {
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	bucket.total = 0;
+	bucket.unit = "$";
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
@@ -106,7 +107,7 @@ function bucketRender() {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += "<br>$" + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
@@ -114,7 +115,7 @@ function bucketRender() {
 		bucket.total += bucket.items[i].total;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: $" + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -237,6 +238,7 @@ function resetForm() {
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
+	bucket.unit = "$";
 	bucketRender();
 }
 
@@ -252,6 +254,7 @@ function sendToEmail() {
 	bucket.startdate = document.getElementById("startdate").value;
 	bucket.enddate = document.getElementById("enddate").value;
 	bucket.comment = document.getElementById("comment").value;
+	bucket.unit = "$"
 	$.ajax({
 		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
 		type: 'POST',

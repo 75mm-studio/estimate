@@ -9,6 +9,7 @@ let bucket = {
 	"enddate":"",
 	"items":[],
 	"total":0,
+	"unit":"",
 };
 
 // 장바구니에 들어가는 아이템 자료구조
@@ -30,6 +31,7 @@ const item = {
 	"frame" : 0,
 	"attributes" : [],
 	"total": 0,
+	"unit":"",
 };
 
 // 아이템에 종속되는 어트리뷰트 자료구조
@@ -92,6 +94,7 @@ function removeItem(e) {
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	bucket.total = 0;
+	bucket.unit = "￦";
 	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
@@ -104,7 +107,7 @@ function bucketRender() {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += "<br>￦" + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
@@ -112,7 +115,7 @@ function bucketRender() {
 		bucket.total += bucket.items[i].total;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: ￦" + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -143,6 +146,7 @@ function addBucket() {
 	let attrs = document.getElementsByTagName("input");
 	let currentDate = new Date();
 	shot.id = currentDate.getTime();
+	shot.unit = "￦";
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
 
 	for (let i = 0; i < attrs.length; i++) {
@@ -192,6 +196,7 @@ function addBucket() {
 		shot.startdate = document.getElementById("startdate").value;
 		shot.enddate = document.getElementById("enddate").value;
 		shot.comment = document.getElementById("comment").value;
+		shot.unit = "￦";
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
@@ -234,12 +239,13 @@ function resetForm() {
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
+	bucket.unit = "￦";
 	bucketRender();
 }
 
 function sendToEmail() {
 	if ( bucket.items.length === 0 ) {
-		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.\nYour shopping cart is empty.\nData can not be transferred.");
+		alert("장바구니가 비어있습니다.\n데이터를 전송할 수 없습니다.");
 		return
 	}
 	bucket.date = today();
@@ -249,6 +255,7 @@ function sendToEmail() {
 	bucket.startdate = document.getElementById("startdate").value;
 	bucket.enddate = document.getElementById("enddate").value;
 	bucket.comment = document.getElementById("comment").value;
+	bucket.unit = "￦";
 	$.ajax({
 		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
 		type: 'POST',
@@ -263,7 +270,7 @@ function sendToEmail() {
 			console.log("failed:" + JSON.stringify(e));
 		}
 	});
-	alert("데이터가 전송되었습니다.\n업무시간 기준 24시간 안에 연락드리겠습니다.\nData has been transferred.\nWe will contact you within 24 business hours.");
+	alert("데이터가 전송되었습니다.\n업무시간 기준 24시간 안에 연락드리겠습니다.");
 }
 
 // Restricts input for the given textbox to the given inputFilter.
