@@ -9,11 +9,13 @@ let bucket = {
 	"enddate":"",
 	"items":[],
 	"total":0,
+	"unit":"",
 };
 
 // 장바구니에 들어가는 아이템 자료구조
 const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
+	"unit":"",
 	"basicCost" : 200.0, // USD model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
 	"objectTrackingRigidCost" : 250.0, // USD model
@@ -140,6 +142,7 @@ function addBucket() {
 	}
 	
 	let shot = Object.create(item);
+	shot.unit = "$";
 	let attrs = document.getElementsByTagName("input");
 	let currentDate = new Date();
 	shot.id = currentDate.getTime();

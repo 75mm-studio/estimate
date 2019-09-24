@@ -24,13 +24,14 @@ exports.handler = function(event, context) {
     msg += "예상마감일 : " + event.enddate + "\n";
     msg += "이메일 : " + event.email + "\n";
     msg += "코맨트 : " + event.comment + "\n";
-    msg += "총견적 : ￦" + numberWithCommas(event.total) + "\n\n";
+    msg += "총견적 : " + event.unit + numberWithCommas(event.total) + "\n\n";
     msg += "세부항목 : 총" + event.items.length + "건\n";
     msg += "\n";
+	let unit = event.unit;
     
     for (let i = 0; i < event.items.length; i++) {
         let line = "----------\n";
-        line += "견적 : ￦" + numberWithCommas(event.items[i].total) + ", ";
+        line += "견적 : " + unit + numberWithCommas(event.items[i].total) + ", ";
         line += "총샷수 : " + event.items[i].totalShotNum + ", ";
         line += "총프레임 : " + event.items[i].frame + "\n";
         let attr = [];

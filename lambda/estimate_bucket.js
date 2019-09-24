@@ -26,7 +26,7 @@ exports.handler = function(event, context) {
     msg += "예상마감일 : " + event.enddate + "\n";
     
     let line = "";
-    line += "견적 : ￦" + numberWithCommas(event.total) + ", ";
+    line += "견적 : " + event.unit + numberWithCommas(event.total) + ", ";
     line += "샷수 : " + event.totalShotNum + ", ";
     line += "총프레임 : " + event.frame + "\n";
     let attr = [];
