@@ -269,7 +269,7 @@ function sendToEmail() {
 			console.log("failed:" + JSON.stringify(e));
 		}
 	});
-	alert("Data has been transferred.\nWe will contact you within 24 business hours.");
+	alert("E-mail has been sent successfully.\nWe will contact you within 24 business hours.");
 }
 
 // Restricts input for the given textbox to the given inputFilter.
