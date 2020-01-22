@@ -69,39 +69,44 @@
                     <label class="form-check-label" for="privacy">
                         개인정보 수집 동의 (Acquisition of personal information)
                     </label>
-                </div>
-                <div class="col-12">
-                    <a class="text-dark" href="https://75mm.studio/terms.html" target="_blank" rel="noopener noreferrer">서비스 이용약관 (Terms of service)</a><br>
-                    <a class="text-dark" href="https://75mm.studio/privacy.html" target="_blank" rel="noopener noreferrer">개인정보 처리방침 (Privacy policy)</a>
+                    /
+                    <a class="text-dark" href="https://75mm.studio/terms.html" target="_blank" rel="noopener noreferrer"> 서비스 이용약관 </a>
+                    /
+                    <a class="text-dark" href="https://75mm.studio/privacy.html" target="_blank" rel="noopener noreferrer"> 개인정보 처리방침</a>
                 </div>
             </div>
         
             <h4 class="pt-2">Lens type</h4>
-            
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="lensType" id="mono" value=1.0 checked>
-                <label class="form-check-label" for="mono">
-                    Mono
-                </label>
-            </div>
-            
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=2.0>
-                <label class="form-check-label" for="anamorphicLens">
-                    Anamorphic <a href="https://youtu.be/qr5Mv12psrI" target="_blank" rel="noopener noreferrer" class="text-muted"><i class="fas fa-info-circle"></i></a>
-                </label>
-            </div>
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="lensType" id="stereo" value=3.0>
-                <label class="form-check-label" for="stereo">
-                    Stereo
-                </label>
-            </div>
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="projectType" id="vr" value=3.0>
-                <label class="form-check-label" for="vr">
-                    VR
-                </label>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="lensType" id="mono" value=1.0 checked>
+                        <label class="form-check-label" for="mono">
+                            Mono
+                        </label>
+                    </div>
+                    
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=2.0>
+                        <label class="form-check-label" for="anamorphicLens">
+                            Anamorphic <a href="https://youtu.be/qr5Mv12psrI" target="_blank" rel="noopener noreferrer" class="text-muted"><i class="fas fa-info-circle"></i></a>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="lensType" id="stereo" value=3.0>
+                        <label class="form-check-label" for="stereo">
+                            Stereo
+                        </label>
+                    </div>
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="projectType" id="vr" value=3.0>
+                        <label class="form-check-label" for="vr">
+                            VR
+                        </label>
+                    </div>
+                </div>
             </div>
 
 
@@ -127,7 +132,7 @@
             <h4 class="pt-4">Comment</h4>
             <div class="form-group row">
                 <div class="col-12">
-                    <textarea class="form-control" rows="3" id="comment"></textarea>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
                 </div>
             </div>
 
@@ -224,3 +229,4 @@
 </body>
 <script src="js/estimate.js"></script>
 </html>
+
