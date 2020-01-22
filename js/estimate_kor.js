@@ -2,6 +2,7 @@
 let bucket = {
 	"date":"",
 	"author":"",
+	"person":"",
 	"email":"",
 	"project":"",
 	"comment":"",
@@ -124,6 +125,10 @@ function addBucket() {
 		alert("회사명 또는 작성자 이름을 입력해주세요.");
 		return
 	}
+	if (document.getElementById("person").value == "") {
+		alert("담당자의 이름을 입력해주세요.\nPlease enter name of the person in charge.");
+		return
+	}
 	if (document.getElementById("email").value == "") {
 		alert("E-mail을 입력해주세요.");
 		return
@@ -191,6 +196,7 @@ function addBucket() {
 	if (document.getElementById("privacy").checked) {
 		shot.date = today();
 		shot.author = document.getElementById("author").value;
+		shot.person = document.getElementById("person").value;
 		shot.email = document.getElementById("email").value;
 		shot.project = document.getElementById("project").value;
 		shot.startdate = document.getElementById("startdate").value;
@@ -250,6 +256,7 @@ function sendToEmail() {
 	}
 	bucket.date = today();
 	bucket.author = document.getElementById("author").value;
+	bucket.person = document.getElementById("person").value;
 	bucket.email = document.getElementById("email").value;
 	bucket.project = document.getElementById("project").value;
 	bucket.startdate = document.getElementById("startdate").value;

@@ -2,6 +2,7 @@
 let bucket = {
 	"date":"",
 	"author":"",
+	"person":"",
 	"email":"",
 	"project":"",
 	"comment":"",
@@ -124,6 +125,10 @@ function addBucket() {
 		alert("Please enter your company name or author name.");
 		return
 	}
+	if (document.getElementById("person").value == "") {
+		alert("Please enter name of the person in charge.");
+		return
+	}
 	if (document.getElementById("email").value == "") {
 		alert("Please enter your e-mail address.");
 		return
@@ -191,6 +196,7 @@ function addBucket() {
 	if (document.getElementById("privacy").checked) {
 		shot.date = today();
 		shot.author = document.getElementById("author").value;
+		shot.person = document.getElementById("person").value;
 		shot.email = document.getElementById("email").value;
 		shot.project = document.getElementById("project").value;
 		shot.startdate = document.getElementById("startdate").value;
@@ -249,6 +255,7 @@ function sendToEmail() {
 	}
 	bucket.date = today();
 	bucket.author = document.getElementById("author").value;
+	bucket.person = document.getElementById("person").value;
 	bucket.email = document.getElementById("email").value;
 	bucket.project = document.getElementById("project").value;
 	bucket.startdate = document.getElementById("startdate").value;
