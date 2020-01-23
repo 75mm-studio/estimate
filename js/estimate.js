@@ -209,7 +209,7 @@ function addBucket() {
 		shot.total *= shot.attributes[n].value;
 	}
 	// 마지막으로 프레임 가격을 더한다.
-	shot.total += frameNum2Cost(shot.frame);
+	shot.total += frameNum2Cost(shot.frame) / 100 * 100;
 
 	bucket.items.push(shot);
 
