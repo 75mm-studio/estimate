@@ -146,6 +146,10 @@ function addBucket() {
 		alert("이메일 형식이 아닙니다.");
 		return
 	}
+	if (parseInt(document.getElementById("frame").value,10) > 2000) {
+		alert("프레임이 2000장이 넘는 경우에는 따로 문의 바랍니다.");
+		return
+	}
 	
 	let shot = Object.create(item);
 	let attrs = document.getElementsByTagName("input");
@@ -188,7 +192,7 @@ function addBucket() {
 		shot.total *= shot.attributes[n].value;
 	}
 	// 마지막으로 프레임 가격을 더한다.
-	shot.total += shot.frameCost * shot.frame;
+	shot.total += frameNum2Cost(shot.frame);
 
 	bucket.items.push(shot);
 
@@ -294,7 +298,18 @@ function setInputFilter(textbox, inputFilter) {
 		}
 	  });
 	});
-  }
+}
+
+//프레임 개수에 따라 가중치를 고려해 가격을 반환하는 함수.
+function frameNum2Cost(num){
+    if(num <= 500){
+        return 1000*num;
+    }else if(num <= 1000){
+        return 3000*num - 1000000;
+    }else if(num <= 2000){
+        return 4000*num - 2000000;
+    }
+}
 
 // Install input filters.
 setInputFilter(document.getElementById("totalShotNum"), function(value) {
