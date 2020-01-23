@@ -146,6 +146,10 @@ function addBucket() {
 		alert("Your E-mail is not an email format.");
 		return
 	}
+	if (parseInt(document.getElementById("frame").value,10) > 2000) {
+		alert("Please contact us directly in the case of frame over 2000.");
+		return
+	}
 	
 	let shot = Object.create(item);
 	shot.unit = "$";
@@ -303,8 +307,6 @@ function frameNum2Cost(num){
         return 3000*num - 1000000;
     }else if(num <= 2000){
         return 4000*num - 2000000;
-    }else{
-        alert("Please contact us directly in the case of frames over 2000.");
     }
 }
 
