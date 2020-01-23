@@ -188,7 +188,7 @@ function addBucket() {
 		shot.total *= shot.attributes[n].value;
 	}
 	// 마지막으로 프레임 가격을 더한다.
-	shot.total += shot.frameCost * shot.frame;
+	shot.total += frameNum2Cost(shot.frame);
 
 	bucket.items.push(shot);
 
@@ -293,7 +293,20 @@ function setInputFilter(textbox, inputFilter) {
 		}
 	  });
 	});
-  }
+}
+
+//프레임 개수에 따라 가중치를 고려해 가격을 반환하는 함수.
+function frameNum2Cost(num){
+    if(num <= 500){
+        return 1000*num;
+    }else if(num <= 1000){
+        return 3000*num - 1000000;
+    }else if(num <= 2000){
+        return 4000*num - 2000000;
+    }else{
+        alert("Please contact us directly in the case of frames over 2000.");
+    }
+}
 
 // Install input filters.
 setInputFilter(document.getElementById("totalShotNum"), function(value) {
