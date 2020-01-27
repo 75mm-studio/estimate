@@ -18,7 +18,8 @@ exports.handler = function(event, context) {
 
     let msg = "";
     msg += "작성일 : " + event.date +"\n";
-    msg += "작성자 : " + event.author +"\n";
+    msg += "회사명 : " + event.author +"\n";
+    msg += "담당자 : " + event.person +"\n";
     msg += "프로젝트정보 : " + event.project + "\n";
     msg += "예상시작일 : " + event.startdate + "\n";
     msg += "예상마감일 : " + event.enddate + "\n";
@@ -27,11 +28,10 @@ exports.handler = function(event, context) {
     msg += "총견적 : " + event.unit + numberWithCommas(event.total) + "\n\n";
     msg += "세부항목 : 총" + event.items.length + "건\n";
     msg += "\n";
-	let unit = event.unit;
     
     for (let i = 0; i < event.items.length; i++) {
         let line = "----------\n";
-        line += "견적 : " + unit + numberWithCommas(event.items[i].total) + ", ";
+        line += "견적 : " + event.items[i].unit + numberWithCommas(event.items[i].total) + ", ";
         line += "총샷수 : " + event.items[i].totalShotNum + ", ";
         line += "총프레임 : " + event.items[i].frame + "\n";
         let attr = [];
