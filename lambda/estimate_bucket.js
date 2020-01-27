@@ -18,12 +18,13 @@ exports.handler = function(event, context) {
     
     let msg = "";
     msg += "작성일 : " + event.date +"\n";
-    msg += "작성자 : " + event.author +"\n";
+    msg += "회사명 : " + event.author +"\n";
+    msg += "담당자 : " + event.person +"\n";
     msg += "프로젝트정보 : " + event.project + "\n";
-    msg += "이메일 : " + event.email + "\n";
-    msg += "코맨트 : " + event.comment + "\n";
     msg += "예상시작일 : " + event.startdate + "\n";
     msg += "예상마감일 : " + event.enddate + "\n";
+    msg += "이메일 : " + event.email + "\n";
+    msg += "코맨트 : " + event.comment + "\n";
     
     let line = "";
     line += "견적 : " + event.unit + numberWithCommas(event.total) + ", ";
