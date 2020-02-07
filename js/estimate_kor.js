@@ -101,8 +101,7 @@ function bucketRender() {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
-		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
-		div.innerHTML += ` ${bucket.items[i].frame} frame`;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs`;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
@@ -146,10 +145,6 @@ function addBucket() {
 		alert("이메일 형식이 아닙니다.");
 		return
 	}
-	if (parseInt(document.getElementById("frame").value,10) > 2000) {
-		alert("프레임이 2000장이 넘는 경우에는 따로 문의 바랍니다.");
-		return
-	}
 	
 	let shot = Object.create(item);
 	let attrs = document.getElementsByTagName("input");
@@ -179,7 +174,6 @@ function addBucket() {
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.layout = document.getElementById("layout").value;
-	shot.frame = document.getElementById("frame").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
 	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
@@ -191,8 +185,6 @@ function addBucket() {
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
-	// 마지막으로 프레임 가격을 더한다.
-	shot.total += frameNum2Cost(shot.frame) / 100 * 100;
 
 	bucket.items.push(shot);
 
@@ -309,6 +301,14 @@ function frameNum2Cost(num){
     }else if(num <= 2000){
         return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
     }
+}
+
+function splitFrame(){
+	var frames = document.getElementById("frame").value;
+	var splitedFrames = frames.split('+');
+	for (var i in splitedFrames){
+		document.write( '<p>' + jbSplit[i] + '</p>' );
+	}
 }
 
 // Install input filters.
