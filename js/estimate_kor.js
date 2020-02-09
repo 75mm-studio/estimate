@@ -123,6 +123,7 @@ function bucketRender() {
 function frameRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
+	document.getElementById("frames").innerHTML = "";
 	let frames = document.getElementById("frames").value;
 	let splitedframes = frames.split('+');
 	for (let i = 0; i < splitedframes; i++) {
@@ -132,18 +133,9 @@ function frameRender() {
 		div.setAttribute("id", "frame"+i);
 		div.innerHTML += `frame #${i+1}: ${frame}`;
 		div.innerHTML += `${bucket.unit}${framePrice}`;
-		titles = [];
-		
-		div.setAttribute("title", titles.join(","));
-		div.innerHTML += "<br>" + frameBucket.unit + numberWithCommas(Math.round(frameBucket.items[i].total));
-		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
-		div.innerHTML += ` <hr>`;
-		div.onclick = removeItem;
-		document.getElementById("frameBucket").appendChild(div);
-		frameBucket.total += frameBucket.items[i].total;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + frameBucket.items.length;
-	document.getElementById("total").innerHTML = "Total: " + frameBucket.unit + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("total").innerHTML = "Total: " + totalPrice + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -332,7 +324,7 @@ function frameNum2Cost(num){
 }
 
 function splitFrames(){
-	let frames = document.getElementById("frames").value;
+	let frames = document.getElementById("frame").value;
 	let splitedFrames = frames.split('+');
 	let total = 0;
 	for (let i in splitedFrames){
