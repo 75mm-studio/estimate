@@ -11,6 +11,7 @@ let bucket = {
 	"items":[],
 	"total":0,
 	"unit":"",
+	"frame":[],
 };
 
 // 장바구니에 들어가는 아이템 자료구조
@@ -28,8 +29,6 @@ const item = {
 	"rotoanimationSoftDeform" : 0,
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
-	"frameCost" : 1000.0, // KRW model, 프레임당 가격
-	"frame" : 0,
 	"attributes" : [],
 	"total": 0,
 	"unit":"",
@@ -123,19 +122,8 @@ function bucketRender() {
 function frameRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
-	document.getElementById("frames").innerHTML = "";
-	let frames = document.getElementById("frames").value;
-	let splitedframes = frames.split('+');
-	for (let i = 0; i < splitedframes; i++) {
-		let div = document.createElement("div");
-		let frame = splitedframes[i].trim();
-		let framePrice = frameNum2Cost(parseInt(frame))
-		div.setAttribute("id", "frame"+i);
-		div.innerHTML += `frame #${i+1}: ${frame}`;
-		div.innerHTML += `${bucket.unit}${framePrice}`;
-	}
-	document.getElementById("numOfItem").innerHTML = "Bucket: " + frameBucket.items.length;
-	document.getElementById("total").innerHTML = "Total: " + totalPrice + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("frameBucket").innerHTML = "";
+	
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
