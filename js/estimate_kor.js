@@ -117,18 +117,6 @@ function bucketRender() {
 	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
 
-
-//frame가격 장바구니에 렌더
-function frameRender() {
-	bucket.total = 0;
-	bucket.unit = "￦";
-	document.getElementById("frameBucket").innerHTML = "";
-	for (let i = 0; i < bucket.frames.length; i++) {
-
-	}
-	
-}
-
 // 매치무브 샷 조건을 장바구니에 넣는다.
 function addBucket() {
 	if (document.getElementById("author").value == "") {
@@ -324,6 +312,26 @@ function splitFrames(){
 	}
 	let totalFrame = document.getElementById("totalFrame");
 	totalFrame.value = total;
+}
+
+//frame가격 장바구니에 렌더
+function frameRender() {
+	console.log("debug")
+	bucket.total = 0;
+	bucket.unit = "￦";
+	document.getElementById("frameBucket").innerHTML = "";
+	for (let i = 0; i < bucket.frames.length; i++) {
+		let div = document.createElement("div");
+		let framePrice = frameNum2Cost(frames[i])
+		div.innerHTML += `${i+1} frames[i]:`;
+		div.innerHTML += `${framePrice}`;
+		document.getElementById("frameBucket").appendChild(div);
+	}	
+}
+
+function pushOK() {
+	splitFrames();
+	frameRender();
 }
 
 // Install input filters.
