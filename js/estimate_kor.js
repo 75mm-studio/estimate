@@ -11,7 +11,7 @@ let bucket = {
 	"items":[],
 	"total":0,
 	"unit":"",
-	"frame":[],
+	"frames":[],
 };
 
 // 장바구니에 들어가는 아이템 자료구조
@@ -123,6 +123,9 @@ function frameRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
 	document.getElementById("frameBucket").innerHTML = "";
+	for (let i = 0; i < bucket.frames.length; i++) {
+
+	}
 	
 }
 
@@ -312,13 +315,13 @@ function frameNum2Cost(num){
 }
 
 function splitFrames(){
-	let frames = document.getElementById("frame").value;
-	let splitedFrames = frames.split('+');
+	let frame = document.getElementById("frame").value;
+	let splitedFrames = frame.split('+');
 	let total = 0;
 	for (let i in splitedFrames){
+		frames[i] = parseInt(splitedFrames[i].trim());
 		total += parseInt(splitedFrames[i].trim());
 	}
-	console.log(total);
 	let totalFrame = document.getElementById("totalFrame");
 	totalFrame.value = total;
 }
