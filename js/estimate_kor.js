@@ -337,7 +337,8 @@ function frameRender() {
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeFrame;
 		document.getElementById("frameBucket").appendChild(div);
-	}	
+	}
+	document.getElementById("numOfFrame").innerHTML = "Frame: " + bucket.frames.length;
 }
 
 
