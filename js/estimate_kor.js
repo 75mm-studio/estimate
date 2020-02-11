@@ -315,27 +315,24 @@ function splitFrames(){
 		bucket.frames[i] = parseInt(splitedFrames[i].trim());
 		total += parseInt(splitedFrames[i].trim());
 	}
-	console.log(bucket.frames);
 	let totalFrame = document.getElementById("totalFrame");
 	totalFrame.value = total;
 }
 
 //frame가격 장바구니에 렌더
 function frameRender() {
-	// 버킷에 렌더링 되어야하는 결과는 아래와 같다.
-	// 1 100: 10000
-	// 2 43: 43000
 	bucket.total = 0;
 	bucket.unit = "￦";
 	document.getElementById("frameBucket").innerHTML = "";
 	for (let i = 0; i < bucket.frames.length; i++) {
-		// 디버그 코드
-		console.log(i+1, bucket.frames[i],frameNum2Cost(bucket.frames[i]));
+		
 		let div = document.createElement("div");
+		// frame info
 		let framePrice = frameNum2Cost(bucket.frames[i])
 		div.setAttribute("id", "frame" + i);
-		div.innerHTML += `${i+1} ${bucket.frames[i]}:`;
-		div.innerHTML += `${framePrice}`;
+		div.innerHTML += `${bucket.frames[i]} frames<br>`;
+		div.innerHTML += bucket.unit + numberWithCommas(framePrice);
+		//remove button
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeFrame;
