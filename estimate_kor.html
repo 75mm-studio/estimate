@@ -190,17 +190,21 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-4"></div>
                         <small class="form-text text-muted float-right">프레임을 다음과 같이 입력해주세요 ex) 100 + 150 + 43</small>
                     </div>
-                    <div class="col-2 col-push-9">
-                        <button class="btn btn-dark btn-block" type="button" onclick="pushOK();">OK</button>
+                    <div class="row">
+                        <div class="col-10"></div>
+                        <div class="col-2">
+                            <button class="btn btn-dark btn-block" type="button" onclick="pushOK();">OK</button>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="example-number-input" class="col-7 col-form-label">Total Frame number</label>
                 <div class="col-5">
-                <input class="form-control" type="text" id="totalFrame" inputmode="numeric" placeholder="only number" value="1">
+                    <div class="text-center" type="text" id="totalFrame" value="1">0</div>
                 </div>
             </div>
         </div>
@@ -211,18 +215,21 @@
                 <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
             </div>
             <!--rendering item info-->
-            <div>
+            <div class="pb-3">
                 <h2 id="itemNum">Item(0)</h2>
-                <div id="bucket"></div>
+                <div id="itemBucket"></div>
+                &nbsp;<br>
                 <h4 id="itemTotal">Total: ￦0</h4>
             </div>
-            <hr>
+            <hr class="pt-1">
             <!--rendering frame info-->
             <div>
                 <h2 id="frameNum">Frame(0)</h2>
                 <div id="frameBucket"></div>
+                &nbsp;<br>
                 <h4 id="frameTotal">Total: ￦0</h4>
             </div>
+            <hr class="pt-1">
             <!--rendering price info-->
             <div class="pt-3 pb-3">
                 <h2 id="total">Total: ￦0</h2>

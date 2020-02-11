@@ -100,7 +100,7 @@ function removeFrame(e) {
 function bucketRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
-	document.getElementById("bucket").innerHTML = "";
+	document.getElementById("itemBucket").innerHTML = "";
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
@@ -114,7 +114,7 @@ function bucketRender() {
 		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.onclick = removeItem;
-		document.getElementById("bucket").appendChild(div);
+		document.getElementById("itemBucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
 	}
 	document.getElementById("itemNum").innerHTML = "Item(" + bucket.items.length + ")";
@@ -316,8 +316,7 @@ function splitFrames(){
 		bucket.frames[i] = parseInt(splitedFrames[i].trim());
 		total += parseInt(splitedFrames[i].trim());
 	}
-	let totalFrame = document.getElementById("totalFrame");
-	totalFrame.value = total;
+	document.getElementById("totalFrame").innerHTML = total;
 }
 
 //frame가격 장바구니에 렌더
