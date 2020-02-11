@@ -119,6 +119,7 @@ function bucketRender() {
 	}
 	document.getElementById("itemNum").innerHTML = "Item(" + bucket.items.length + ")";
 	document.getElementById("itemTotal").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
+	totalPriceRender();
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -341,6 +342,7 @@ function frameRender() {
 	}
 	document.getElementById("frameNum").innerHTML = "Frame(" + bucket.frames.length + ")";
 	document.getElementById("frameTotal").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(totalPrice));
+	totalPriceRender();
 }
 
 
@@ -348,6 +350,20 @@ function pushOK() {
 	splitFrames();
 	frameRender();
 }
+
+function totalPriceRender(){
+	//item total price 계산
+	let itemPrice = bucket.total;
+	//frame total price 계산
+	let framePrice = 0;
+	for (let i = 0; i < bucket.frames.length; i++){
+		framePrice += frameNum2Cost(bucket.frames[i]);
+	}
+	//total price 계산 
+	let totalPrice = itemPrice + framePrice;
+	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(totalPrice);
+}
+
 
 // Install input filters.
 setInputFilter(document.getElementById("totalShotNum"), function(value) {
