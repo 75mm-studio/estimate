@@ -302,9 +302,11 @@ function frameNum2Cost(num){
         return 1000*num; // 프레임 당 1000원.
     }else if(num <= 1000){
         return 3000*num - 1000000; //1000프레임일 때 프레임 당 2000원.
-    }else if(num <= 2000){
+    }/*else if(num <= 2000){
         return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
-    }
+	}*/ else{
+		return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
+	}
 }
 
 function splitFrames(){
@@ -323,12 +325,14 @@ function splitFrames(){
 function frameRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
+	let totalPrice = 0;
 	document.getElementById("frameBucket").innerHTML = "";
 	for (let i = 0; i < bucket.frames.length; i++) {
 		
 		let div = document.createElement("div");
 		// frame info
-		let framePrice = frameNum2Cost(bucket.frames[i])
+		let framePrice = frameNum2Cost(bucket.frames[i]);
+		totalPrice += framePrice;
 		div.setAttribute("id", "frame" + i);
 		div.innerHTML += `${bucket.frames[i]} frames<br>`;
 		div.innerHTML += bucket.unit + numberWithCommas(framePrice);
@@ -339,6 +343,7 @@ function frameRender() {
 		document.getElementById("frameBucket").appendChild(div);
 	}
 	document.getElementById("numOfFrame").innerHTML = "Frame: " + bucket.frames.length;
+	document.getElementById("frameTotal").innerHTML = "Frame Total: " + bucket.unit + numberWithCommas(Math.round(totalPrice));
 }
 
 
