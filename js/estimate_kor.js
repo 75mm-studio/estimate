@@ -330,6 +330,9 @@ function frameRender() {
 		let framePrice = frameNum2Cost(bucket.frames[i])
 		div.innerHTML += `${i+1} ${bucket.frames[i]}:`;
 		div.innerHTML += `${framePrice}`;
+		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
+		div.innerHTML += ` <hr>`;
+		div.onclick = removeItem;
 		document.getElementById("frameBucket").appendChild(div);
 	}	
 }
