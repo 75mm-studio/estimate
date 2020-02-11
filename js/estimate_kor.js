@@ -90,7 +90,12 @@ function removeItem(e) {
 	}
 	bucketRender()
 }
-
+function removeFrame(e) {
+	id = e.target.parentElement.getAttribute("id");
+	let index = id.replace('frame', '')
+	bucket.frames.splice(index,1);
+	frameRender()
+}
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	bucket.total = 0;
@@ -328,14 +333,16 @@ function frameRender() {
 		console.log(i+1, bucket.frames[i],frameNum2Cost(bucket.frames[i]));
 		let div = document.createElement("div");
 		let framePrice = frameNum2Cost(bucket.frames[i])
+		div.setAttribute("id", "frame" + i);
 		div.innerHTML += `${i+1} ${bucket.frames[i]}:`;
 		div.innerHTML += `${framePrice}`;
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
-		div.onclick = removeItem;
+		div.onclick = removeFrame;
 		document.getElementById("frameBucket").appendChild(div);
 	}	
 }
+
 
 function pushOK() {
 	splitFrames();
