@@ -179,19 +179,20 @@
                 </div>
             </div>
 
+            <!--frame caculator-->
             <h4 class="pt-2">Frame Caculator</h4>
             <div class="form-group">
                 <div id="frames">
                     <div class="row">
-                        <small class="form-text text-muted float-right">프레임을 + 으로 입력해주세요. ex) 100 + 150 + 43</small>
-                    </div>
-                    <div class="row">
                         <label class="col-7 col-form-label">Frames</label>
                         <div class="col-5">
-                        <input class="form-control" type="text" id="frame" value="1">
+                        <input class="form-control" type="text" id="frame" value="1" placeholder="ex) 1003 + 235 + 300">
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="row">
+                        <small class="form-text text-muted float-right">프레임을 다음과 같이 입력해주세요 ex) 100 + 150 + 43</small>
+                    </div>
+                    <div class="col-2 col-push-9">
                         <button class="btn btn-dark btn-block" type="button" onclick="pushOK();">OK</button>
                     </div>
                 </div>
@@ -211,21 +212,20 @@
             </div>
             <!--rendering item info-->
             <div>
-                <h2 class="font-weight-bold">Item</h2>
-                <h4 id="numOfItem">Item: 0</h4>
+                <h2 id="itemNum">Item(0)</h2>
                 <div id="bucket"></div>
-                <h4 id="itemTotal">Item Total: ￦0</h4>
+                <h4 id="itemTotal">Total: ￦0</h4>
             </div>
+            <hr>
             <!--rendering frame info-->
             <div>
-                <h2 class="font-weight-bold">Frame</h2>
-                <h4 id="numOfFrame">Frame: 0</h4>
+                <h2 id="frameNum">Frame(0)</h2>
                 <div id="frameBucket"></div>
-                <h4 id="frameTotal">Frame Total: ￦0</h4>
+                <h4 id="frameTotal">Total: ￦0</h4>
             </div>
             <!--rendering price info-->
             <div class="pt-3 pb-3">
-                <h2 id="total" class="font-weight-bold">Total: ￦0</h2>
+                <h2 id="total">Total: ￦0</h2>
             </div>
             <div class="pt-3">
                 <button type="button" class="btn btn-dark btn-block" onclick="sendToEmail()"><i class="far fa-envelope"></i>&nbsp;&nbsp;&nbsp;Send to 75mm Studio</button>

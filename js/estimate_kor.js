@@ -105,21 +105,20 @@ function bucketRender() {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
-		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs`;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs = `;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
-		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
 	}
-	document.getElementById("numOfItem").innerHTML = "Item: " + bucket.items.length;
-	document.getElementById("itemTotal").innerHTML = "Item Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("itemNum").innerHTML = "Item(" + bucket.items.length + ")";
+	document.getElementById("itemTotal").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -334,16 +333,15 @@ function frameRender() {
 		let framePrice = frameNum2Cost(bucket.frames[i]);
 		totalPrice += framePrice;
 		div.setAttribute("id", "frame" + i);
-		div.innerHTML += `${bucket.frames[i]} frames<br>`;
+		div.innerHTML += `${bucket.frames[i]} frames = `;
 		div.innerHTML += bucket.unit + numberWithCommas(framePrice);
 		//remove button
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
-		div.innerHTML += ` <hr>`;
 		div.onclick = removeFrame;
 		document.getElementById("frameBucket").appendChild(div);
 	}
-	document.getElementById("numOfFrame").innerHTML = "Frame: " + bucket.frames.length;
-	document.getElementById("frameTotal").innerHTML = "Frame Total: " + bucket.unit + numberWithCommas(Math.round(totalPrice));
+	document.getElementById("frameNum").innerHTML = "Frame(" + bucket.frames.length + ")";
+	document.getElementById("frameTotal").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(totalPrice));
 }
 
 
