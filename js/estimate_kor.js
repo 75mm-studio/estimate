@@ -118,8 +118,8 @@ function bucketRender() {
 		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
 	}
-	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("numOfItem").innerHTML = "Item: " + bucket.items.length;
+	document.getElementById("itemTotal").innerHTML = "Item Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.

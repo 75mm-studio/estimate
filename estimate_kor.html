@@ -208,17 +208,24 @@
         <div class="col-sm-4">
             <div>
                 <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
-                <h4 id="numOfItem">bucket: 0</h4>
-                <h4 id="numOfFrame">Frame: 0</h4>
+            </div>
+            <!--rendering item info-->
+            <div>
+                <h2 class="font-weight-bold">Item</h2>
+                <h4 id="numOfItem">Item: 0</h4>
                 <div id="bucket"></div>
+                <h4 id="itemTotal">Item Total: ￦0</h4>
             </div>
             <!--rendering frame info-->
-            <div id="frameBucket"></div>
-
+            <div>
+                <h2 class="font-weight-bold">Frame</h2>
+                <h4 id="numOfFrame">Frame: 0</h4>
+                <div id="frameBucket"></div>
+                <h4 id="frameTotal">Frame Total: ￦0</h4>
+            </div>
             <!--rendering price info-->
             <div class="pt-3 pb-3">
-                <h3 id="total">Total: ￦0</h3>
-                <h3 id="frameTotal">Frame Total: ￦0</h3>
+                <h2 id="total" class="font-weight-bold">Total: ￦0</h2>
             </div>
             <div class="pt-3">
                 <button type="button" class="btn btn-dark btn-block" onclick="sendToEmail()"><i class="far fa-envelope"></i>&nbsp;&nbsp;&nbsp;Send to 75mm Studio</button>
