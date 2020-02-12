@@ -11,7 +11,6 @@ let bucket = {
 	"items":[],
 	"total":0,
 	"unit":"",
-	"frames":[],
 };
 
 // 장바구니에 들어가는 아이템 자료구조
@@ -29,6 +28,8 @@ const item = {
 	"rotoanimationSoftDeform" : 0,
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
+	"frameCost" : 1000.0, // KRW model, 프레임당 가격
+	"frame" : 0,
 	"attributes" : [],
 	"total": 0,
 	"unit":"",
@@ -90,36 +91,32 @@ function removeItem(e) {
 	}
 	bucketRender()
 }
-function removeFrame(e) {
-	id = e.target.parentElement.getAttribute("id");
-	let index = id.replace('frame', '')
-	bucket.frames.splice(index,1);
-	frameRender()
-}
+
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
-	document.getElementById("itemBucket").innerHTML = "";
+	document.getElementById("bucket").innerHTML = "";
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
-		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs = `;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
+		div.innerHTML += ` ${bucket.items[i].frame} frame`;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
+		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
-		document.getElementById("itemBucket").appendChild(div);
+		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
 	}
-	document.getElementById("itemNum").innerHTML = "Item(" + bucket.items.length + ")";
-	document.getElementById("itemTotal").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
-	totalPriceRender();
+	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
+	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
@@ -147,6 +144,10 @@ function addBucket() {
 	}
 	if (!/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(document.getElementById("email").value)) {
 		alert("이메일 형식이 아닙니다.");
+		return
+	}
+	if (parseInt(document.getElementById("frame").value,10) > 2000) {
+		alert("프레임이 2000장이 넘는 경우에는 따로 문의 바랍니다.");
 		return
 	}
 	
@@ -178,6 +179,7 @@ function addBucket() {
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.layout = document.getElementById("layout").value;
+	shot.frame = document.getElementById("frame").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
 	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
@@ -189,6 +191,8 @@ function addBucket() {
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
+	// 마지막으로 프레임 가격을 더한다.
+	shot.total += frameNum2Cost(shot.frame) / 100 * 100;
 
 	bucket.items.push(shot);
 
@@ -302,68 +306,10 @@ function frameNum2Cost(num){
         return 1000*num; // 프레임 당 1000원.
     }else if(num <= 1000){
         return 3000*num - 1000000; //1000프레임일 때 프레임 당 2000원.
-    }/*else if(num <= 2000){
+    }else if(num <= 2000){
         return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
-	}*/ else{
-		return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
-	}
+    }
 }
-
-function splitFrames(){
-	let frame = document.getElementById("frame").value;
-	let splitedFrames = frame.split('+');
-	let total = 0;
-	for (let i in splitedFrames){
-		bucket.frames[i] = parseInt(splitedFrames[i].trim());
-		total += parseInt(splitedFrames[i].trim());
-	}
-	document.getElementById("totalFrame").innerHTML = total;
-}
-
-//frame가격 장바구니에 렌더
-function frameRender() {
-	bucket.total = 0;
-	bucket.unit = "￦";
-	let totalPrice = 0;
-	document.getElementById("frameBucket").innerHTML = "";
-	for (let i = 0; i < bucket.frames.length; i++) {
-		
-		let div = document.createElement("div");
-		// frame info
-		let framePrice = frameNum2Cost(bucket.frames[i]);
-		totalPrice += framePrice;
-		div.setAttribute("id", "frame" + i);
-		div.innerHTML += `${bucket.frames[i]} frames = `;
-		div.innerHTML += bucket.unit + numberWithCommas(framePrice);
-		//remove button
-		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
-		div.onclick = removeFrame;
-		document.getElementById("frameBucket").appendChild(div);
-	}
-	document.getElementById("frameNum").innerHTML = "Frame(" + bucket.frames.length + ")";
-	document.getElementById("frameTotal").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(totalPrice));
-	totalPriceRender();
-}
-
-
-function pushOK() {
-	splitFrames();
-	frameRender();
-}
-
-function totalPriceRender(){
-	//item total price 계산
-	let itemPrice = bucket.total;
-	//frame total price 계산
-	let framePrice = 0;
-	for (let i = 0; i < bucket.frames.length; i++){
-		framePrice += frameNum2Cost(bucket.frames[i]);
-	}
-	//total price 계산 
-	let totalPrice = itemPrice + framePrice;
-	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(totalPrice);
-}
-
 
 // Install input filters.
 setInputFilter(document.getElementById("totalShotNum"), function(value) {
@@ -384,6 +330,6 @@ setInputFilter(document.getElementById("rotoanimationSoftDeform"), function(valu
 setInputFilter(document.getElementById("layout"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
-/*setInputFilter(document.getElementById("frame"), function(value) {
+setInputFilter(document.getElementById("frame"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 1800000);
-});*/
+});

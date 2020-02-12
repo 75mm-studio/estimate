@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="author" content="lazypic">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="img/estimateicon.png">
+<link rel="icon" href="img/estimatecon.png">
 <link rel="apple-touch-icon" href="img/estimateicon.png">
 <title>Estimate</title>
 <!-- Bootstrap core CSS -->
@@ -172,39 +172,18 @@
                 <input class="form-control" type="text" id="layout" inputmode="numeric" placeholder="only number" value="0">
                 </div>
             </div>
-            <div class="row pb-3">
-                <div class="col-3"></div>
-                <div class="col-7">
-                    <button id="addBucket" type="button" class="btn btn-dark btn-block">ADD BUCKET</button>
-                </div>
-            </div>
 
-            <!--frame caculator-->
-            <h4 class="pt-2">Frame Caculator</h4>
-            <div class="form-group">
-                <div id="frames">
-                    <div class="row">
-                        <label class="col-7 col-form-label">Frames</label>
-                        <div class="col-5">
-                        <input class="form-control" type="text" id="frame" value="1" placeholder="ex) 1003 + 235 + 300">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4"></div>
-                        <small class="form-text text-muted float-right">프레임을 다음과 같이 입력해주세요 ex) 100 + 150 + 43</small>
-                    </div>
-                    <div class="row">
-                        <div class="col-10"></div>
-                        <div class="col-2">
-                            <button class="btn btn-dark btn-block" type="button" onclick="pushOK();">OK</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h4 class="pt-2">Frame</h4>
             <div class="form-group row">
                 <label for="example-number-input" class="col-7 col-form-label">Total Frame number</label>
                 <div class="col-5">
-                    <div class="text-center" type="text" id="totalFrame" value="1">0</div>
+                <input class="form-control" type="text" id="frame" inputmode="numeric" placeholder="only number" value="1">
+                </div>
+            </div>
+            <div class="row pb-3">
+                <div class="col-5"></div>
+                <div class="col-7">
+                    <button id="addBucket" type="button" class="btn btn-dark btn-block">ADD BUCKET</button>
                 </div>
             </div>
         </div>
@@ -213,26 +192,12 @@
         <div class="col-sm-4">
             <div>
                 <i class="fas fa-cart-arrow-down fa-3x m-3"></i>
+                <h4 id="numOfItem">Bucket: 0</h4>
+                <div id="bucket"></div>
             </div>
-            <!--rendering item info-->
-            <div class="pb-3">
-                <h2 id="itemNum">Item(0)</h2>
-                <div id="itemBucket"></div>
-                &nbsp;<br>
-                <h4 id="itemTotal">Total: ￦0</h4>
-            </div>
-            <hr class="pt-1">
-            <!--rendering frame info-->
-            <div>
-                <h2 id="frameNum">Frame(0)</h2>
-                <div id="frameBucket"></div>
-                &nbsp;<br>
-                <h4 id="frameTotal">Total: ￦0</h4>
-            </div>
-            <hr class="pt-1">
-            <!--rendering price info-->
+
             <div class="pt-3 pb-3">
-                <h2 id="total">Total: ￦0</h2>
+                <h3 id="total">Total: ￦0</h3>
             </div>
             <div class="pt-3">
                 <button type="button" class="btn btn-dark btn-block" onclick="sendToEmail()"><i class="far fa-envelope"></i>&nbsp;&nbsp;&nbsp;Send to 75mm Studio</button>
