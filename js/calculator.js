@@ -15,7 +15,10 @@ function check(){
 //function that evaluates the digit and return result 
 function solve() 
 {
-    if (!/^[0-9]+(\+[0-9]+)*$/.test(document.getElementById("result").value)) {
+    //regular expression으로 input 체크
+    let input = document.getElementById("result").value
+    let rmWhiteSpace = input.replace(/\s/g,'')
+    if (!/^[0-9]+(\+[0-9]+)*$/.test(rmWhiteSpace)) {
         alert("수와 +부호를 이용해 입력해주세요. ex)100 + 45 + 120")
         return
     }
