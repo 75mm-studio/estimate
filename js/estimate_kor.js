@@ -62,7 +62,7 @@ function today() {
 	let y = date.getFullYear();
 	let m = date.getMonth() + 1;
 	let d = date.getDate();
-	return `Date: ${y}. ${m}. ${d}`;
+	return `Pre-Estimate System, Date: ${y}. ${m}. ${d}`;
 }
 
 // pad 함수는 숫자를 받아서 필요한 자리수만큼 "0"을 붙힌다.
