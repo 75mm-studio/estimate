@@ -9,6 +9,7 @@ let bucket = {
 	"startdate":"",
 	"enddate":"",
 	"items":[],
+	"frames":[],
 	"total":0,
 	"unit":"",
 };
@@ -146,10 +147,6 @@ function addBucket() {
 		alert("이메일 형식이 아닙니다.");
 		return
 	}
-	if (parseInt(document.getElementById("frame").value,10) > 2000) {
-		alert("프레임이 2000장이 넘는 경우에는 따로 문의 바랍니다.");
-		return
-	}
 	
 	let shot = Object.create(item);
 	let attrs = document.getElementsByTagName("input");
@@ -179,7 +176,6 @@ function addBucket() {
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.layout = document.getElementById("layout").value;
-	shot.frame = document.getElementById("frame").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
 	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
@@ -298,6 +294,17 @@ function setInputFilter(textbox, inputFilter) {
 		}
 	  });
 	});
+}
+
+function splitFrames(){
+    let frame = document.getElementById("frameInput").value;
+    let splitedFrames = frame.split('+');
+    let total = 0;
+    for (let i in splitedFrames){
+        bucket.frames[i] = parseInt(splitedFrames[i].trim());
+        total += parseInt(splitedFrames[i].trim());
+    }
+    document.getElementById("totalFrame").innerHTML = total;
 }
 
 //프레임 개수에 따라 가중치를 고려해 가격을 반환하는 함수.
