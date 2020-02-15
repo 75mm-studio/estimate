@@ -29,8 +29,7 @@ const item = {
 	"rotoanimationSoftDeform" : 0,
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
-	"frameCost" : 1000.0, // KRW model, 프레임당 가격
-	"frame" : 0,
+	"frametotal" : 0,
 	"attributes" : [],
 	"total": 0,
 	"unit":"",
@@ -102,19 +101,21 @@ function bucketRender() {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
-		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
-		div.innerHTML += ` ${bucket.items[i].frame} frame`;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs`;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
 		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += "<br>" + ` ${bucket.frames.length} frame`;
+		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].frametotal));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
+		bucket.total += bucket.items[i].frametotal;
 	}
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
 	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
@@ -188,7 +189,9 @@ function addBucket() {
 		shot.total *= shot.attributes[n].value;
 	}
 	// 마지막으로 프레임 가격을 더한다.
-	shot.total += frameNum2Cost(shot.frame) / 100 * 100;
+	for(let i in bucket.frames){
+		shot.frametotal += frameNum2Cost(bucket.frames[i]);
+	}
 
 	bucket.items.push(shot);
 
