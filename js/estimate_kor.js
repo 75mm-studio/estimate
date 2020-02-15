@@ -30,6 +30,7 @@ const item = {
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
 	"frametotal" : 0,
+	"framenum" : 0,
 	"attributes" : [],
 	"total": 0,
 	"unit":"",
@@ -108,7 +109,7 @@ function bucketRender() {
 		}
 		div.setAttribute("title", titles.join(","));
 		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
-		div.innerHTML += "<br>" + ` ${bucket.frames.length} frame`;
+		div.innerHTML += "<br>" + ` ${bucket.items[i].framenum} frame`;
 		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].frametotal));
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
@@ -188,7 +189,8 @@ function addBucket() {
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
-	// 마지막으로 프레임 가격을 더한다.
+	//마지막으로 프레임 개수를 구하고, 전체 가격에 프레임 가격을 더한다. 
+	shot.framenum = bucket.frames.length;
 	for(let i in bucket.frames){
 		shot.frametotal += frameNum2Cost(bucket.frames[i]);
 	}
