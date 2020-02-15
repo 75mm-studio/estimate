@@ -181,7 +181,7 @@
             <h4 class="pt-2">Frame</h4>
             <div class="form-group row">
                 <label for="example-number-input" class="col-7 col-form-label">Total Frame</label>
-                <div class="col-5" id="frame">
+                <div class="col-5" id="totalFrame">
                     0
                 </div>
             </div>
@@ -220,10 +220,58 @@
                 <br>
                 On-set Supervising 별도문의<br>
             </div>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            <!--frame calculator-->
+            <div>
+                <div>Frame Calculator</div>
+                <table>
+                    <tr>
+                        <td colspan="3"><input type="text" id="frameInput"/></td>
+                        <td><input type="button" value="c" onclick="clr()"/> </td> 
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="1" onclick="dis('1')"/> </td> 
+                        <td><input type="button" value="2" onclick="dis('2')"/> </td> 
+                        <td><input type="button" value="3" onclick="dis('3')"/> </td> 
+                    </tr>
+                    <tr> 
+                        <td><input type="button" value="4" onclick="dis('4')"/> </td> 
+                        <td><input type="button" value="5" onclick="dis('5')"/> </td> 
+                        <td><input type="button" value="6" onclick="dis('6')"/> </td> 
+                    </tr> 
+                    <tr> 
+                        <td><input type="button" value="7" onclick="dis('7')"/> </td> 
+                        <td><input type="button" value="8" onclick="dis('8')"/> </td> 
+                        <td><input type="button" value="9" onclick="dis('9')"/> </td> 
+                    </tr> 
+                    <tr> 
+                        <td><input type="button" value="+" onclick="dis('+')"/> </td> 
+                        <td><input type="button" value="0" onclick="dis('0')"/> </td> 
+                        <!-- solve function call function solve to evaluate value -->
+                        <td><input type="button" value="=" onclick="splitFrames()"/> </td> 
+                    </tr> 
+                </table>
+            </div>
         </div>
     </div>
 </div>
-
+<div class="row"></div>
+<div class="row"></div>
 <div class="p-3 text-center">
     <div class="row">
         <div class="col-12 text-center" id="copyright">
@@ -234,5 +282,6 @@
 
 </body>
 <script src="js/estimate_kor.js"></script>
+<script src="js/calculator.js"></script>
 </html>
 
