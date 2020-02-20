@@ -224,48 +224,37 @@
             &nbsp;<br>
             &nbsp;<br>
             &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
-            &nbsp;<br>
             <!--frame calculator-->
-            <div>
-                <div>Frame Calculator</div>
-                <table>
-                    <tr>
-                        <td colspan="3"><input type="text" id="result"/></td>
-                        <td><input type="button" value="c" onclick="clr()"/> </td> 
-                    </tr>
-                    <tr>
-                        <td><input type="button" value="1" onclick="dis('1')"/> </td> 
-                        <td><input type="button" value="2" onclick="dis('2')"/> </td> 
-                        <td><input type="button" value="3" onclick="dis('3')"/> </td> 
-                    </tr>
-                    <tr> 
-                        <td><input type="button" value="4" onclick="dis('4')"/> </td> 
-                        <td><input type="button" value="5" onclick="dis('5')"/> </td> 
-                        <td><input type="button" value="6" onclick="dis('6')"/> </td> 
-                    </tr> 
-                    <tr> 
-                        <td><input type="button" value="7" onclick="dis('7')"/> </td> 
-                        <td><input type="button" value="8" onclick="dis('8')"/> </td> 
-                        <td><input type="button" value="9" onclick="dis('9')"/> </td> 
-                    </tr> 
-                    <tr> 
-                        <td><input type="button" value="+" onclick="dis('+')"/> </td> 
-                        <td><input type="button" value="0" onclick="dis('0')"/> </td> 
-                        <!-- solve function call function solve to evaluate value -->
-                        <td><input type="button" value="=" onclick="splitFrames()"/> </td> 
-                    </tr> 
-                </table>
+            <div class="calculator">
+                <h2>Frame Calculator</h2>
+                <div class="row">
+                    <div class="col-12">
+                        <textarea class="form-control" rows="4" id="result"></textarea>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="1" onclick="dis('1')">1</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="2" onclick="dis('2')">2</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="3" onclick="dis('3')">3</button>
+                </div>
+                <div class="row text-center">
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="4" onclick="dis('4')">4</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="5" onclick="dis('5')">5</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="6" onclick="dis('6')">6</button>
+                </div>
+                <div class="row text-center">
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="7" onclick="dis('7')">7</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="8" onclick="dis('8')">8</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-num" value="9" onclick="dis('9')">9</button>
+                </div>
+                <div class="row text-center">
+                    <button class="col-8 btn-lg btn-cal btn-cal-num" value="0" onclick="dis('0')">0</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-operator" onclick="clr()">C</button>
+                </div>
+                <div class="row text-center">
+                    <button class="col-8 btn-lg btn-cal btn-cal-operator" value="+" onclick="dis('+')">+</button>
+                    <button class="col-4 btn-lg btn-cal btn-cal-operator" onclick="splitFrames()">=</button>
+                </div>
             </div>
         </div>
     </div>

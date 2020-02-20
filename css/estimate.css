@@ -37,3 +37,11 @@ hr {
 .btn-cal {
   border-radius: 0%;
 }
+
+.btn-cal-num {
+  background-color: #e6e6e6;
+}
+
+.btn-cal-operator{
+  background-color: #d9d9d9;
+}

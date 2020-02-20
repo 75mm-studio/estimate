@@ -8,35 +8,40 @@
 <link rel="stylesheet" type="text/css" href="css/estimate.css">
 </head>
 <body>
-<h2>Frame Calculator</h2>
-<div class="row calculator">
-    <div class="col-3">
-        <textarea class="form-control" rows="4" id="result"></textarea>
+<div class="col-3">
+    <div class="calculator">
+        <h2>Frame Calculator</h2>
+        <div class="row">
+            <div class="col-12">
+                <textarea class="form-control" rows="4" id="result"></textarea>
+            </div>
+        </div>
+        <div class="row text-center">
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="1" onclick="dis('1')">1</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="2" onclick="dis('2')">2</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="3" onclick="dis('3')">3</button>
+        </div>
+        <div class="row text-center">
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="4" onclick="dis('4')">4</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="5" onclick="dis('5')">5</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="6" onclick="dis('6')">6</button>
+        </div>
+        <div class="row text-center">
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="7" onclick="dis('7')">7</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="8" onclick="dis('8')">8</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-num" value="9" onclick="dis('9')">9</button>
+        </div>
+        <div class="row text-center">
+            <button class="col-8 btn-lg btn-cal btn-cal-num" value="0" onclick="dis('0')">0</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-operator" onclick="clr()">C</button>
+        </div>
+        <div class="row text-center">
+            <button class="col-8 btn-lg btn-cal btn-cal-operator" value="+" onclick="dis('+')">+</button>
+            <button class="col-4 btn-lg btn-cal btn-cal-operator" onclick="splitFrames()">=</button>
+        </div>
     </div>
 </div>
-<div class="row text-center">
-    <button class="col-1 btn-lg btn-cal" value="1" onclick="dis('1')">1</button>
-    <button class="col-1 btn-lg btn-cal" value="2" onclick="dis('2')">2</button>
-    <button class="col-1 btn-lg btn-cal" value="3" onclick="dis('3')">3</button>
-</div>
-<div class="row text-center">
-    <button class="col-1 btn-lg btn-cal" value="4" onclick="dis('4')">4</button>
-    <button class="col-1 btn-lg btn-cal" value="5" onclick="dis('5')">5</button>
-    <button class="col-1 btn-lg btn-cal" value="6" onclick="dis('6')">6</button>
-</div>
-<div class="row text-center">
-    <button class="col-1 btn-lg btn-cal" value="7" onclick="dis('7')">7</button>
-    <button class="col-1 btn-lg btn-cal" value="8" onclick="dis('8')">8</button>
-    <button class="col-1 btn-lg btn-cal" value="9" onclick="dis('9')">9</button>
-</div>
-<div class="row text-center">
-    <button class="col-1 btn-lg btn-cal" onclick="clr()">C</button>
-    <button class="col-1 btn-lg btn-cal" value="0" onclick="dis('0')">0</button>
-    <button class="col-1 btn-lg btn-cal" onclick="solve()">=</button>
-</div>
-<div class="row text-center">
-    <button class="col-3 btn-lg btn-cal" value="+" onclick="dis('+')">+</button>
-</div>
+
 </body>
 <script src="js/calculator.js"></script>
 <script src="js/estimate_kor.js"></script>
