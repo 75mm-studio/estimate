@@ -317,9 +317,9 @@ function frameNum2Cost(num){
     if(num <= 500){
         return 1000*num; // 프레임 당 1000원.
     }else if(num <= 1000){
-        return 3000*num - 1000000; //1000프레임일 때 프레임 당 2000원.
+        return 2000*num - 500000; //1000프레임일 때 프레임 당 2000원.
     }else if(num <= 2000){
-        return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
+        return 2500*num - 1000000; //2000프레임일 때 프레임 당 3000원.
     }
 }
 
