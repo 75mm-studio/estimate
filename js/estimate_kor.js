@@ -308,7 +308,7 @@ function setInputFilter(textbox, inputFilter) {
 }
 
 function splitFrames(){
-    let frame = document.getElementById("frameInput").value;
+    let frame = document.getElementById("result").value;
     let splitedFrames = frame.split('+');
     let total = 0;
     for (let i in splitedFrames){
