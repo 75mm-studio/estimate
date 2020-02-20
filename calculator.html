@@ -3,36 +3,40 @@
 <meta charset="utf-8">
 <meta name="author" content="lazypic">
 <meta name="viewport" content="width=device-sidth, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/estimate.css">
 </head>
 <body>
-<div>Frame Calculator</div>
-<table>
-    <tr>
-        <td colspan="3"><input type="text" id="result"/></td>
-        <td><input type="button" value="c" onclick="clr()"/> </td> 
-    </tr>
-    <tr>
-        <td><input type="button" value="1" onclick="dis('1')"/> </td> 
-        <td><input type="button" value="2" onclick="dis('2')"/> </td> 
-        <td><input type="button" value="3" onclick="dis('3')"/> </td> 
-    </tr>
-    <tr> 
-        <td><input type="button" value="4" onclick="dis('4')"/> </td> 
-        <td><input type="button" value="5" onclick="dis('5')"/> </td> 
-        <td><input type="button" value="6" onclick="dis('6')"/> </td> 
-     </tr> 
-     <tr> 
-        <td><input type="button" value="7" onclick="dis('7')"/> </td> 
-        <td><input type="button" value="8" onclick="dis('8')"/> </td> 
-        <td><input type="button" value="9" onclick="dis('9')"/> </td> 
-     </tr> 
-     <tr> 
-        <td><input type="button" value="+" onclick="dis('+')"/> </td> 
-        <td><input type="button" value="0" onclick="dis('0')"/> </td> 
-        <!-- solve function call function solve to evaluate value -->
-        <td><input type="button" value="=" onclick="solve()"/> </td> 
-     </tr> 
-</table>
+<h2>Frame Calculator</h2>
+<div class="row calculator">
+    <div class="col-3">
+        <textarea class="form-control" rows="4" id="result"></textarea>
+    </div>
+</div>
+<div class="row text-center">
+    <button class="col-1 btn-lg btn-cal" value="1" onclick="dis('1')">1</button>
+    <button class="col-1 btn-lg btn-cal" value="2" onclick="dis('2')">2</button>
+    <button class="col-1 btn-lg btn-cal" value="3" onclick="dis('3')">3</button>
+</div>
+<div class="row text-center">
+    <button class="col-1 btn-lg btn-cal" value="4" onclick="dis('4')">4</button>
+    <button class="col-1 btn-lg btn-cal" value="5" onclick="dis('5')">5</button>
+    <button class="col-1 btn-lg btn-cal" value="6" onclick="dis('6')">6</button>
+</div>
+<div class="row text-center">
+    <button class="col-1 btn-lg btn-cal" value="7" onclick="dis('7')">7</button>
+    <button class="col-1 btn-lg btn-cal" value="8" onclick="dis('8')">8</button>
+    <button class="col-1 btn-lg btn-cal" value="9" onclick="dis('9')">9</button>
+</div>
+<div class="row text-center">
+    <button class="col-1 btn-lg btn-cal" onclick="clr()">C</button>
+    <button class="col-1 btn-lg btn-cal" value="0" onclick="dis('0')">0</button>
+    <button class="col-1 btn-lg btn-cal" onclick="solve()">=</button>
+</div>
+<div class="row text-center">
+    <button class="col-3 btn-lg btn-cal" value="+" onclick="dis('+')">+</button>
+</div>
 </body>
 <script src="js/calculator.js"></script>
 <script src="js/estimate_kor.js"></script>
