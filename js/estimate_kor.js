@@ -98,6 +98,7 @@ function bucketRender() {
 	bucket.total = 0;
 	bucket.unit = "￦";
 	document.getElementById("bucket").innerHTML = "";
+	//attribute 가격
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
@@ -108,9 +109,13 @@ function bucketRender() {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
-		div.innerHTML += "<br>" + ` ${bucket.items[i].framenum} frame`;
-		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].frametotal));
+		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total)) + "<br>";
+		//frame 가격
+		div.innerHTML += ` ${bucket.items[i].framenum} frame` + "<br>";
+		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].frametotal)) + "<br>";
+		//아이템 전체 가격
+		itemtotal = bucket.items[i].total + bucket.items[i].frametotal;
+		div.innerHTML += `total:` + numberWithCommas(itemtotal);
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
@@ -118,6 +123,7 @@ function bucketRender() {
 		bucket.total += bucket.items[i].total;
 		bucket.total += bucket.items[i].frametotal;
 	}
+	// 장바구니 아이템 개수와 장바구니 전체 가격
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
 	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
 }
@@ -317,9 +323,9 @@ function frameNum2Cost(num){
     if(num <= 500){
         return 1000*num; // 프레임 당 1000원.
     }else if(num <= 1000){
-        return 3000*num - 1000000; //1000프레임일 때 프레임 당 2000원.
+        return 2000*num - 500000; //1000프레임일 때 프레임 당 2000원.
     }else if(num <= 2000){
-        return 4000*num - 2000000; //2000프레임일 때 프레임 당 3000원.
+        return 2500*num - 1000000; //2000프레임일 때 프레임 당 3000원.
     }
 }
 
