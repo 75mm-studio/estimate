@@ -252,7 +252,8 @@ function resetForm() {
 	document.getElementById("rotoanimationBasic").value = 0;
 	document.getElementById("rotoanimationSoftDeform").value = 0;
 	document.getElementById("layout").value = 0;
-	document.getElementById("frame").value = 1;
+	document.getElementById("totalFrame").innerHTML = 0;
+	document.getElementById("result").value = "";
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
