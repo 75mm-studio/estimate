@@ -32,5 +32,5 @@ function clr() {
     // 기존 총 프레임수를 초기화 한다.
     document.getElementById("totalFrame").innerText = "0";
     // 계산기의 결과를 초기화 한다.
-    document.getElementById("result").value = "0";
+    document.getElementById("result").value = "";
 } 
