@@ -311,12 +311,11 @@ function setInputFilter(textbox, inputFilter) {
 // checkInput은 계산기에 들어온 문자열의 예외처리를 한다.
 function checkInput(){
 	let input = document.getElementById("result").value
-	let l = input.length
-	if (input[0] == '+') {
+	if (input[0] === '+') {
 		alert("수식은 숫자로 시작해야합니다")
 		return
 	}
-	if (input[l-1]== '+'){
+	if (input[input.length-1] === '+'){
 		alert("수식은 +로 끝날 수 없습니다")
 		return
 	}
