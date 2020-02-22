@@ -366,6 +366,3 @@ setInputFilter(document.getElementById("rotoanimationSoftDeform"), function(valu
 setInputFilter(document.getElementById("layout"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
-setInputFilter(document.getElementById("frame"), function(value) {
-	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 1800000);
-});
