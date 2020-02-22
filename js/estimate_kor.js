@@ -253,7 +253,7 @@ function resetForm() {
 	document.getElementById("rotoanimationSoftDeform").value = 0;
 	document.getElementById("layout").value = 0;
 	document.getElementById("totalFrame").innerHTML = 0;
-	document.getElementById("result").value = "";
+	document.getElementById("calHistory").innerText = "";
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
@@ -308,9 +308,9 @@ function setInputFilter(textbox, inputFilter) {
 	});
 }
 
-// checkInput은 계산기에 들어온 문자열의 예외처리를 한다.
-function checkInput(){
-	let input = document.getElementById("result").value
+// checkInput은 계산기의 히스토리 문자열 예외처리를 한다.
+function checkInput() {
+	let input = document.getElementById("calHistory").innerText
 	if (input[0] === '+') {
 		alert("수식은 숫자로 시작해야합니다")
 		return
@@ -324,7 +324,7 @@ function checkInput(){
 //계산기의 =버튼을 누르면 작동하는 함수. +를 기준으로 각 프레임의 가격을 계산한다.
 function splitFrames(){
 	checkInput()
-    let frame = document.getElementById("result").value;
+    let frame = document.getElementById("calHistory").innerText;
     let splitedFrames = frame.split('+');
     let total = 0;
     for (let i in splitedFrames){
