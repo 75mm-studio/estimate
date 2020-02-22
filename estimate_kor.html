@@ -234,8 +234,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 pb-2">
-                        <textarea class="form-control" rows="4" id="result"></textarea>
+                    <div class="col-12">
+                        <span class="h3 text-right" id="calResult">0</span>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -276,12 +276,12 @@
                         <button class="w-100 btn btn-lg btn-outline-dark" value="0" onclick="dis('0')">0</button>
                     </div>
                     <div class="col-4 m-0 p-1">
-                        <button class="w-100 btn btn-lg btn-cal-operator" value="+" onclick="dis('+')">+</button>
+                        <button class="w-100 btn btn-lg btn-cal-operator" value="+" onclick="add()">+</button>
                     </div>
                 </div>
                 <div class="row mx-auto">
                     <div class="col-8 m-0 p-1">
-                        <button class="w-100 btn btn-lg btn-cal-operator" onclick="splitFrames()">=</button>
+                        <button class="w-100 btn btn-lg btn-cal-operator" onclick="evaluateCal()">=</button>
                     </div>
                     <div class="col-4 m-0 p-1">
                         <button class="w-100 btn btn-lg btn-cal-operator" onclick="clr()">C</button>

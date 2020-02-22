@@ -321,8 +321,8 @@ function checkCalculatorHistoryString() {
 	}
 }
 
-//계산기의 =버튼을 누르면 작동하는 함수. +를 기준으로 각 프레임의 가격을 계산한다.
-function splitFrames(){
+//계산기의 = 버튼을 누르면 작동하는 함수. + 를 기준으로 각 프레임의 가격을 계산한다.
+function evaluateCal() {
 	checkCalculatorHistoryString()
     let frame = document.getElementById("calHistory").innerText;
     let splitedFrames = frame.split('+');
@@ -331,7 +331,9 @@ function splitFrames(){
         bucket.frames[i] = parseInt(splitedFrames[i].trim());
         total += parseInt(splitedFrames[i].trim());
     }
-    document.getElementById("totalFrame").innerHTML = total;
+	document.getElementById("totalFrame").innerHTML = total;
+	// 계산기 결과를 업데이트 한다.
+	document.getElementById("calResult").innerText = total;
 }
 
 //프레임 개수에 따라 가중치를 고려해 가격을 반환하는 함수.
