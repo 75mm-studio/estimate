@@ -23,6 +23,14 @@ h1,h2,h3,h4,h5,h6 {
   font-size: 0.7em;
 }
 
+#calHistory {
+  word-break:break-all;
+}
+
+#calResult {
+  word-break:break-all;
+}
+
 .comment {
   font-size: 0.9em;
 }
