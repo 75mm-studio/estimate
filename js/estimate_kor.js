@@ -312,18 +312,21 @@ function setInputFilter(textbox, inputFilter) {
 function checkCalculatorHistoryString() {
 	let input = document.getElementById("calHistory").innerText
 	if (input[0] === '+') {
-		alert("수식은 숫자로 시작해야합니다")
-		return
+		return "수식은 숫자로 시작해야합니다"
 	}
 	if (input[input.length-1] === '+'){
-		alert("수식은 +로 끝날 수 없습니다")
-		return
+		return "수식은 +로 끝날 수 없습니다"
 	}
+	return ""
 }
 
 //계산기의 = 버튼을 누르면 작동하는 함수. + 를 기준으로 각 프레임의 가격을 계산한다.
 function evaluateCal() {
-	checkCalculatorHistoryString()
+	err = checkCalculatorHistoryString()
+	if (err !== "") {
+		alert(err)
+		return
+	}
     let frame = document.getElementById("calHistory").innerText;
     let splitedFrames = frame.split('+');
     let total = 0;
