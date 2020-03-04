@@ -365,7 +365,8 @@ function frameNum2Cost(num){
     }else if(num < 2000){
         return 2800*num
     }else{
-        return 3000*num
+		return 3000*num
+	}
 }
 
 // Install input filters.
