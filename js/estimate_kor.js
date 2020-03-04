@@ -344,27 +344,27 @@ function evaluateCal() {
 function frameNum2Cost(num){
 	if(num < 300){ // 300미만
 		return 1000*num
-    }else if(num < 600){ // 600미만
+	}else if(num < 600){ // 600미만
 		return 1100*num
-    }else if(num < 700){
+	}else if(num < 700){
 		return 1200*num
-    }else if(num < 800){
+	}else if(num < 800){
 		return 1400*num
-    }else if(num < 900){
+	}else if(num < 900){
 		return 1600*num
-    }else if(num < 1000){
+	}else if(num < 1000){
 		return 1800*num
-    }else if(num < 1200){
+	}else if(num < 1200){
 		return 2000*num
-    }else if(num < 1400){
+	}else if(num < 1400){
 		return 2200*num
-    }else if(num < 1600){
+	}else if(num < 1600){
 		return 2400*num
-    }else if(num < 1800){
+	}else if(num < 1800){
 		return 2600*num
-    }else if(num < 2000){
+	}else if(num < 2000){
 		return 2800*num
-    }else{
+	}else{
 		return 3000*num
 	}
 }
