@@ -103,7 +103,7 @@ function bucketRender() {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
-		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs`;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs = `;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
@@ -111,11 +111,11 @@ function bucketRender() {
 		div.setAttribute("title", titles.join(","));
 		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total)) + "<br>";
 		//frame 가격
-		div.innerHTML += ` ${bucket.items[i].framenum} frame` + "<br>";
+		div.innerHTML += ` ${bucket.items[i].framenum} frame = `;
 		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].frametotal)) + "<br>";
 		//아이템 전체 가격
 		itemtotal = bucket.items[i].total + bucket.items[i].frametotal;
-		div.innerHTML += `total:` + numberWithCommas(itemtotal);
+		div.innerHTML += `Total: ` + bucket.unit + numberWithCommas(itemtotal);
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
@@ -196,8 +196,8 @@ function addBucket() {
 		shot.total *= shot.attributes[n].value;
 	}
 	//마지막으로 프레임 개수를 구하고, 전체 가격에 프레임 가격을 더한다. 
-	shot.framenum = bucket.frames.length;
 	for(let i in bucket.frames){
+		shot.framenum += bucket.frames[i]
 		shot.frametotal += frameNum2Cost(bucket.frames[i]);
 	}
 
@@ -333,7 +333,8 @@ function evaluateCal() {
     for (let i in splitedFrames){
         bucket.frames[i] = parseInt(splitedFrames[i].trim());
         total += parseInt(splitedFrames[i].trim());
-    }
+	}
+	
 	document.getElementById("totalFrame").innerHTML = total;
 	// 계산기 결과를 업데이트 한다.
 	document.getElementById("calResult").innerText = total;
@@ -365,7 +366,6 @@ function frameNum2Cost(num){
         return 2800*num
     }else{
         return 3000*num
-    }
 }
 
 // Install input filters.
