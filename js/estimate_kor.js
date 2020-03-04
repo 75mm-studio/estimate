@@ -125,7 +125,12 @@ function bucketRender() {
 	}
 	// 장바구니 아이템 개수와 장바구니 전체 가격
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(round(bucket.total));
+}
+
+// round 함수는 100원 단위에서 반올림한다. ex) 54300 -> 54000, 54800 -> 55000 
+function round(price){
+	return Math.round(price*0.001) * 1000
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
