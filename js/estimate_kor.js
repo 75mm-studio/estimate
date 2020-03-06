@@ -9,7 +9,6 @@ let bucket = {
 	"startdate":"",
 	"enddate":"",
 	"items":[],
-	"frames":[],
 	"total":0,
 	"unit":"",
 };
@@ -29,8 +28,7 @@ const item = {
 	"rotoanimationSoftDeform" : 0,
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
-	"frametotal" : 0,
-	"framenum" : 0,
+	"frames":[],// 500, 300, 200 형태의 int 숫자가 들어가야 한다.
 	"attributes" : [],
 	"total": 0,
 	"unit":"",
@@ -110,18 +108,32 @@ function bucketRender() {
 		}
 		div.setAttribute("title", titles.join(","));
 		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total)) + "<br>";
+
+
+
 		//frame 가격
-		div.innerHTML += ` ${bucket.items[i].framenum} frame = `;
-		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].frametotal)) + "<br>";
+		let framenum = 0;
+		let frametotal = 0;
+		for(let j in bucket.items[i].frames){
+			framenum += bucket.items[i].frames[j]
+			frametotal += frameNum2Cost(bucket.items[i].frames[j])
+		}
+		console.log(bucket.items[i].frames)
+		console.log(framenum)
+		console.log(frametotal)
+		div.innerHTML += framenum + ` frame = `;
+		div.innerHTML += bucket.unit + numberWithCommas(frametotal) + "<br>";
 		//아이템 전체 가격
-		itemtotal = bucket.items[i].total + bucket.items[i].frametotal;
+		itemtotal = bucket.items[i].total + frametotal;
+
+
 		div.innerHTML += `Total: ` + bucket.unit + numberWithCommas(itemtotal);
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
-		bucket.total += bucket.items[i].frametotal;
+		bucket.total += frametotal;
 	}
 	// 장바구니 아이템 개수와 장바구니 전체 가격
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
@@ -167,6 +179,7 @@ function addBucket() {
 	shot.id = currentDate.getTime();
 	shot.unit = "￦";
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
+	shot.frames = []; // 기존의 frame을 초기화 한다.
 
 	for (let i = 0; i < attrs.length; i++) {
 		type = attrs[i].getAttribute("type")
@@ -200,10 +213,11 @@ function addBucket() {
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
-	//마지막으로 프레임 개수를 구하고, 전체 가격에 프레임 가격을 더한다. 
-	for(let i in bucket.frames){
-		shot.framenum += bucket.frames[i]
-		shot.frametotal += frameNum2Cost(bucket.frames[i]);
+	//마지막으로 프레임 개수를 구하고, 전체 가격에 프레임 가격을 더한다.
+	let frames = document.getElementById("calHistory").innerText
+	let splitedFrames = frames.split('+')
+	for (let i in splitedFrames){
+		shot.frames[i] = parseInt(splitedFrames[i].trim());
 	}
 
 	bucket.items.push(shot);
@@ -342,9 +356,8 @@ function evaluateCal() {
 	}
     let frame = document.getElementById("calHistory").innerText;
     let splitedFrames = frame.split('+');
-    let total = 0;
+	let total = 0;
     for (let i in splitedFrames){
-        bucket.frames[i] = parseInt(splitedFrames[i].trim());
         total += parseInt(splitedFrames[i].trim());
 	}
 	

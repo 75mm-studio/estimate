@@ -34,6 +34,9 @@ document.onkeydown = function(e) {
     if(event.target.tagName === "INPUT"){
         return
     }
+    if(event.target.tagName === "BUTTON"){
+        return
+    }
     if (e.which == 49) {
         dis('1')
     } else if (e.which == 50){
