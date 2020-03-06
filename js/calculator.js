@@ -27,4 +27,38 @@ function clr() {
     document.getElementById("calHistory").innerText = "";
     // 계산기의 결과를 초기화 한다.
     document.getElementById("calResult").innerText = "0";
-} 
+}
+
+//calculator hotkey
+document.onkeydown = function(e) {
+    if(event.target.tagName === "INPUT"){
+        return
+    }
+    if (e.which == 49) {
+        dis('1')
+    } else if (e.which == 50){
+        dis('2')
+    } else if (e.which == 51){
+        dis('3')
+    } else if (e.which == 52){
+        dis('4')
+    } else if (e.which == 53){
+        dis('5')
+    }else if (e.which == 54){
+        dis('6')
+    }else if (e.which == 55){
+        dis('7')
+    }else if (e.which == 56){
+        dis('8')
+    }else if (e.which == 57){
+        dis('9')
+    }else if (e.which == 48){
+        dis('0')
+    }else if(e.shiftKey && e.which == 187){ //'+' button
+        add()
+    } else if(e.which == 13){ //'=' button
+        evaluateCal()
+    } else if(e.which == 67 || e.which == 99){ // 'C' button
+        clr()
+    }
+};
