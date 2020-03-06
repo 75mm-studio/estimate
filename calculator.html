@@ -5,44 +5,95 @@
 <meta name="viewport" content="width=device-sidth, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+<!-- Custom fonts for this template -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+<!-- Plugin CSS -->
+
+<!-- Font -->
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <link rel="stylesheet" type="text/css" href="css/estimate.css">
-</head>
+
 <body>
-<div class="col-3">
-    <div class="calculator">
-        <h2>Frame Calculator</h2>
-        <div class="row">
-            <div class="col-12">
-                <textarea class="form-control" rows="4" id="result"></textarea>
+<div style="visibility: hidden;" class="col-5" id="totalFrame">0</div>
+<div class="row p-5">
+    <div class="col-sm-12 col-md-4 col-lg-4 mx-auto">
+        <div id="calculator" class="calculator">
+            <h4>Frame Calculator</h4>
+            <div class="m-1">
+                <div class="row mx-auto text-muted pr-1">
+                    <div class="col-12 text-right">
+                        <span>&nbsp;</span>
+                        <span id="calHistory"></span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row text-center">
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="1" onclick="dis('1')">1</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="2" onclick="dis('2')">2</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="3" onclick="dis('3')">3</button>
-        </div>
-        <div class="row text-center">
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="4" onclick="dis('4')">4</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="5" onclick="dis('5')">5</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="6" onclick="dis('6')">6</button>
-        </div>
-        <div class="row text-center">
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="7" onclick="dis('7')">7</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="8" onclick="dis('8')">8</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-num" value="9" onclick="dis('9')">9</button>
-        </div>
-        <div class="row text-center">
-            <button class="col-8 btn-lg btn-cal btn-cal-num" value="0" onclick="dis('0')">0</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-operator" onclick="clr()">C</button>
-        </div>
-        <div class="row text-center">
-            <button class="col-8 btn-lg btn-cal btn-cal-operator" value="+" onclick="dis('+')">+</button>
-            <button class="col-4 btn-lg btn-cal btn-cal-operator" onclick="splitFrames()">=</button>
+            <div class="m-1">
+                <div class="row mx-auto rounded border border-secondary m-2 p-2">
+                    <div class="col-12 text-right">
+                        <span class="h1" id="calResult">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="1" onclick="dis('1')">1</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="2" onclick="dis('2')">2</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="3" onclick="dis('3')">3</button>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="4" onclick="dis('4')">4</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="5" onclick="dis('5')">5</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="6" onclick="dis('6')">6</button>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="7" onclick="dis('7')">7</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="8" onclick="dis('8')">8</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="9" onclick="dis('9')">9</button>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-8 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-outline-dark" value="0" onclick="dis('0')">0</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-cal-operator" value="+" onclick="add()">+</button>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-8 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-cal-operator" onclick="evaluateCal()">=</button>
+                </div>
+                <div class="col-4 m-0 p-1">
+                    <button class="w-100 btn btn-lg btn-cal-operator" onclick="clr()">C</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+
+
 </body>
-<script src="js/calculator.js"></script>
 <script src="js/estimate_kor.js"></script>
+<script src="js/calculator.js"></script>
 </html>
