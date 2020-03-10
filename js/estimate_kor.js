@@ -421,5 +421,4 @@ function inputTestdata(){
 	document.getElementById("email").value="75mm@test"
 	document.getElementById("project").value="test project"
 	document.getElementById("privacy").outerHTML = `<input class="form-check-input" type="checkbox" id="privacy" checked>`
-	console.log(document.getElementById("privacy"))
 }
