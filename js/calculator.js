@@ -29,6 +29,19 @@ function clr() {
     document.getElementById("calResult").innerText = "0";
 }
 
+// erase 함수는 history의 가장 뒤에 있는 문자를 지운다.
+function erase(){
+    //calResult에 텍스트가 있으면 calResult의 텍스트를 먼저 지운다.
+    a = document.getElementById("calResult").innerText
+    if (a !== "") {
+        prev = document.getElementById("calResult").innerText
+        document.getElementById("calResult").innerText = prev.substring(0, prev.length - 1);
+    } else{//calResult에 텍스트가 없으면 calHistory를 지운다.
+        prev = document.getElementById("calHistory").innerText
+        document.getElementById("calHistory").innerText = prev.substring(0, prev.length - 1);    
+    }
+}
+
 //calculator hotkey
 document.onkeydown = function(e) {
     if(event.target.tagName === "INPUT"){
@@ -37,6 +50,11 @@ document.onkeydown = function(e) {
     if(event.target.tagName === "BUTTON"){
         return
     }
+    // backspace shortcut key
+    if (e.which == 8) {
+        erase()
+    }
+    // 숫자패드 shortcut keys
     if (e.which == 49) {
         dis('1')
     } else if (e.which == 50){
