@@ -118,9 +118,6 @@ function bucketRender() {
 			framenum += bucket.items[i].frames[j]
 			frametotal += frameNum2Cost(bucket.items[i].frames[j])
 		}
-		console.log(bucket.items[i].frames)
-		console.log(framenum)
-		console.log(frametotal)
 		div.innerHTML += framenum + ` frame = `;
 		div.innerHTML += bucket.unit + numberWithCommas(frametotal) + "<br>";
 		//아이템 전체 가격
