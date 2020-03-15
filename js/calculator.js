@@ -16,8 +16,7 @@ function dis(val) {
 // add 함수는 계산기에서 + 버튼을 눌렀을 때 실행되는 함수이다.
 function add() { 
     document.getElementById("calResult").innerText = eval(document.getElementById("calHistory").innerText);
-    document.getElementById("calHistory").innerHTML += "&nbsp;+&nbsp;"
-    console.log(document.getElementById("calHistory").innerText);
+    document.getElementById("calHistory").innerHTML += "&nbsp; + &nbsp;";
 }
 
 // clr 함수는 계산기에서 C 버튼을 눌렀을 때 실행되는 함수이다.
