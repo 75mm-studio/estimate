@@ -37,26 +37,27 @@ document.onkeydown = function(e) {
     if(event.target.tagName === "BUTTON"){
         return
     }
-    if (e.which == 49) {
-        dis('1')
-    } else if (e.which == 50){
-        dis('2')
-    } else if (e.which == 51){
-        dis('3')
-    } else if (e.which == 52){
-        dis('4')
-    } else if (e.which == 53){
-        dis('5')
-    }else if (e.which == 54){
-        dis('6')
-    }else if (e.which == 55){
-        dis('7')
-    }else if (e.which == 56){
-        dis('8')
-    }else if (e.which == 57){
-        dis('9')
-    }else if (e.which == 48){
+
+    if (e.which == 48 | e.which == 96){
         dis('0')
+    } else if (e.which == 49 | e.which == 97) {
+        dis('1')
+    } else if (e.which == 50 | e.which == 98){
+        dis('2')
+    } else if (e.which == 51 | e.which == 99){
+        dis('3')
+    } else if (e.which == 52 | e.which == 100){
+        dis('4')
+    } else if (e.which == 53 | e.which == 101){
+        dis('5')
+    }else if (e.which == 54 | e.which == 102){
+        dis('6')
+    }else if (e.which == 55 | e.which == 103){
+        dis('7')
+    }else if (e.which == 56 | e.which == 104){
+        dis('8')
+    }else if (e.which == 57 | e.which == 105){
+        dis('9')
     }else if(e.shiftKey && e.which == 187){ //'+' button
         add()
     } else if(e.which == 13){ //'=' button
