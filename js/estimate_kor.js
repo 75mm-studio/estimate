@@ -118,9 +118,6 @@ function bucketRender() {
 			framenum += bucket.items[i].frames[j]
 			frametotal += frameNum2Cost(bucket.items[i].frames[j])
 		}
-		console.log(bucket.items[i].frames)
-		console.log(framenum)
-		console.log(frametotal)
 		div.innerHTML += framenum + ` frame = `;
 		div.innerHTML += bucket.unit + numberWithCommas(frametotal) + "<br>";
 		//아이템 전체 가격
@@ -335,36 +332,8 @@ function setInputFilter(textbox, inputFilter) {
 	});
 }
 
-// checkCalculatorHistoryString은 계산기의 히스토리 문자열 예외처리를 한다.
-function checkCalculatorHistoryString() {
-	let input = document.getElementById("calHistory").innerText
-	if (input[0] === '+') {
-		return "수식은 숫자로 시작해야합니다"
-	}
-	if (input[input.length-1] === '+'){
-		return "수식은 +로 끝날 수 없습니다"
-	}
-	return ""
-}
 
-//계산기의 = 버튼을 누르면 작동하는 함수. + 를 기준으로 각 프레임의 가격을 계산한다.
-function evaluateCal() {
-	err = checkCalculatorHistoryString()
-	if (err !== "") {
-		alert(err)
-		return
-	}
-    let frame = document.getElementById("calHistory").innerText;
-    let splitedFrames = frame.split('+');
-	let total = 0;
-    for (let i in splitedFrames){
-        total += parseInt(splitedFrames[i].trim());
-	}
-	
-	document.getElementById("totalFrame").innerHTML = total;
-	// 계산기 결과를 업데이트 한다.
-	document.getElementById("calResult").innerText = total;
-}
+
 
 //프레임 개수에 따라 가중치를 고려해 가격을 반환하는 함수.
 function frameNum2Cost(num){

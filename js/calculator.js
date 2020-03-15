@@ -84,3 +84,35 @@ document.onkeydown = function(e) {
         clr()
     }
 };
+
+// checkCalculatorHistoryString은 계산기의 히스토리 문자열 예외처리를 한다.
+function checkCalculatorHistoryString() {
+    let input = document.getElementById("calHistory").innerText
+    input = input.trim()
+	if (input[0] === "+") {
+		return "수식은 숫자로 시작해야합니다"
+	}
+	if (input[input.length-1] === '+'){
+		return "수식은 +로 끝날 수 없습니다"
+	}
+	return ""
+}
+
+//계산기의 = 버튼을 누르면 작동하는 함수. + 를 기준으로 각 프레임의 가격을 계산한다.
+function evaluateCal() {
+	err = checkCalculatorHistoryString()
+	if (err !== "") {
+		alert(err)
+		return
+	}
+    let frame = document.getElementById("calHistory").innerText;
+    let splitedFrames = frame.split('+');
+	let total = 0;
+    for (let i in splitedFrames){
+        total += parseInt(splitedFrames[i].trim());
+	}
+	
+	document.getElementById("totalFrame").innerHTML = total;
+	// 계산기 결과를 업데이트 한다.
+	document.getElementById("calResult").innerText = total;
+}
