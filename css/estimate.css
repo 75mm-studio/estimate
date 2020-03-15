@@ -36,9 +36,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #calResult {
-  word-break:break-all;
+  word-break:break-word;
   display: inline-block;
-  height: 35px;
+  min-height: 35px;
 }
 
 .comment {
