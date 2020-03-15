@@ -27,6 +27,12 @@ h1,h2,h3,h4,h5,h6 {
   word-break:break-all;
 }
 
+#calHistory:empty::before {
+  word-break:break-all;
+  content: "컷 별 프레임 수를 각각 입력해주세요.\A ex) 260 + 35 + 115";
+  white-space: pre;
+}
+
 #calResult {
   word-break:break-all;
   display: inline-block;
