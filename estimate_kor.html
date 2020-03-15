@@ -279,7 +279,10 @@
                     </div>
                 </div>
                 <div class="row mx-auto">
-                    <div class="col-8 m-0 p-1">
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-cal-operator" onclick="clr()">C</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
                         <button class="w-100 btn btn-lg btn-outline-dark" value="0" onclick="dis('0')">0</button>
                     </div>
                     <div class="col-4 m-0 p-1">
@@ -291,7 +294,7 @@
                         <button class="w-100 btn btn-lg btn-cal-operator" onclick="evaluateCal()">=</button>
                     </div>
                     <div class="col-4 m-0 p-1">
-                        <button class="w-100 btn btn-lg btn-cal-operator" onclick="clr()">C</button>
+                        <button class="w-100 h-100 btn btn-lg btn-cal-operator" value="0" onclick="erase()"><i class="fas fa-backspace"></i></button>
                     </div>
                 </div>
             </div>
