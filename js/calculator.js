@@ -76,11 +76,11 @@ document.onkeydown = function(e) {
         dis('8')
     }else if (e.which == 57 | e.which == 105){
         dis('9')
-    }else if(e.shiftKey && e.which == 187){ //'+' button
+    }else if((e.shiftKey && e.which == 187) | (e.which == 107)){ //'+' button
         add()
-    } else if(e.which == 13){ //'=' button
+    } else if(e.which == 13 | e.which == 187){ //'=' button
         evaluateCal()
-    } else if(e.which == 67 || e.which == 99){ // 'C' button
+    } else if(e.which == 67 | e.which == 99 | e.which == 12 ){ // 'C' button
         clr()
     }
 };
