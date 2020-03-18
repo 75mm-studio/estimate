@@ -52,7 +52,7 @@ document.onkeydown = function(e) {
     }
 
     // backspace shortcut key
-    if (e.which == 8) {
+    if (e.which == 8 | e.which == 46) {
         erase()
     }
     // 숫자패드 shortcut keys
