@@ -50,6 +50,9 @@ document.onkeydown = function(e) {
     if(event.target.tagName === "BUTTON"){
         return
     }
+    if(event.target.tagName === "TEXTAREA"){
+        return
+    }
 
     // backspace shortcut key
     if (e.which == 8 | e.which == 46) {
