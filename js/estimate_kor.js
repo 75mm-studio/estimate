@@ -29,6 +29,7 @@ const item = {
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
 	"frames":[],// 500, 300, 200 형태의 int 숫자가 들어가야 한다.
+	"totalframe":0, // frames의 모든 수를 합친 값이다.
 	"attributes" : [],
 	"total": 0,
 	"unit":"",
@@ -230,6 +231,7 @@ function addBucket() {
 		shot.enddate = document.getElementById("enddate").value;
 		shot.comment = document.getElementById("comment").value;
 		shot.unit = "￦";
+		shot.totalframe = document.getElementById("totalFrame").innerText;
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
