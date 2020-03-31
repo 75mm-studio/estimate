@@ -304,6 +304,9 @@ function sendToEmail() {
 	bucket.enddate = document.getElementById("enddate").value;
 	bucket.comment = document.getElementById("comment").value;
 	bucket.unit = "￦";
+	for (i = 0; i < bucket.items.length; i++) {
+		bucket.totalframe += bucket.items[i].totalframe
+	}
 	$.ajax({
 		url: "https://b9mx1b8r59.execute-api.ap-northeast-2.amazonaws.com/estimate_send",
 		type: 'POST',

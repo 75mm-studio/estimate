@@ -33,7 +33,7 @@ exports.handler = function(event, context) {
         let line = "----------\n";
         line += "견적 : " + event.items[i].unit + numberWithCommas(event.items[i].total) + ", ";
         line += "총샷수 : " + event.items[i].totalShotNum + ", ";
-        line += "총프레임 : " + event.items[i].frame + "\n";
+        line += "총프레임 : " + event.items[i].totalframe + "\n";
         let attr = [];
         for (let a = 0; a < event.items[i].attributes.length; a++) {
             attr.push(event.items[i].attributes[a].id);
