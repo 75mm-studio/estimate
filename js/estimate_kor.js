@@ -11,6 +11,7 @@ let bucket = {
 	"items":[],
 	"total":0,
 	"unit":"",
+	"totalframe":0,
 };
 
 // 장바구니에 들어가는 아이템 자료구조
@@ -211,13 +212,16 @@ function addBucket() {
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
-	//마지막으로 프레임 개수를 구하고, 전체 가격에 프레임 가격을 더한다.
+	// 계산기에 입력된 숫자를 + 로 분리하고 shot.frames 리스트에 각 프레임을 담는다.
 	let frames = document.getElementById("calHistory").innerText
 	let splitedFrames = frames.split('+')
 	for (let i in splitedFrames){
 		shot.frames[i] = parseInt(splitedFrames[i].trim());
 	}
-
+	// shot.frames를 이용해서 shot.totalframe을 구한다.
+	for (i = 0; i < shot.frames.length; i++) {
+		shot.totalframe += shot.frames[i]
+	}
 	bucket.items.push(shot);
 
 	// 데이터전송
@@ -231,7 +235,6 @@ function addBucket() {
 		shot.enddate = document.getElementById("enddate").value;
 		shot.comment = document.getElementById("comment").value;
 		shot.unit = "￦";
-		shot.totalframe = document.getElementById("totalFrame").innerText;
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
