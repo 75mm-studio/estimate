@@ -235,7 +235,6 @@ function addBucket() {
 		shot.enddate = document.getElementById("enddate").value;
 		shot.comment = document.getElementById("comment").value;
 		shot.unit = "￦";
-		console.log(shot.totalframe)
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
