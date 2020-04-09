@@ -31,15 +31,8 @@ function clr() {
 
 // erase 함수는 history의 가장 뒤에 있는 문자를 지운다.
 function erase(){
-    //calResult에 텍스트가 있으면 calResult의 텍스트를 먼저 지운다.
-    a = document.getElementById("calResult").innerText
-    if (a !== "") {
-        prev = document.getElementById("calResult").innerText
-        document.getElementById("calResult").innerText = prev.substring(0, prev.length - 1);
-    } else{//calResult에 텍스트가 없으면 calHistory를 지운다.
-        prev = document.getElementById("calHistory").innerText
-        document.getElementById("calHistory").innerText = prev.substring(0, prev.length - 1);    
-    }
+    prev = document.getElementById("calHistory").innerText
+    document.getElementById("calHistory").innerText = prev.substring(0, prev.length - 1);    
 }
 
 //calculator hotkey
