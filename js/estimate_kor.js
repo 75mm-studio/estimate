@@ -19,13 +19,13 @@ const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"basicCost" : 200000.0, // KRW model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
-	"singleObjectTrackingCost" : 250000.0, // KRW model
+	"singleObjectTrackingCost" : 150000.0, // KRW model
 	"singleObjectTracking" : 0,
-	"multiObjectTrackingCost" : 350000.0, // KRW model
+	"multiObjectTrackingCost" : 300000.0, // KRW model
 	"multiObjectTracking" : 0,
-	"rotoanimationBasicCost" : 500000.0, // KRW model
+	"rotoanimationBasicCost" : 300000.0, // KRW model
 	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformCost" : 700000.0, // KRW model
+	"rotoanimationSoftDeformCost" : 400000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
 	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
