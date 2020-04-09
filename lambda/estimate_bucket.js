@@ -35,7 +35,7 @@ exports.handler = function(event, context) {
         attr.push(event.attributes[a].id);
     }
     line += "속성 : " + attr.join(",") + "\n";
-    line += "objectTrackingRigid : " + event.objectTrackingRigid + "샷, ";
+    line += "singleObjectTracking : " + event.singleObjectTracking + "샷, ";
     line += "multiObjectTracking : " + event.multiObjectTracking + "샷, ";
     line += "rotoanimationBasic : " + event.rotoanimationBasic + "샷, ";
     line += "rotoanimationSoftDeform : " + event.rotoanimationSoftDeform + "샷, ";

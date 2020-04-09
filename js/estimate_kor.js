@@ -19,8 +19,8 @@ const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"basicCost" : 200000.0, // KRW model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
-	"objectTrackingRigidCost" : 250000.0, // KRW model
-	"objectTrackingRigid" : 0,
+	"singleObjectTrackingCost" : 250000.0, // KRW model
+	"singleObjectTracking" : 0,
 	"multiObjectTrackingCost" : 350000.0, // KRW model
 	"multiObjectTracking" : 0,
 	"rotoanimationBasicCost" : 500000.0, // KRW model
@@ -196,14 +196,14 @@ function addBucket() {
 		};
 	}
 	shot.totalShotNum = document.getElementById("totalShotNum").value;
-	shot.objectTrackingRigid = document.getElementById("objectTrackingRigid").value;
+	shot.singleObjectTracking = document.getElementById("singleObjectTracking").value;
 	shot.multiObjectTracking = document.getElementById("multiObjectTracking").value;
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.layout = document.getElementById("layout").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
-	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
+	shot.total += shot.singleObjectTrackingCost * shot.singleObjectTracking;
 	shot.total += shot.multiObjectTrackingCost * shot.multiObjectTracking;
 	shot.total += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
 	shot.total += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
@@ -276,7 +276,7 @@ function resetForm() {
 	document.getElementById("noneSurvey").checked = false;
 	document.getElementById("noneOnsetInfo").checked = false;
 	document.getElementById("totalShotNum").value = 1;
-	document.getElementById("objectTrackingRigid").value = 0;
+	document.getElementById("singleObjectTracking").value = 0;
 	document.getElementById("multiObjectTracking").value = 0;
 	document.getElementById("rotoanimationBasic").value = 0;
 	document.getElementById("rotoanimationSoftDeform").value = 0;
@@ -376,7 +376,7 @@ function frameNum2Cost(num){
 setInputFilter(document.getElementById("totalShotNum"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
-setInputFilter(document.getElementById("objectTrackingRigid"), function(value) {
+setInputFilter(document.getElementById("singleObjectTracking"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
 setInputFilter(document.getElementById("multiObjectTracking"), function(value) {
