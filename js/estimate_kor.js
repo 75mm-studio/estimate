@@ -19,10 +19,10 @@ const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"basicCost" : 200000.0, // KRW model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
-	"singleObjectTrackingCost" : 150000.0, // KRW model
-	"singleObjectTracking" : 0,
-	"multiObjectTrackingCost" : 300000.0, // KRW model
-	"multiObjectTracking" : 0,
+	"objectTrackingRigidCost" : 150000.0, // KRW model
+	"objectTrackingRigid" : 0,
+	"objectTrackingNoneRigidCost" : 300000.0, // KRW model
+	"objectTrackingNoneRigid" : 0,
 	"rotoanimationBasicCost" : 300000.0, // KRW model
 	"rotoanimationBasic" : 0,
 	"rotoanimationSoftDeformCost" : 400000.0, // KRW model
@@ -196,15 +196,15 @@ function addBucket() {
 		};
 	}
 	shot.totalShotNum = document.getElementById("totalShotNum").value;
-	shot.singleObjectTracking = document.getElementById("singleObjectTracking").value;
-	shot.multiObjectTracking = document.getElementById("multiObjectTracking").value;
+	shot.objectTrackingRigid = document.getElementById("objectTrackingRigid").value;
+	shot.objectTrackingNoneRigid = document.getElementById("objectTrackingNoneRigid").value;
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.layout = document.getElementById("layout").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
-	shot.total += shot.singleObjectTrackingCost * shot.singleObjectTracking;
-	shot.total += shot.multiObjectTrackingCost * shot.multiObjectTracking;
+	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
+	shot.total += shot.objectTrackingNoneRigidCost * shot.objectTrackingNoneRigid;
 	shot.total += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
 	shot.total += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
 	shot.total += shot.layoutCost * shot.layout;
@@ -276,8 +276,8 @@ function resetForm() {
 	document.getElementById("noneSurvey").checked = false;
 	document.getElementById("noneOnsetInfo").checked = false;
 	document.getElementById("totalShotNum").value = 1;
-	document.getElementById("singleObjectTracking").value = 0;
-	document.getElementById("multiObjectTracking").value = 0;
+	document.getElementById("objectTrackingRigid").value = 0;
+	document.getElementById("objectTrackingNoneRigid").value = 0;
 	document.getElementById("rotoanimationBasic").value = 0;
 	document.getElementById("rotoanimationSoftDeform").value = 0;
 	document.getElementById("layout").value = 0;
@@ -376,10 +376,10 @@ function frameNum2Cost(num){
 setInputFilter(document.getElementById("totalShotNum"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
-setInputFilter(document.getElementById("singleObjectTracking"), function(value) {
+setInputFilter(document.getElementById("objectTrackingRigid"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
-setInputFilter(document.getElementById("multiObjectTracking"), function(value) {
+setInputFilter(document.getElementById("objectTrackingNoneRigid"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 3600);
 });
 setInputFilter(document.getElementById("rotoanimationBasic"), function(value) {

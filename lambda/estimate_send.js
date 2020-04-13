@@ -39,8 +39,8 @@ exports.handler = function(event, context) {
             attr.push(event.items[i].attributes[a].id);
         }
         line += "속성 : " + attr.join(",") + "\n";
-        line += "singleObjectTracking : " + event.items[i].singleObjectTracking + "샷, ";
-        line += "multiObjectTracking : " + event.items[i].multiObjectTracking + "샷, ";
+        line += "objectTrackingRigid : " + event.items[i].objectTrackingRigid + "샷, ";
+        line += "objectTrackingNoneRigid : " + event.items[i].objectTrackingNoneRigid + "샷, ";
         line += "rotoanimationBasic : " + event.items[i].rotoanimationBasic + "샷, ";
         line += "rotoanimationSoftDeform : " + event.items[i].rotoanimationSoftDeform + "샷, ";
         line += "layout : " + event.items[i].layout + "샷, ";
