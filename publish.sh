@@ -10,3 +10,7 @@ aws s3 cp ./js/estimate_eng.js s3://75mm.studio/js/ --acl public-read --profile 
 
 aws s3 cp ./estimate_kor.html s3://75mm.studio --acl public-read --profile 75mm.studio
 aws s3 cp ./js/estimate_kor.js s3://75mm.studio/js/ --acl public-read --profile 75mm.studio
+
+# test
+aws s3 cp ./estimate_test.html s3://75mm.studio --acl public-read --profile 75mm.studio
+aws s3 cp ./js/estimate_test.js s3://75mm.studio/js/ --acl public-read --profile 75mm.studio
