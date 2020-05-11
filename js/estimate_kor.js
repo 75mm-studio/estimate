@@ -208,7 +208,7 @@ function addBucket() {
 	shot.total += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
 	shot.total += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
 	shot.total += shot.layoutCost * shot.layout;
-	// 적용된 속성을 곱한다.
+	// 전체 가격에 적용된 속성을 곱한다.
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
@@ -222,6 +222,11 @@ function addBucket() {
 	for (i = 0; i < shot.frames.length; i++) {
 		shot.totalframe += shot.frames[i]
 	}
+	// 전체 가격에 프레임수를 곱한다.
+	// 바로 곱하면 꽤 큰값이 나온다. 프레임을 곱하기전 미리 0.001 을 곱해준다.
+	shot.total += shot.total * (shot.totalframe * 0.001)
+
+	// 바구니에 샷을 담는다.
 	bucket.items.push(shot);
 
 	// 데이터전송
