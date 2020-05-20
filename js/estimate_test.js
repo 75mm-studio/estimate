@@ -222,9 +222,6 @@ function addBucket() {
 	for (i = 0; i < shot.frames.length; i++) {
 		shot.totalframe += shot.frames[i]
 	}
-	// 전체 가격에 프레임수를 곱한다.
-	// 프레임을 바로 곱하기 때문에 꽤 큰값이 나온다.
-	shot.total += shot.total * (shot.totalframe * 0.001)
 
 	// 바구니에 샷을 담는다.
 	bucket.items.push(shot);
