@@ -31,7 +31,7 @@ h1,h2,h3,h4,h5,h6 {
 
 #calHistory:empty::before {
   word-break:break-all;
-  content: "컷 별 프레임 수를 각각 입력해주세요.\A ex) 260 + 35 + 115";
+  content: "컷 별 프레임 수를 각각 입력해주세요.\A ex) 260 + 35 + 115\A 1000장 이상인 프레임의 경우 따로 문의바랍니다.";
   white-space: pre;
 }
 
