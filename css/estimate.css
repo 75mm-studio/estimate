@@ -29,9 +29,15 @@ h1,h2,h3,h4,h5,h6 {
   min-height: 100px;
 }
 
-#calHistory:empty::before {
+#calHistory.kor:empty::before {
   word-break:break-all;
   content: "컷 별 프레임 수를 각각 입력해주세요.\A ex) 260 + 35 + 115\A 1000장 이상인 프레임의 경우 따로 문의바랍니다.";
+  white-space: pre;
+}
+
+#calHistory.eng:empty::before {
+  word-break:break-all;
+  content: "Input frame numbers per cut.\A ex) 260 + 35 + 115\A If there is shot with more than 1000 frames,\Aplease contact us.";
   white-space: pre;
 }
 

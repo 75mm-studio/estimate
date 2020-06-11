@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="author" content="lazypic">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="img/estimatecon.png">
+<link rel="icon" href="img/estimateicon.png">
 <link rel="apple-touch-icon" href="img/estimateicon.png">
 <title>Estimate</title>
 <!-- Bootstrap core CSS -->
@@ -23,12 +23,11 @@
 </head>
 <body class="p-3">
 <div class="row text-center">
-    <div class="col-12 p-3">
+    <div class="col-12 p-3" onclick="inputTestdata()">
         <img src="http://75mm.studio/img/logo_v02.svg" width=250>
     </div>
-    <div class="col-12 p-1">
-        Pre-Estimate System
-        <h6 id="date">Date:</h6>
+    <div class="col-12 p-1" id="date">
+        Pre-Estimate System, Date:
     </div>
 </div>
 
@@ -43,16 +42,16 @@
             
             <div class="form-group row">
                 <div class="col-6 pb-1">
-                    <input class="form-control" type="text" value="" id="author" placeholder="Company name">
+                    <input class="form-control" type="text" value="" id="author" placeholder="회사명">
                 </div>
                 <div class="col-6 pb-1">
-                    <input class="form-control" type="text" value="" id="person" placeholder="The Person in Charge">
+                    <input class="form-control" type="text" value="" id="person" placeholder="담당자 이름">
                 </div>
                 <div class="col-12 pb-1">
-                    <input class="form-control" type="email" value="" id="email" placeholder="Enter your email">
+                    <input class="form-control" type="email" value="" id="email" placeholder="이메일">
                 </div>
                 <div class="col-12 pb-2">
-                    <input class="form-control" type="text" value="" id="project" placeholder="Project Information">
+                    <input class="form-control" type="text" value="" id="project" placeholder="프로젝트 정보">
                 </div>
                 <div class="col-12 pb-0">
                     Project StartDate ~ EndDate
@@ -70,12 +69,12 @@
                 <div class="col-12">
                     <input class="form-check-input" type="checkbox" id="privacy">
                     <label class="form-check-label" for="privacy">
-                        Acquisition of personal information 
+                        Acquisition of personal information
                     </label>
                     /
-                    <a class="text-dark" href="https://75mm.studio/terms.html" target="_blank" rel="noopener noreferrer"> Terms of service </a>
+                    <a class="text-dark" href="https://75mm.studio/terms.html" target="_blank" rel="noopener noreferrer"> 서비스 이용약관 </a>
                     /
-                    <a class="text-dark" href="https://75mm.studio/privacy.html" target="_blank" rel="noopener noreferrer"> Privacy policy</a>
+                    <a class="text-dark" href="https://75mm.studio/privacy.html" target="_blank" rel="noopener noreferrer"> 개인정보 처리방침</a>
                 </div>
             </div>
         
@@ -90,7 +89,7 @@
                     </div>
                     
                     <div class="form-check ml-3">
-                        <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=2.0>
+                        <input class="form-check-input" type="checkbox" name="lensType" id="anamorphicLens" value=1.5>
                         <label class="form-check-label" for="anamorphicLens">
                             Anamorphic <a href="https://youtu.be/qr5Mv12psrI" target="_blank" rel="noopener noreferrer" class="text-muted"><i class="fas fa-info-circle"></i></a>
                         </label>
@@ -98,13 +97,13 @@
                 </div>
                 <div class="col-6">
                     <div class="form-check ml-3">
-                        <input class="form-check-input" type="checkbox" name="lensType" id="stereo" value=3.0>
+                        <input class="form-check-input" type="checkbox" name="lensType" id="stereo" value=2.0>
                         <label class="form-check-label" for="stereo">
                             Stereo
                         </label>
                     </div>
                     <div class="form-check ml-3">
-                        <input class="form-check-input" type="checkbox" name="projectType" id="vr" value=3.0>
+                        <input class="form-check-input" type="checkbox" name="projectType" id="vr" value=2.0>
                         <label class="form-check-label" for="vr">
                             VR
                         </label>
@@ -112,26 +111,32 @@
                 </div>
             </div>
 
+
             <h4 class="pt-2">Service Detail</h4>
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="serviceDetail" id="is4kOver" value=2.0>
-                <label class="form-check-label" for="is4kOver">
-                    4K Over
-                </label>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="serviceDetail" id="is4kOver" value=1.5>
+                        <label class="form-check-label" for="is4kOver">
+                            4K Over
+                        </label>
+                    </div>
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="serviceDetail" id="noneOnsetInfo" value=1.5>
+                        <label class="form-check-label" for="noneOnsetInfo">
+                            None Onset Info
+                        </label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-check ml-3">
+                        <input class="form-check-input" type="checkbox" name="serviceDetail" id="noneSurvey" value=1.5>
+                        <label class="form-check-label" for="noneSurvey">
+                            None Survey (Laser Scan / Lidar)
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="serviceDetail" id="noneSurvey" value=2.0>
-                <label class="form-check-label" for="noneSurvey">
-                    None Survey( Laser Scan / Lidar )
-                </label>
-            </div>
-            <div class="form-check ml-3">
-                <input class="form-check-input" type="checkbox" name="serviceDetail" id="noneOnsetInfo" value=1.5>
-                <label class="form-check-label" for="noneOnsetInfo">
-                    None Onset Info
-                </label>
-            </div>
-            
             <h4 class="pt-4">Comment</h4>
             <div class="form-group row">
                 <div class="col-12">
@@ -175,9 +180,9 @@
 
             <h4 class="pt-2">Frame</h4>
             <div class="form-group row">
-                <label for="example-number-input" class="col-7 col-form-label">Total Frame number</label>
-                <div class="col-5">
-                <input class="form-control" type="text" id="frame" inputmode="numeric" placeholder="only number" value="1">
+                <label for="example-number-input" class="col-7 col-form-label">Total Frame</label>
+                <div class="col-5" id="totalFrame">
+                    0
                 </div>
             </div>
             <div class="row pb-3">
@@ -197,7 +202,7 @@
             </div>
 
             <div class="pt-3 pb-3">
-                <h3 id="total">Total: $0</h3>
+                <h3 id="total">Total: ￦0</h3>
             </div>
             <div class="pt-3">
                 <button type="button" class="btn btn-dark btn-block" onclick="sendToEmail()"><i class="far fa-envelope"></i>&nbsp;&nbsp;&nbsp;Send to 75mm Studio</button>
@@ -213,12 +218,93 @@
                 <br>
                 Additional cost will be added to overseas large data transmission.<br>
                 <br>
-                Please contact us for On-set Acquisition
+                Please contact us for On-set Acquisition<br>
+            </div>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            &nbsp;<br>
+            <!--frame calculator-->
+            <div id="calculator" class="calculator">
+                <h5>Frame Calculator</h5>
+                <div class="m-1">
+                    <div class="row mx-auto text-muted pr-1">
+                        <div class="col-12 text-right">
+                            <span id="calHistory" class="eng"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="m-1">
+                    <div class="row mx-auto rounded border border-secondary m-2 p-2">
+                        <div class="col-12 text-right">
+                            <span class="h1" id="calResult">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="row mx-auto">
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="7" onclick="dis('7')">7</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="8" onclick="dis('8')">8</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="9" onclick="dis('9')">9</button>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="4" onclick="dis('4')">4</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="5" onclick="dis('5')">5</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="6" onclick="dis('6')">6</button>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="1" onclick="dis('1')">1</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="2" onclick="dis('2')">2</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="3" onclick="dis('3')">3</button>
+                    </div>
+                </div>
+            
+                <div class="row mx-auto">
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-cal-operator" onclick="clr()">C</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-outline-dark" value="0" onclick="dis('0')">0</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-cal-operator" value="+" onclick="add()">+</button>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-8 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-cal-operator" onclick="evaluateCal()">=</button>
+                    </div>
+                    <div class="col-4 m-0 p-1">
+                        <button class="w-100 btn btn-lg btn-cal-operator" value="0" onclick="erase()"> 
+                            <i class="fas fa-backspace p-1"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
+<div class="row"></div>
+<div class="row"></div>
 <div class="p-3 text-center">
     <div class="row">
         <div class="col-12 text-center" id="copyright">
@@ -228,6 +314,6 @@
 </div>
 
 </body>
-<script src="js/estimate_eng.js"></script>
+<script src="js/estimate_kor.js"></script>
+<script src="js/calculator.js"></script>
 </html>
-
