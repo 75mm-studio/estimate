@@ -269,6 +269,10 @@ function printMode() {
 }
 
 function resetForm() {
+	// 계산기를 다시 띄운다.
+	let cal = document.getElementById("calculator");
+	cal.style.display = "block";
+	// 폼을 리셋한다.
 	document.getElementById("comment").value = "";
 	document.getElementById("mono").checked = true;
 	document.getElementById("anamorphicLens").checked = false;
