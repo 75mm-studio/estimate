@@ -286,7 +286,9 @@ function resetForm() {
 	document.getElementById("rotoanimationBasic").value = 0;
 	document.getElementById("rotoanimationSoftDeform").value = 0;
 	document.getElementById("layout").value = 0;
-	document.getElementById("frame").value = 1;
+	document.getElementById("totalFrame").innerHTML = 0;
+	document.getElementById("calHistory").innerText = "";
+	document.getElementById("calResult").innerText = "0";
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];

@@ -284,6 +284,7 @@ function resetForm() {
 	document.getElementById("layout").value = 0;
 	document.getElementById("totalFrame").innerHTML = 0;
 	document.getElementById("calHistory").innerText = "";
+	document.getElementById("calResult").innerText = "0";
 	bucket.project = ""; 
 	bucket.comment = "";
 	bucket.items = [];
