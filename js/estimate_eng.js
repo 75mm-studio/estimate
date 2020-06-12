@@ -36,28 +36,6 @@ const item = {
 	"unit":"",
 };
 
-// 장바구니에 들어가는 아이템 자료구조
-const item = {
-	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"unit":"",
-	"basicCost" : 200.0, // USD model, 기본가격
-	"totalShotNum" : 0, // 총 샷수
-	"objectTrackingRigidCost" : 250.0, // USD model
-	"objectTrackingRigid" : 0,
-	"objectTrackingNoneRigidCost" : 350.0, // USD model
-	"objectTrackingNoneRigid" : 0,
-	"rotoanimationBasicCost" : 500.0, // USD model
-	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformCost" : 700.0, // USD model
-	"rotoanimationSoftDeform" : 0,
-	"layoutCost" : 150.0, // USD model
-	"layout" : 0,
-	"frameCost" : 1.0, // USD model, 프레임당 가격
-	"frame" : 0,
-	"attributes" : [],
-	"total": 0,
-};
-
 // 아이템에 종속되는 어트리뷰트 자료구조
 const attributeStruct = {
 	"id":"",
@@ -118,28 +96,47 @@ function removeItem(e) {
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	bucket.total = 0;
-	bucket.unit = "$";
+	bucket.unit = "￦";
 	document.getElementById("bucket").innerHTML = "";
+	//attribute 가격
 	for (let i = 0; i < bucket.items.length; i++) {
 		let div = document.createElement("div");
 		div.setAttribute("id", bucket.items[i].id);
 		div.innerHTML += `${bucket.items[i].totalShotNum} Shot,`;
-		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs,`;
-		div.innerHTML += ` ${bucket.items[i].frame} frame`;
+		div.innerHTML += ` ${bucket.items[i].attributes.length} Attrs = `;
 		titles = [];
 		for (let j = 0; j < bucket.items[i].attributes.length; j++) {
 			titles.push(bucket.items[i].attributes[j].id);
 		}
 		div.setAttribute("title", titles.join(","));
-		div.innerHTML += "<br>" + bucket.unit + numberWithCommas(Math.round(bucket.items[i].total));
+		div.innerHTML += bucket.unit + numberWithCommas(Math.round(bucket.items[i].total)) + "<br>";
+
+
+
+		//frame 가격
+		let framenum = 0;
+		let frametotal = 0;
+		for(let j in bucket.items[i].frames){
+			framenum += bucket.items[i].frames[j]
+			frametotal += frameNum2Cost(bucket.items[i].frames[j])
+		}
+		div.innerHTML += framenum + ` frame = `;
+		div.innerHTML += bucket.unit + numberWithCommas(frametotal) + "<br>";
+		//아이템 전체 가격
+		itemtotal = bucket.items[i].total + frametotal;
+
+
+		div.innerHTML += `Total: ` + bucket.unit + numberWithCommas(itemtotal);
 		div.innerHTML += ` <i class="far fa-times-circle btn-outline-danger"></i>`;
 		div.innerHTML += ` <hr>`;
 		div.onclick = removeItem;
 		document.getElementById("bucket").appendChild(div);
 		bucket.total += bucket.items[i].total;
+		bucket.total += frametotal;
 	}
+	// 장바구니 아이템 개수와 장바구니 전체 가격
 	document.getElementById("numOfItem").innerHTML = "Bucket: " + bucket.items.length;
-	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(Math.round(bucket.total));
+	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(round(bucket.total));
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
