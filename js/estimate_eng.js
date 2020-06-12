@@ -171,17 +171,18 @@ function addBucket() {
 		alert("Your E-mail is not an email format.");
 		return
 	}
-	if (parseInt(document.getElementById("frame").value,10) > 2000) {
-		alert("Please contact us directly in the case of frame over 2000.");
-		return
-	}
+	// if (parseInt(document.getElementById("frame").value,10) > 2000) {
+	// 	alert("Please contact us directly in the case of frame over 2000.");
+	// 	return
+	// }
 	
 	let shot = Object.create(item);
-	shot.unit = "$";
 	let attrs = document.getElementsByTagName("input");
 	let currentDate = new Date();
 	shot.id = currentDate.getTime();
+	shot.unit = "$";
 	shot.attributes = []; // 기존의 Attrbute를 초기화 한다.
+	shot.frames = []; // 기존의 frame을 초기화 한다.
 
 	for (let i = 0; i < attrs.length; i++) {
 		type = attrs[i].getAttribute("type")
@@ -204,7 +205,6 @@ function addBucket() {
 	shot.rotoanimationBasic = document.getElementById("rotoanimationBasic").value;
 	shot.rotoanimationSoftDeform = document.getElementById("rotoanimationSoftDeform").value;
 	shot.layout = document.getElementById("layout").value;
-	shot.frame = document.getElementById("frame").value;
 	// 비용산출
 	shot.total += shot.basicCost * shot.totalShotNum;
 	shot.total += shot.objectTrackingRigidCost * shot.objectTrackingRigid;
@@ -212,13 +212,22 @@ function addBucket() {
 	shot.total += shot.rotoanimationBasicCost * shot.rotoanimationBasic;
 	shot.total += shot.rotoanimationSoftDeformCost * shot.rotoanimationSoftDeform;
 	shot.total += shot.layoutCost * shot.layout;
-	// 적용된 속성을 곱한다.
+	// 전체 가격에 적용된 속성을 곱한다.
 	for (let n = 0; n < shot.attributes.length; n++) {
 		shot.total *= shot.attributes[n].value;
 	}
-	// 마지막으로 프레임 가격을 더한다.
-	shot.total += frameNum2Cost(shot.frame) / 100 * 100;
+	// 계산기에 입력된 숫자를 + 로 분리하고 shot.frames 리스트에 각 프레임을 담는다.
+	let frames = document.getElementById("calHistory").innerText
+	let splitedFrames = frames.split('+')
+	for (let i in splitedFrames){
+		shot.frames[i] = parseInt(splitedFrames[i].trim());
+	}
+	// shot.frames를 이용해서 shot.totalframe을 구한다.
+	for (i = 0; i < shot.frames.length; i++) {
+		shot.totalframe += shot.frames[i]
+	}
 
+	// 바구니에 샷을 담는다.
 	bucket.items.push(shot);
 
 	// 데이터전송
@@ -231,6 +240,7 @@ function addBucket() {
 		shot.startdate = document.getElementById("startdate").value;
 		shot.enddate = document.getElementById("enddate").value;
 		shot.comment = document.getElementById("comment").value;
+		shot.unit = "$";
 		$.ajax({
 			url: "https://5c9y2kwd9k.execute-api.ap-northeast-2.amazonaws.com/estimate_bucket",
 			type: 'POST',
