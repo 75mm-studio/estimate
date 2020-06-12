@@ -11,6 +11,7 @@ let bucket = {
 	"items":[],
 	"total":0,
 	"unit":"",
+	"totalframe":0,
 };
 
 // 장바구니에 들어가는 아이템 자료구조
