@@ -27,7 +27,7 @@ const item = {
 	"rotoanimationBasic" : 0,
 	"rotoanimationSoftDeformCost" : 400.0, // USD model
 	"rotoanimationSoftDeform" : 0,
-	"layoutCost" : 150000.0, // KRW model
+	"layoutCost" : 150.0, // USD model
 	"layout" : 0,
 	"frames":[],// 500, 300, 200 형태의 int 숫자가 들어가야 한다.
 	"totalframe":0, // frames의 모든 수를 합친 값이다.
