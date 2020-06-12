@@ -348,29 +348,29 @@ function setInputFilter(textbox, inputFilter) {
 //프레임 개수에 따라 가중치를 고려해 가격을 반환하는 함수.
 function frameNum2Cost(num){
 	if(num < 300){ // 300미만
-		return 1000*num
+		return 1.0*num
 	}else if(num < 600){ // 600미만
-		return 1100*num
+		return 1.1*num
 	}else if(num < 700){
-		return 1200*num
+		return 1.2*num
 	}else if(num < 800){
-		return 1400*num
+		return 1.4*num
 	}else if(num < 900){
-		return 1600*num
+		return 1.6*num
 	}else if(num < 1000){
-		return 1800*num
+		return 1.8*num
 	}else if(num < 1200){
-		return 2000*num
+		return 2.0*num
 	}else if(num < 1400){
-		return 2200*num
+		return 2.2*num
 	}else if(num < 1600){
-		return 2400*num
+		return 2.4*num
 	}else if(num < 1800){
-		return 2600*num
+		return 2.6*num
 	}else if(num < 2000){
-		return 2800*num
+		return 2.8*num
 	}else{
-		return 3000*num
+		return 3.0*num
 	}
 }
 
