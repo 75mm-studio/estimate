@@ -96,7 +96,7 @@ function removeItem(e) {
 // 장바구니를 렌더링한다.
 function bucketRender() {
 	bucket.total = 0;
-	bucket.unit = "￦";
+	bucket.unit = "$";
 	document.getElementById("bucket").innerHTML = "";
 	//attribute 가격
 	for (let i = 0; i < bucket.items.length; i++) {
