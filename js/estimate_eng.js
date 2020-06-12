@@ -396,3 +396,11 @@ setInputFilter(document.getElementById("layout"), function(value) {
 setInputFilter(document.getElementById("frame"), function(value) {
 	return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 1800000);
 });
+
+function inputTestdata(){
+	document.getElementById("author").value="75mm test"
+	document.getElementById("person").value="test"
+	document.getElementById("email").value="75mm@test"
+	document.getElementById("project").value="test project"
+	document.getElementById("privacy").outerHTML = `<input class="form-check-input" type="checkbox" id="privacy" checked>`
+}
