@@ -17,6 +17,28 @@ let bucket = {
 // 장바구니에 들어가는 아이템 자료구조
 const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
+	"basicCost" : 200.0, // USD model, 기본가격
+	"totalShotNum" : 0, // 총 샷수
+	"objectTrackingRigidCost" : 150.0, // USD model
+	"objectTrackingRigid" : 0,
+	"objectTrackingNoneRigidCost" : 300.0, // USD model
+	"objectTrackingNoneRigid" : 0,
+	"rotoanimationBasicCost" : 300.0, // USD model
+	"rotoanimationBasic" : 0,
+	"rotoanimationSoftDeformCost" : 400.0, // USD model
+	"rotoanimationSoftDeform" : 0,
+	"layoutCost" : 150.0, // USD model
+	"layout" : 0,
+	"frames":[],// 500, 300, 200 형태의 int 숫자가 들어가야 한다.
+	"totalframe":0, // frames의 모든 수를 합친 값이다.
+	"attributes" : [],
+	"total": 0,
+	"unit":"",
+};
+
+// 장바구니에 들어가는 아이템 자료구조
+const item = {
+	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
 	"unit":"",
 	"basicCost" : 200.0, // USD model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
