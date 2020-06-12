@@ -139,9 +139,9 @@ function bucketRender() {
 	document.getElementById("total").innerHTML = "Total: " + bucket.unit + numberWithCommas(round(bucket.total));
 }
 
-// round 함수는 100원 단위에서 반올림한다. ex) 54300 -> 54000, 54800 -> 55000 
+// round 함수는 1달러 단위에서 반올림한다. ex) 543 -> 540, 548 -> 550
 function round(price){
-	return Math.round(price*0.001) * 1000
+	return Math.round(price*0.1) * 10
 }
 
 // 매치무브 샷 조건을 장바구니에 넣는다.
