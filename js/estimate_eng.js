@@ -11,28 +11,29 @@ let bucket = {
 	"items":[],
 	"total":0,
 	"unit":"",
+	"totalframe":0,
 };
 
 // 장바구니에 들어가는 아이템 자료구조
 const item = {
 	"id":"", // date로 설정할것. 나중에 삭제할 키로 사용하기
-	"unit":"",
-	"basicCost" : 200.0, // USD model, 기본가격
+	"basicCost" : 200000.0, // KRW model, 기본가격
 	"totalShotNum" : 0, // 총 샷수
-	"objectTrackingRigidCost" : 250.0, // USD model
+	"objectTrackingRigidCost" : 150000.0, // KRW model
 	"objectTrackingRigid" : 0,
-	"objectTrackingNoneRigidCost" : 350.0, // USD model
+	"objectTrackingNoneRigidCost" : 300000.0, // KRW model
 	"objectTrackingNoneRigid" : 0,
-	"rotoanimationBasicCost" : 500.0, // USD model
+	"rotoanimationBasicCost" : 300000.0, // KRW model
 	"rotoanimationBasic" : 0,
-	"rotoanimationSoftDeformCost" : 700.0, // USD model
+	"rotoanimationSoftDeformCost" : 400000.0, // KRW model
 	"rotoanimationSoftDeform" : 0,
-	"layoutCost" : 150.0, // USD model
+	"layoutCost" : 150000.0, // KRW model
 	"layout" : 0,
-	"frameCost" : 1.0, // USD model, 프레임당 가격
-	"frame" : 0,
+	"frames":[],// 500, 300, 200 형태의 int 숫자가 들어가야 한다.
+	"totalframe":0, // frames의 모든 수를 합친 값이다.
 	"attributes" : [],
 	"total": 0,
+	"unit":"",
 };
 
 // 아이템에 종속되는 어트리뷰트 자료구조
