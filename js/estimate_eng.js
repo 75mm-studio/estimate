@@ -261,6 +261,10 @@ function addBucket() {
 }
 
 function printMode() {
+	// 계산기를 숨긴다.
+	let cal = document.getElementById("calculator");
+	cal.style.display = "none";
+	// 출력한다.
 	window.print();
 }
 
